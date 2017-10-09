@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
     
-    def initialize(course_name, teacher_id=1, student_list=[])
+    def initialize(course_name, teacher_id=1, student_list= 1)
         @course_name = course_name
         @teacher_id = teacher_id
         @student_list = student_list
