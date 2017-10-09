@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
         @courses = Course.all 
     end
     
-    def show
+   # def show
        # @courses = 
-    end
+    #end
 end
