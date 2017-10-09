@@ -1,9 +1,9 @@
 class CoursesController < ApplicationController
     def index
-        @courses = Course.all 
+        @course = Course.all 
     end
     
-   # def show
-       # @courses = 
-    #end
+    def show
+       "This will show a course information"
+    end
 end
