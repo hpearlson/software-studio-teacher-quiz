@@ -6,4 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-course1 = Course.create(course_name: "Intro", teacher_id: 1, student_list: 1)
+course1 = Course.create([{ course_name: "Intro"}, { teacher_id: 1 }, { student_list: 1} ])
