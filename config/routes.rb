@@ -54,5 +54,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root 'courses#index'
-  get '/courses' => 'courses#index' 
+  get '/courses' => 'courses#show', as: :course
 end
