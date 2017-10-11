@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  resources :courses
-  root :to => redirect('/courses')
+  #resources :courses
+  root 'courses#index'
+  get '/courses' => 'courses#show', as: :course
 end
