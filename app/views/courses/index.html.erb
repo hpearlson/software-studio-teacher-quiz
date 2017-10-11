@@ -2,8 +2,7 @@
 <div>
     <% @courses.each do |course| %>
     <div>
-        <p><%= course.course_name %></p>
-        <p><%= link_to 'Show Course', course_path(course) %></p>
+        <p><%= link_to course.course_name, course_path(course) %></p>
     </div>
     <% end %>
 </div>
