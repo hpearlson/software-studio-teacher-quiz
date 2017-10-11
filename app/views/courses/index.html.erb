@@ -1,10 +1,10 @@
 <h1>Hello</h1>
 <div>
-    <% 2.times do %>
+    <% @courses.each do |course| %>
     <div>
-        <h2><%= 'yo' %></h2>
+        <p><%= course.course_name %></p>
+        <p><%= link_to 'Show Course', course_path(course) %></p>
     </div>
     <% end %>
 </div>
 
-<h2><%= link_to 'Show Course', '/courses' %> </h2>
