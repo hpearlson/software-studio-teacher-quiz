@@ -9,7 +9,7 @@ default: &default
   encoding: unicode
   username: username
   password: password
-  host: localhost
+  host: <%= ENV['IP'] %>
   pool: 5
   timeout: 5000
 
