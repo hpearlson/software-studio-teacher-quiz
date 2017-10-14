@@ -1,16 +1,10 @@
 <h1>Hello</h1>
 <div>
-     <% 2.times do %>
-     <p>yo</p>
-     <% end %>
-     
-     <p><%= link_to "show course", '/courses' %></p>
-     
-    <%#<% @courses.each do |course| %>
-    <%#<div>
-       <%# <p><%= link_to course.course_name, course_path(course) %><%#</p>
-    <%#</div>
-    <%#<% end %>
+    <% @courses.each do |course| %>
+    <div>
+       <p><%= link_to course.course_name, course_path(course) %></p>
+    </div>
+    <% end %>
 </div>
 
 
