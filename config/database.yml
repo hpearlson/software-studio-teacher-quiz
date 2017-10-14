@@ -7,11 +7,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  pool: 5
   username: <%= ENV['USERNAME'] %>
   password: <%= ENV['PASSWORD'] %>
-  host: <%= ENV['IP'] %>
-  pool: 5
-  timeout: 5000
+  host:     <%= ENV['IP'] %>
 
 development:
   <<: *default
