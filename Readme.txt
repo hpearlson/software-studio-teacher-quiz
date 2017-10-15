@@ -8,3 +8,6 @@ Este proyecto resuelve el problema de que un profesor tenga demasiados estudiant
 
 This is an update
 adding update from test branch
+
+How to start the postgres server: In the command prompt, type:
+sudo service postgresql start
