@@ -1,0 +1,11 @@
+<h1>Edit Course</h1>
+
+<%= form_tag course_path(@course), :method => :put do %>
+
+    <%= label :course, :course_name, 'Course Name' %>
+    <%= text_field :course, :course_name %>
+    
+    
+    <%= submit_tag value='Save Changes', options={} %>
+    
+<% end %>
