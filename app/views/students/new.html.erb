@@ -1,0 +1,11 @@
+<h1>Add Student</h1>
+
+<%= form_tag students_path, :method => :post do %>
+
+    <%= label :student, :first_name, 'Student Name' %>
+    <%= text_field :student, :first_name %>
+    
+    <%= submit_tag value='Save Changes', options={} %>
+    
+<% end %>
+    
