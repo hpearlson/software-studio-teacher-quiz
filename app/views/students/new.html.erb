@@ -10,6 +10,10 @@
     
     <%= f.label :course_id, 'Course' %>
     <%= f.collection_select :course_id, @courses, :id, :course_name %>
+    <br />
+    
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description %>
     
     <%= f.submit 'Create Student' %>
     
