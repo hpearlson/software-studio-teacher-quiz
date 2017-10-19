@@ -1,6 +1,6 @@
 <h1>Add Student</h1>
 
-<%= form_for @student do |f| %>
+<%= form_for @student, :html => { :multipart => true } do |f| %>
 
     <%= f.label :first_name, 'First Name' %>
     <%= f.text_field :first_name %>
@@ -11,9 +11,13 @@
     <%= f.label :course_id, 'Course' %>
     <%= f.collection_select :course_id, @courses, :id, :course_name %>
     <br />
+    <br />
     
     <%= f.label :description, 'Description' %>
     <%= f.text_area :description %>
+    
+    <%= f.label :image, 'Upload Photo' %>
+    <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg' %>
     
     <%= f.submit 'Create Student' %>
     
