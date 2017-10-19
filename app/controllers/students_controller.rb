@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
 
     def show
        @student = Student.find(params[:id])
+       @next = Student.where(:course => @student.course).where.not(:id => @student.id).take
     end
 
     def create
