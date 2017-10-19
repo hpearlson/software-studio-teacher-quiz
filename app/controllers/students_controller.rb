@@ -5,11 +5,12 @@ class StudentsController < ApplicationController
     end
 
     def show
-       @student = Student.find(params[:id])
-       @students = Student.all.where(:course => @student.course)
-       @next = nil
-       @prev = nil
-       @students.each_index do |i|
+        @student = Student.find(params[:id])
+        @course = @student.course
+        @students = Student.all.where(:course => @student.course)
+        @next = nil
+        @prev = nil
+        @students.each_index do |i|
             if @students[i] == @student
                 if i < @students.size
                    @next = @students[i+1]
@@ -18,13 +19,13 @@ class StudentsController < ApplicationController
                    @prev = @students[i-1] 
                 end
             end
-       end
-       if @next == nil
+        end
+        if @next == nil
            @next = @students[0]
-       end
-       if @prev == nil
+        end
+        if @prev == nil
            @prev = @students[-1]
-       end
+        end
     end
 
     def create
