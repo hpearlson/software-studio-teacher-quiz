@@ -46,5 +46,7 @@ group :development do
   
   #image processing yay
   gem "paperclip", "~> 5.0.0"
+
+  gem 'aws-sdk', '< 2.0'
 end
 
