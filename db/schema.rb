@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20171019073557) do
     t.string   "last_name"
     t.string   "description"
     t.integer  "course_id"
-    t.string   "image"
+    t.integer  "true_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
