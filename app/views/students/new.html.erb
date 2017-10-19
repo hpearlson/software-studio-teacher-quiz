@@ -2,8 +2,14 @@
 
 <%= form_tag students_path, :method => :post do %>
 
-    <%= label :student, :first_name, 'Student Name' %>
+    <%= label :student, :first_name, 'First Name' %>
     <%= text_field :student, :first_name %>
+    
+    <%= label :student, :last_name, 'Last Name' %>
+    <%= text_field :student, :last_name %>
+    
+    <%= label :student, :course, 'Course' %>
+    <%= collection_select :student, :course_id, @courses, :id, :course_name %>
     
     <%= submit_tag value='Save Changes', options={} %>
     

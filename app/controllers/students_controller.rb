@@ -15,10 +15,20 @@ class StudentsController < ApplicationController
     end
 
     def new
-       @student = Student.new 
+       @student = Student.new
+       @courses = Course.all
     end
     
+    def destroy
+        @student = Student.find params[:id]
+        @student.destroy
+        flash[:notice] = "#{@student.first_name} was successfully deleted"
+        redirect_to students_path
+    end
+    
+    private
+    
     def student_params
-        params.require(:student).permit(:first_name, :last_name, :description, :course, :student_id, :image)
+        params.require(:student).permit(:first_name, :last_name, :description, :image)
     end
 end

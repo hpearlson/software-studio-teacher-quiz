@@ -2,12 +2,11 @@
 <div>
     <% @students.each do |student| %>
     <div>
-       <p><%= link_to student.first_name, student_path(student) %></p>
+       <p><%= link_to "#{student.first_name} #{student.last_name}", student_path(student) %></p>
     </div>
     <% end %>
     
-    <p>This is where a student's profile information will show up.</p>
-    
     <p><%= link_to 'Go to Courses', '/' %></p>
+    <p><%= link_to 'Add Student', new_student_path %></p>
     
 </div>
