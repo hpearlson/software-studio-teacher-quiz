@@ -1,12 +1,24 @@
 <h1>Hello</h1>
-<div>
-    <% @students.each do |student| %>
-    <div>
-       <p><%= link_to "#{student.first_name} #{student.last_name}", student_path(student) %></p>
-    </div>
-    <% end %>
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= @students.each do |student| %>
+            <tr>
+                <td><%= image_tag student.image.url(:thumb) %></td>
+                <td><%= student.first_name %></td>
+                <td><%= student.last_name %></td>
+                <td><%= link_to "More information", student_path(student) %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
     
     <p><%= link_to 'Go to Courses', '/' %></p>
     <p><%= link_to 'Add Student', new_student_path %></p>
-    
-</div>

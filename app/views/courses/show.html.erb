@@ -1,6 +1,29 @@
 <h2>Here are the students in <%= @course.course_name %></h2>
 
-<p>List of students goes here</p>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= @students.each do |student| %>
+                <tr>
+                    <td><%= image_tag student.image.url(:thumb) %></td>
+                    <td><%= student.first_name %></td>
+                    <td><%= student.last_name %></td>
+                    <td><%= link_to "More information", student_path(student) %>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+
+
+<br />
 <p><%= link_to 'Edit Course', edit_course_path %></p>
 <p><%= link_to 'Delete Course', course_path(@course), :method => :delete %>
 <p><%= link_to 'Back to Home', courses_path %></p>
