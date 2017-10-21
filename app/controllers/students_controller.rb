@@ -46,6 +46,19 @@ class StudentsController < ApplicationController
         redirect_to students_path
     end
     
+    def edit
+       @student = Student.find params[:id] 
+       @courses = Course.all
+    end
+    
+    def update
+       @student = Student.find params[:id]
+       @courses = Course.all
+       @student.update_attributes!(student_params)
+       flash[:notice] = "#{@student.first_name} #{@student.last_name} was successfully updated."
+       redirect_to course_path(@student)
+    end
+    
     private
     
     def student_params
