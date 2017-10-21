@@ -56,7 +56,7 @@ class StudentsController < ApplicationController
        @courses = Course.all
        @student.update_attributes!(student_params)
        flash[:notice] = "#{@student.first_name} #{@student.last_name} was successfully updated."
-       redirect_to course_path(@student)
+       redirect_to student_path(@student)
     end
     
     private
