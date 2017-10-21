@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            <%= @students.each do |student| %>
+            <% @students.each do |student| %>
                 <tr>
                     <td><%= image_tag student.image.url(:thumb) %></td>
                     <td><%= student.first_name %></td>
