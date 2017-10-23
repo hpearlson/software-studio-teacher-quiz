@@ -36,4 +36,6 @@ ActiveRecord::Schema.define(version: 20171019073557) do
     t.datetime "image_updated_at"
   end
 
+  add_index "students", ["course_id"], name: "index_students_on_course_id", using: :btree
+
 end
