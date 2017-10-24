@@ -4,7 +4,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :description
-      t.belongs_to :course, index: true
+      t.belongs_to :course, index=true
       t.timestamps 
     end
   end
