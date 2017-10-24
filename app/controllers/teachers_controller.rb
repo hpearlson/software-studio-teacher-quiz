@@ -4,6 +4,10 @@ class TeachersController < ApplicationController
         @teachers = Teacher.all
     end
     
+    def show
+        @teacher = Teacher.find(params[:id])
+    end
+    
     def create
         @teacher = Teacher.new(teacher_params)
         if @teacher.save
