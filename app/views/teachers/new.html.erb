@@ -1,0 +1,20 @@
+<h1>Add Teacher</h1>
+
+<%= form_for @teacher, :html => { :multipart => true } do |f| %>
+
+    <%= f.label :first_name, 'First Name' %>
+    <%= f.text_field :first_name %>
+    
+    <%= f.label :last_name, 'Last Name' %>
+    <%= f.text_field :last_name %>
+    
+    <br />
+    
+    
+    <%= f.label :image, 'Upload Photo' %>
+    <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg' %>
+    
+    <%= f.submit 'Create Teacher' %>
+    
+<% end %>
+    
