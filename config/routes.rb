@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
-  root :to => redirect('/courses')
+  root :to => redirect('/access/home')
   
+  get 'access/home', :to => 'access#home'
   get 'admin', :to => 'access#menu'
   get 'access/menu'
   get 'access/login'
