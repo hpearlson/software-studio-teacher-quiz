@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   
   resources :students
   #get 'student/index' => 'student#index'
+  
+  resources :teachers
 
 end
