@@ -19,6 +19,13 @@ class TeachersController < ApplicationController
         end
     end
     
+    def destroy
+        @teacher = Teacher.find params[:id]
+        @teacher.destroy
+        flash[:notice] = "#{@teacher.username} was successfully deleted"
+        redirect_to teachers_path
+    end
+    
     def password_required?
         false
     end

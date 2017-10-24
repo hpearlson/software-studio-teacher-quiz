@@ -5,5 +5,5 @@
 <p>Last Name: <%= @teacher.last_name %></p>
 <p>Username: <%= @teacher.username %></p>
 
-
+<p><%= link_to 'Remove Teacher', teacher_path(@teacher), :method => :delete %></p>
 <p><%= link_to 'Back to Teachers', '/teachers' %>   <%= link_to 'Back to Home', '/home' %>
