@@ -2,6 +2,12 @@
 
 <%= form_for @teacher, :html => { :multipart => true } do |f| %>
 
+    <%= f.label :username, 'Username' %>
+    <%= f.text_field :username %>
+
+    <%= f.label :password, 'Password' %>
+    <%= f.password_field :password %>
+
     <%= f.label :first_name, 'First Name' %>
     <%= f.text_field :first_name %>
     
