@@ -39,10 +39,11 @@ ActiveRecord::Schema.define(version: 20171024035354) do
   create_table "teachers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "description"
     t.string   "password_digest"
     t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

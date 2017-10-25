@@ -2,12 +2,13 @@ class CoursesController < ApplicationController
     
     
     def index
-        @courses = Course.all 
+        @courses = Course.all
     end
     
 	def show 
   	    @course = Course.find(params[:id]) 
   	    @students = Student.all.where(:course => @course)
+  	    session[:current_course] = @course
 	end
     
     def new

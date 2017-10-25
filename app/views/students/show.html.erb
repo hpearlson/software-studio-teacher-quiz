@@ -10,4 +10,4 @@
 <p><%= link_to 'Edit Student', edit_student_path(@student) %></p>
 
 <p><%= link_to 'Remove Student', student_path(@student), :method => :delete %></p>
-<p><%= link_to 'Back to Students', '/students' %>   <%= link_to 'Back to Course', course_path(@course) %>
+<p><%= link_to 'Back to Students', students_path %>   <%= link_to 'Back to Course', course_path(@student.course) %>

@@ -1,13 +1,18 @@
 class StudentsController < ApplicationController
     
     def index
-        @students = Student.all 
+        @students = Student.all
+        session.delete(:current_course)
     end
 
     def show
         @student = Student.find(params[:id])
-        @course = @student.course
-        @students = Student.all.where(:course => @student.course)
+        @course = session[:current_course]
+        if @course == nil
+            @students = Student.all
+        else
+            @students = Student.all.where(:course => @student.course)
+        end
         @next = nil
         @prev = nil
         @students.each_index do |i|
