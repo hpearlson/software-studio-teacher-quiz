@@ -64,6 +64,13 @@ class StudentsController < ApplicationController
        redirect_to student_path(@student)
     end
     
+    
+    def quiz
+       @students = Student.all
+       @students = Kaminari.paginate_array(@students).page(params[:page]).per(1)
+    end
+    
+    
     private
     
     def student_params

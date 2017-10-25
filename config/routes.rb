@@ -12,8 +12,11 @@ Rails.application.routes.draw do
 
   resources :courses
   
-  resources :students
-  #get 'student/index' => 'student#index'
+  resources :students do
+    collection do
+      get :quiz
+    end
+  end
   
   resources :teachers
 
