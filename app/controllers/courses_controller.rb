@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
 	def show 
   	    @course = Course.find(params[:id]) 
   	    @students = Student.all.where(:course => @course)
+  	    flash[:page] = "from course page"
   	    session[:current_course] = @course
 	end
     

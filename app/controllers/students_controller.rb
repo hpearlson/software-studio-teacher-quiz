@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
     
     def index
         @students = Student.all
+        flash[:page] = "from index"
         session.delete(:current_course)
     end
 
@@ -13,23 +14,15 @@ class StudentsController < ApplicationController
         else
             @students = Student.all.where(:course => @student.course)
         end
-        @next = nil
-        @prev = nil
-        @students.each_index do |i|
-            if @students[i] == @student
-                if i < @students.size
-                   @next = @students[i+1]
-                end
-                if i > 0
-                   @prev = @students[i-1] 
-                end
+        if flash[:page] != nil
+            @start_page = 0
+            @students.each_index do |i|
+                @start_page += 1
+                break if @student == @students[i]
             end
-        end
-        if @next == nil
-           @next = @students[0]
-        end
-        if @prev == nil
-           @prev = @students[-1]
+            @students = Kaminari.paginate_array(@students).page(@start_page).per(1)
+        else
+            @students = Kaminari.paginate_array(@students).page(params[:page]).per(1)
         end
     end
 
@@ -67,7 +60,6 @@ class StudentsController < ApplicationController
     
     def quiz
         if flash[:page] == nil
-            
             @students = Student.all
             @students = Kaminari.paginate_array(@students).page(params[:page]).per(1)
         else
