@@ -57,7 +57,7 @@ class StudentsController < ApplicationController
     end
     
     def update
-       @student = Student.find params[:id]
+       @student = Student.find(params[:id])
        @courses = Course.all
        @student.update_attributes!(student_params)
        flash[:notice] = "#{@student.first_name} #{@student.last_name} was successfully updated."
@@ -66,10 +66,35 @@ class StudentsController < ApplicationController
     
     
     def quiz
-       @students = Student.all
-       @students = Kaminari.paginate_array(@students).page(params[:page]).per(1)
+        if flash[:page] == nil
+            
+            @students = Student.all
+            @students = Kaminari.paginate_array(@students).page(params[:page]).per(1)
+        else
+            @students = Student.all
+            @students = Kaminari.paginate_array(@students).page(flash[:page]).per(1)
+        end
+        if flash[:correct] == "Correct!"
+           @class = "visible"
+        else
+            @class = "hidden"
+        end
     end
     
+    def check_answer
+        @check = params[:student].to_s.split('=>')
+        @check2 = @check[1].split('"')
+        @name = @check2[1]
+        @page = params[:page]
+        flash[:page] = @page
+        @student = Student.find(params[:student_id])
+        if @student.first_name == @name
+            flash[:correct] = "Correct!"
+        else
+            flash[:correct] = "Incorrect!"
+        end
+        redirect_to quiz_students_path
+    end
     
     private
     

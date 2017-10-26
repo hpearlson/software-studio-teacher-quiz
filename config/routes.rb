@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :students do
     collection do
       get :quiz
+      post :quiz, :to => "students#check_answer"
     end
   end
   
