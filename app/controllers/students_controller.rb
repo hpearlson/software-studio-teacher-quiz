@@ -59,11 +59,15 @@ class StudentsController < ApplicationController
     
     
     def quiz
-        if flash[:page] == nil
+        @course = session[:current_course]
+        if @course == nil
             @students = Student.all
+        else
+            @students = Student.all.where(:course => session[:current_course])
+        end
+        if flash[:page] == nil
             @students = Kaminari.paginate_array(@students).page(params[:page]).per(1)
         else
-            @students = Student.all
             @students = Kaminari.paginate_array(@students).page(flash[:page]).per(1)
         end
         if flash[:correct] == "Correct!"
