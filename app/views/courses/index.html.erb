@@ -7,12 +7,13 @@
     </div>
     <% end %>
     </div>
+  <ul id="nav">
+    <li><%= link_to 'Add New Course', new_course_path %></li>
     
-    <p><%= link_to 'Add New Course', new_course_path %></p>
+    <li><%= link_to 'Go to Students', students_path %></li>
     
-    <p><%= link_to 'Go to Students', students_path %></p>
-    
-    <p><%= link_to 'Back to Home', '/' %></p>
+    <li><%= link_to 'Back to Home', '/' %></li>
+    </ul>
 </div>
 
 
