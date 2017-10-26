@@ -1,9 +1,8 @@
 <h1>Add Course</h1>
 
-<%= form_tag courses_path, :method => :post do %>
+<%= form_for @course do |f| %>
 
-    <%= label :course, :course_name, 'Course Name' %>
-    <%= text_field :course, :course_name %>
+    <%= render (:partial => "course_form", :locals => {:f => f}) %>
     
     
     <%= submit_tag value='Save Changes', options={} %>
