@@ -26,8 +26,9 @@ class TeachersController < ApplicationController
         redirect_to teachers_path
     end
     
-    def password_required?
-        false
+    def edit
+       @student = Teacher.find params[:id] 
+       #@courses = Course.all
     end
     
     def new

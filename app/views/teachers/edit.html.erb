@@ -2,10 +2,9 @@
 
 <%= form_for @teacher, :html => { :multipart => true } do |f| %>
 
-
     <%= render(:partial => 'teacher_form', :locals => {:f => f}) %>
     
-    <%= f.submit 'Create Teacher' %>
+    <%= f.submit 'Update Teacher' %>
     
 <% end %>
     
