@@ -27,7 +27,7 @@ class TeachersController < ApplicationController
     end
     
     def edit
-       @student = Teacher.find params[:id] 
+       @teacher = Teacher.find params[:id] 
        #@courses = Course.all
     end
     
