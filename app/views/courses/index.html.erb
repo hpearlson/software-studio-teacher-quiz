@@ -1,10 +1,12 @@
 <h1>Here is a List of your Courses:</h1>
 <div>
-    <% @courses.each do |course| %>
     <div>
+    <% @courses.each do |course| %>
+    <div id="listCourses">
        <p><%= link_to course.course_name, course_path(course) %></p>
     </div>
     <% end %>
+    </div>
     
     <p><%= link_to 'Add New Course', new_course_path %></p>
     
