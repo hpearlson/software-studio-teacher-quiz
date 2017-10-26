@@ -1,8 +1,8 @@
 <h1>Add Course</h1>
 
-<%= form_for @course do |f| %>
+<%= form_for Course.new do |f| %>
 
-    <%= render (:partial => "course_form", :locals => {:f => f}) %>
+    <%= render(:partial => "course_form", :locals => {:f => f}) %>
     
     
     <%= submit_tag value='Save Changes', options={} %>
