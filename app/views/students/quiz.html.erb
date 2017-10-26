@@ -13,10 +13,12 @@
         <p>Name: <%= student.first_name %> <%= student.last_name %></p>
         <p>Description: <%= student.description %></p>
         <p>Enrolled in: <%= student.course.course_name %></p>
+
+
+        <p><%= link_to_previous_page @students, "Previous" %>  <%= link_to_next_page @students, "Next" %></p>
+        <br />
+
     <% end %>
 <% end %>
-
-<p><%= link_to_previous_page @students, "Previous" %>  <%= link_to_next_page @students, "Next" %></p>
-<br />
 
 <p><%= link_to 'Back to Students', students_path %></p>
