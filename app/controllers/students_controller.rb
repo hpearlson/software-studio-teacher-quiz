@@ -27,8 +27,12 @@ class StudentsController < ApplicationController
     end
 
     def create
-        @student = Student.create!(student_params)
-        flash[:notice] = "#{@student.first_name} was successfully created."
+        @student = Student.new(student_params)
+        if @student.save
+            flash[:notice] = "#{@student.first_name} was successfully created."
+        else
+            flash[:warning] = "Student could not be created because #{@student.errors.full_messages}"
+        end
         redirect_to students_path
     end
 
@@ -51,9 +55,12 @@ class StudentsController < ApplicationController
     
     def update
        @student = Student.find(params[:id])
-       @courses = Course.all
-       @student.update_attributes!(student_params)
-       flash[:notice] = "#{@student.first_name} #{@student.last_name} was successfully updated."
+       if @student.update_attributes(student_params)
+           flash[:notice] = "#{@student.first_name} #{@student.last_name} was successfully updated."
+           flash[:page] = @student.id
+       else
+           flash[:warning] = "#{@student.first_name} #{@student.last_name} could not be updated because #{@student.errors.full_messages}"
+       end
        redirect_to student_path(@student)
     end
     

@@ -17,8 +17,12 @@ class CoursesController < ApplicationController
     end
     
     def create
-        @course = Course.create!(course_params)
-        flash[:notice] = "#{@course.course_name} was successfully created."
+        @course = Course.new(course_params)
+        if @course.save
+            flash[:notice] = "#{@course.course_name} was successfully created."
+        else
+            flash[:warning] = "Course could not be created because #{@course.errors.full_messages}"
+        end
         redirect_to courses_path
     end
     
@@ -28,8 +32,11 @@ class CoursesController < ApplicationController
     
     def update
        @course = Course.find params[:id]
-       @course.update_attributes!(course_params)
-       flash[:notice] = "#{@course.course_name} was successfully updated."
+       if @course.update_attributes(course_params)
+           flash[:notice] = "#{@course.course_name} was successfully updated."
+       else
+           flash[:warning] = "#{@course.course_name} could not be updated because #{@course.errors.full_messages}"
+       end
        redirect_to course_path(@course)
     end
     

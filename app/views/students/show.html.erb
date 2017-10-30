@@ -7,7 +7,7 @@
     <p>Enrolled in: <%= student.course.course_name %></p>
 
     <p><%= link_to_previous_page @students, "Previous" %>  <%= link_to_next_page @students, "Next" %> </p>
-    <p><%= link_to 'Remove Student', student_path(student), :method => :delete %></p>
+    <p><%= link_to 'Edit Student', edit_student_path %>  <%= link_to 'Remove Student', student_path(student), :method => :delete %></p>
     <p><%= link_to 'Back to Students', students_path %>   <%= link_to 'Back to Course', course_path(student.course) %></p>
     
 <% end %>

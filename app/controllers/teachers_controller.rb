@@ -14,7 +14,7 @@ class TeachersController < ApplicationController
             flash[:notice] = "#{@teacher.first_name} was successfully created."
             redirect_to teachers_path
         else
-            flash[:notice] = "Something went wrong."
+            flash[:warning] = "Something went wrong."
             redirect_to '/teachers/new'
         end
     end
@@ -28,7 +28,17 @@ class TeachersController < ApplicationController
     
     def edit
        @teacher = Teacher.find params[:id] 
-       #@courses = Course.all
+       @courses = Course.all
+    end
+    
+    def update
+        @teacher = Teacher.find params[:id]
+       if @teacher.update_attributes(teacher_params)
+           flash[:notice] = "#{@teacher.first_name} #{@teacher.last_name} was successfully updated."
+       else
+           flash[:warning] = "Teacher could not be updated because #{@teacher.errors.full_messages}"
+       end
+       redirect_to teacher_path(@teacher)
     end
     
     def new
