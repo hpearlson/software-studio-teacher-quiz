@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026182548) do
+ActiveRecord::Schema.define(version: 20171030020559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
     t.string   "course_name"
+    t.integer  "teacher_id"
+    t.integer  "true_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,6 +47,10 @@ ActiveRecord::Schema.define(version: 20171026182548) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email_address"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end

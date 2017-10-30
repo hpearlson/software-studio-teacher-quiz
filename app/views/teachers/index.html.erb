@@ -3,6 +3,7 @@
 <% @teachers.each do |teacher| %>
     <div>
     <tr>
+        <td><%= image_tag teacher.image.url(:thumb) %></td>
         <td><%= teacher.first_name %></td>
         <td><%= teacher.last_name %></td>
         <td><%= link_to "More information", teacher_path(teacher) %>
