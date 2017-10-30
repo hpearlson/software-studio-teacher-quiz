@@ -7,13 +7,18 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <ul>
-  <li><a href="/home">QuizMe!</a></li>
-  <li><a href="/students">Students</a></li>
-  <li><a href="/courses">Courses</a></li>
-  <li><a href="/teachers">Teacher</a></li>
 
-  <li style="float:right"><a class="active" href="/access/login">Login</a></li>
-  <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+
+  <% if session[:user_id] == nil %>
+    <li><a href="/home">QuizMe!</a></li>
+    <li style="float:right"><a class="active" href="/teachers/new">Sign Up</a></li>
+    <li style="float:right"><a class="active" href="/access/login">Login</a></li>
+  <% else %>
+    <li><a href="/students">Students</a></li>
+    <li><a href="/courses">Courses</a></li>
+    <li><a href="/teachers">Teacher</a></li>
+    <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+  <% end %>
 
 </ul>
 </head>
