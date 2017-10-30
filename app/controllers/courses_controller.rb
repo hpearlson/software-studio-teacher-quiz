@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-    
+    before_action :confirm_logged_in
     
     def index
         @courses = Course.all
@@ -8,7 +8,6 @@ class CoursesController < ApplicationController
 	def show 
   	    @course = Course.find(params[:id]) 
   	    @students = Student.all.where(:course => @course)
-  	    flash[:page] = 1
   	    session[:current_course] = @course.id
 	end
     
@@ -51,6 +50,13 @@ class CoursesController < ApplicationController
     
     def course_params
         params.require(:course).permit(:course_name, :student_list)
+    end
+    
+    def confirm_logged_in
+        unless session[:user_id]
+            flash[:notice] = "Please log in."
+            redirect_to(access_login_path)
+        end
     end
 
 end

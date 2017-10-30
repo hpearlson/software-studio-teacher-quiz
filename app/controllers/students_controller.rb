@@ -1,8 +1,7 @@
 class StudentsController < ApplicationController
-    
+    before_action :confirm_logged_in
     def index
         @students = Student.all
-        flash[:page] = "from index"
         session.delete(:current_course)
     end
 
@@ -14,15 +13,25 @@ class StudentsController < ApplicationController
         else
             @students = Student.all.where(:course => @student.course)
         end
-        if flash[:page] != nil
-            @start_page = 0
-            @students.each_index do |i|
-                @start_page += 1
-                break if @student == @students[i]
+        @next = nil
+        @prev = nil
+        @next_class = "visible"
+        @prev_class = "visible"
+        @students.each_index do |i|
+            if @students[i] == @student
+                if i < @students.size
+                   @next = @students[i+1]
+                end
+                if i > 0
+                   @prev = @students[i-1] 
+                end
             end
-            @students = Kaminari.paginate_array(@students).page(@start_page).per(1)
-        else
-            @students = Kaminari.paginate_array(@students).page(params[:page]).per(1)
+        end
+        if @next == nil
+            @next_class = "hidden"
+        end
+        if @prev == nil
+            @prev_class = "hidden"
         end
     end
 
@@ -57,7 +66,6 @@ class StudentsController < ApplicationController
        @student = Student.find(params[:id])
        if @student.update_attributes(student_params)
            flash[:notice] = "#{@student.first_name} #{@student.last_name} was successfully updated."
-           flash[:page] = @student.id
        else
            flash[:warning] = "#{@student.first_name} #{@student.last_name} could not be updated because #{@student.errors.full_messages}"
        end
@@ -103,5 +111,12 @@ class StudentsController < ApplicationController
     
     def student_params
         params.require(:student).permit(:first_name, :last_name, :description, :image, :course_id)
+    end
+    
+    def confirm_logged_in
+        unless session[:user_id]
+          flash[:notice] = "Please log in."
+          redirect_to(access_login_path)
+        end
     end
 end
