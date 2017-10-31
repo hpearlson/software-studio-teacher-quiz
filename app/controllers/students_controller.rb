@@ -1,12 +1,20 @@
 class StudentsController < ApplicationController
+<<<<<<<<< saved version
 <<<<<<< HEAD
+=========
+
+>>>>>>>>> local version
     before_action :confirm_logged_in
+<<<<<<<<< saved version
 =======
     
     
     before_action :confirm_logged_in
     
 >>>>>>> master
+=========
+
+>>>>>>>>> local version
     def index
         @students = Student.all
         session.delete(:current_course)
