@@ -10,15 +10,16 @@
   <ul>
 
 
-  <% if session[:user_id] == nil %>
-    <li><a href="/home">QuizMe!</a></li>
-    <li style="float:right"><a class="active" href="/teachers/new">Sign Up</a></li>
-    <li style="float:right"><a class="active" href="/access/login">Login</a></li>
-  <% else %>
+  <% if session[:username] != nil %>
     <li><a href="/students">Students</a></li>
     <li><a href="/courses">Courses</a></li>
     <li><a href="/teachers">Teacher</a></li>
     <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+    <li style="float:right"><a class="active" href="#"><%= session[:username] %></a></li>
+  <% else %>
+    <li><a href="/home">QuizMe!</a></li>
+    <li style="float:right"><a class="active" href="/teachers/new">Sign Up</a></li>
+    <li style="float:right"><a class="active" href="/access/login">Login</a></li>
   <% end %>
 
 </ul>

@@ -25,6 +25,7 @@ class AccessController < ApplicationController
   
     if authorized_user
       session[:user_id] = authorized_user.id
+      session[:username] = authorized_user.username
       flash[:notice] = "You are now logged in, " + authorized_user.username
       redirect_to("/courses")
     else
@@ -36,6 +37,7 @@ class AccessController < ApplicationController
   
   def logout
     session[:user_id] = nil
+    session[:username] = nil
     flash[:notice] = 'Logged out'
     redirect_to('/home')
   end
