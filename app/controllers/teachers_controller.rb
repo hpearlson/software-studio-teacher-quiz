@@ -1,5 +1,7 @@
 class TeachersController < ApplicationController
     
+    before_action :confirm_logged_in, :except => [:new]
+    
     def index
         @teachers = Teacher.all
     end
@@ -43,6 +45,14 @@ class TeachersController < ApplicationController
     
     def new
        @teacher = Teacher.new
+    end
+    
+    def onSignIn(googleUser)
+        profile = googleUser.getBasicProfile();
+        puts('ID: ' + profile.getId()); # Do not send to your backend! Use an ID token instead.
+        puts('Name: ' + profile.getName());
+        puts('Image URL: ' + profile.getImageUrl());
+        puts('Email: ' + profile.getEmail()); # This is null if the 'email' scope is not present.
     end
     
     private

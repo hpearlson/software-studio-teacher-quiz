@@ -1,5 +1,12 @@
 class StudentsController < ApplicationController
+<<<<<<< HEAD
     before_action :confirm_logged_in
+=======
+    
+    
+    before_action :confirm_logged_in
+    
+>>>>>>> master
     def index
         @students = Student.all
         session.delete(:current_course)

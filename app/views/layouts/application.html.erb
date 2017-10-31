@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  
+  <title><%= @page_title || "Quizme!" %></title>
   
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <ul>
-  <li><a href="/home">Home</a></li>
-  <li><a href="/students">Students</a></li>
-  <li><a href="/courses">Courses</a></li>
-  <li><a href="/teachers">Teacher</a></li>
 
-  <li style="float:right"><a class="active" href="/access/login">Login</a></li>
-  <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+
+  <% if session[:username] != nil %>
+    <li><a href="/students">Students</a></li>
+    <li><a href="/courses">Courses</a></li>
+    <li><a href="/teachers">Teacher</a></li>
+    <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+    <li style="float:right"><a class="active" href="#"><%= session[:username] %></a></li>
+  <% else %>
+    <li><a href="/home">QuizMe!</a></li>
+    <li style="float:right"><a class="active" href="/teachers/new">Sign Up</a></li>
+    <li style="float:right"><a class="active" href="/access/login">Login</a></li>
+  <% end %>
 
 </ul>
 </head>

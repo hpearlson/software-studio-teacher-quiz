@@ -1,6 +1,12 @@
 class CoursesController < ApplicationController
+<<<<<<< HEAD
     before_action :confirm_logged_in
     
+=======
+    
+     before_action :confirm_logged_in
+     
+>>>>>>> master
     def index
         @courses = Course.all
     end

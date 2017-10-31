@@ -22,3 +22,15 @@ Run these lines of code:
 sudo -u postgres pg_ctlcluster 9.3 main stop
 
 sudo -u postgres pg_ctlcluster 9.3 main restart
+
+
+
+Google client id:
+21476288076-p1804q3mrjbuc85gvmm94ekk1jn0ius1.apps.googleusercontent.com
+
+Google client (secret):
+CqF_PMGT96i26J-MEZRRPkAk
+
+
+tutorial for google:
+https://richonrails.com/articles/google-authentication-in-ruby-on-rails/
