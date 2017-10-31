@@ -11,7 +11,7 @@
 
 
   <% if session[:username] != nil %>
-    <li><a href="/students">Students</a></li>
+    <li><%= link_to "Students", students_path %></li>
     <li><a href="/courses">Courses</a></li>
     <li><a href="/teachers">Teacher</a></li>
     <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
