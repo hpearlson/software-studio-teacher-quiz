@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
     
-    before_action :confirm_logged_in, :except => [:new]
+    before_action :confirm_logged_in, :except => [:new, :create]
     
     def index
         @teachers = Teacher.all
