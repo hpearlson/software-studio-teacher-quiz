@@ -9,4 +9,5 @@ class Student < ActiveRecord::Base
     validates_presence_of :last_name
     validates_presence_of :course
     validates_presence_of :image
+    validates_associated :course
 end
