@@ -20,7 +20,7 @@
 
 
 .innerHeadContainer {
-    background-color: lightgray;
+    background-color: #FFFBFF;
     display: block;
     overflow: inherit;
 }
@@ -73,8 +73,12 @@
     border-radius: 12px
 }
 
+.caution {
+    background-color: red;
+}
+
 body {
-    background-color: #FFFBFF;
+    background-color: gainsboro;
     font-family: "Neris",'Trebuchet MS';
 }
 
@@ -112,7 +116,7 @@ li a {
 }
 
 .page_header {
-    background-color: gray; /* not working right now */
+    background-color: black; /* not working right now */
 }
 
 .navigation-header {

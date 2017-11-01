@@ -1,10 +1,21 @@
-<h1>Edit Teacher</h1>
+<% @page_title = "QuizMe! - Edit Profile" %>
 
-<%= form_for @teacher, :html => { :multipart => true } do |f| %>
+
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+        <h1>Edit your profile</h1>
+    </div>
+</div>
+
+
+
+<div class="content-wrapper">
+    <%= form_for @teacher, :html => { :multipart => true } do |f| %>
 
     <%= render(:partial => 'teacher_form', :locals => {:f => f}) %>
     
     <%= f.submit 'Update Teacher' %>
     
-<% end %>
+    <% end %>
     
+</div>

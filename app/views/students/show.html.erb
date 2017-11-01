@@ -1,4 +1,15 @@
+<% @page_title = "QuizMe! - Student Profile" %>
+    
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+         <p><%= link_to 'Edit Student', edit_student_path, :class => "button" %>  <%= link_to 'Remove Student', student_path(@student), :method => :delete, :class => "button caution" %></p>
+    </div>
+</div>
 
+
+
+<div class="content-wrapper">
+    
     <%= image_tag @student.image.url(:medium) %>
 
     <p>First Name: <%= @student.first_name %></p>
@@ -7,6 +18,7 @@
     <p>Enrolled in: <%= @student.course.course_name %></p>
 
     <p><%= div_for(@prev, class: @prev_class) do %><%= link_to 'Previous', student_path(@prev) %> <% end %>  <%= div_for(@next, class: @next_class) do %><%= link_to 'Next', student_path(@next) %> <% end %></p>
-    <p><%= link_to 'Edit Student', edit_student_path %>  <%= link_to 'Remove Student', student_path(@student), :method => :delete %></p>
     <p><%= link_to 'Back to Students', students_path %>   <%= link_to 'Back to Course', course_path(@student.course) %></p>
     
+</div>
+
