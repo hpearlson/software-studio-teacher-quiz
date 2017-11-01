@@ -14,6 +14,12 @@
  *= require_self
  */
  
+ .innerHeadContainer {
+    background-color: lightgray;
+    display: block;
+    overflow: inherit;
+}
+ 
  @font-face {
      font-family: "Neris";
      src: url('/assets/Neris-Black.otf');
@@ -36,10 +42,10 @@
     letter-spacing: 1px;
 }
 
+
 #temporary_background {
     animation-name: fadeOut;
     animation-duration: 3s;
-    /*animation-delay: 2s;*/
     background-color: #e36397;
     animation-fill-mode: forwards; 
 }
@@ -62,10 +68,6 @@
 body {
     background-color: #FFFBFF;
     font-family: "Neris",'Trebuchet MS';
-}
-
-h1 {
-    text-align: center;
 }
 
 .hidden {

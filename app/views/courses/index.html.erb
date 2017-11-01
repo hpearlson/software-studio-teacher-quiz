@@ -1,5 +1,13 @@
-<h1>Here is a List of your Courses:</h1>
-<div>
+<% @page_title = "Quizme! - Courses" %>
+
+<div class="pagehead">
+    <div class="innerHeadContainer">
+        <h1>Courses</h1>
+    </div>
+</div>
+
+
+<div class="content">
     <div id="listCourses">
     <% @courses.each do |course| %>
     <div>
