@@ -41,6 +41,11 @@ gem 'paperclip-cloudinary'
 #google login
 gem "omniauth-google-oauth2", "~> 0.2.1"
 
+gem 'sass'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'autoprefixer-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -52,6 +57,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  
+
   
 group :test do
   

@@ -12,9 +12,14 @@
  *
  *= require_tree .
  *= require_self
+ *= require style.scss
  */
- 
- .innerHeadContainer {
+
+
+@import 'style';
+
+
+.innerHeadContainer {
     background-color: lightgray;
     display: block;
     overflow: inherit;
@@ -35,9 +40,10 @@
 #notice { /* something need to change here in order to make the notices align correctly */
     /* also while the notice is visible, you can't click on buttons (due to width 100%). need to find a workaround for that */
     position: absolute;
+    text-align:center;
     width: 100%;
     display: block; 
-    padding-top: 34px;
+    padding-top: 14px;
     font-size: 1.3em;
     color: #FFFFFF;
     text-decoration: none;
