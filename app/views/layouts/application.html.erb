@@ -7,29 +7,42 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <ul>
-
+  
+  <% if notice %>
+    <ul id="temporary_background">
+  <% else %>
+    <ul>
+  <% end %>
 
   <% if session[:username] != nil %>
     <li><%= link_to "Students", students_path %></li>
     <li><a href="/courses">Courses</a></li>
     <li><a href="/teachers">Teacher</a></li>
+    <% if notice %>
+      <li style="float:center" id="notice"><%= notice %></li> 
+    <% end %>
     <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
     <li style="float:right"><a class="active" href="#"><%= session[:username] %></a></li>
   <% else %>
     <li><a href="/home">QuizMe!</a></li>
+    <% if notice %>
+      <li style="float:center" id="notice"><%= notice %></li> 
+    <% end %>
     <li style="float:right"><a class="active" href="/teachers/new">Sign Up</a></li>
     <li style="float:right"><a class="active" href="/access/login">Login</a></li>
   <% end %>
+  
 
 </ul>
 </head>
 <body>
   
+  <% if false %>
   <% if notice %>
     <div id="notice_wrapper">
       <p class="notice"><%= notice %></p>
     </div>
+  <% end %>
   <% end %>
     
 
@@ -48,16 +61,19 @@
     <% end %>
 
     
-    
-<%= yield %>
+  <div class="content-wrapper">
+    <%= yield %>
+  </div>
 
 
 <script>
   $(document).ready(function() {
     setTimeout(function(){
-      $('#notice_wrapper').fadeOut("slow"), function() {
+
+      $('#notice').fadeOut("slow"), function() {
         $(this).remove();
       };
+      
     }, 2000);
   });
 </script>

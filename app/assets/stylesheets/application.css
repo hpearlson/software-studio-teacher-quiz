@@ -19,16 +19,24 @@
      src: url('/assets/Neris-Black.otf');
  }
  
+ @keyframes fadeOut {
+    from {background-color: #e36397;}
+    to {background-color: #69306d;}
+}
+
  #notice_wrapper {
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 999;
+    /*z-index: 999;*/
     padding-top: 15px;
     /*background: rgba(227, 99, 121, .85);*/
  }
  
-.notice {
+#notice {
+    position: absolute;
+    width: 100%;
+    /*
     padding: 1rem 0;
     text-align: center;
     margin: 0;
@@ -36,13 +44,24 @@
     font-weight: 700;
     color: #FFFFFF;
     letter-spacing: 1px;
+    */
+}
+
+#temporary_background {
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    background-color: #e36397;
+    animation-fill-mode: forwards; 
 }
 
 .button {
     background-color: #4CAF50;
     border: none;
-    color: black;
+    color: white;
+    font-family: "Neris",'Trebuchet MS';
     padding: 10px;
+    letter-spacing: 1px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -76,12 +95,18 @@ li {
 }
 
 li a {
-    display: block; /* used to be block */
+    display: block; 
     color: #FFFFFF;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
+
+.content-wrapper {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
 
 /* Change the link color to #56285A on hover */
 li a:hover {
