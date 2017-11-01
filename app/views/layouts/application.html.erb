@@ -18,7 +18,6 @@
   
     <li><%= link_to "Students", students_path %></li>
     <li><a href="/courses">Courses</a></li>
-    <!-- <li><a href="/teachers">Teacher</a></li> -->
     <% if notice %>
       <li style="float:center" id="notice"><%= notice %></li> 
     <% end %>
@@ -71,8 +70,8 @@
 
 <script>
   $(document).ready(function() {
-    setTimeout(function(){
 
+    setTimeout(function(){
       $('#notice').fadeOut("slow"), function() {
         $(this).remove();
       };

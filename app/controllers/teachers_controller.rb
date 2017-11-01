@@ -20,9 +20,13 @@ class TeachersController < ApplicationController
     
     def destroy
         @teacher = Teacher.find params[:id]
+        if session[:username] == @teacher.username
+            session[:username] = nil
+            session[:user_id] = nil
+        end
         @teacher.destroy
         flash[:notice] = "#{@teacher.username} was successfully deleted"
-        redirect_to teachers_path
+        redirect_to "/"
     end
     
     def edit

@@ -20,8 +20,10 @@
  }
  
  @keyframes fadeOut {
-    from {background-color: #e36397;}
-    to {background-color: #69306d;}
+    0% {background-color: #69306d;}
+    5% {background-color: #e36397;}
+    66% {background-color: #e36397;}
+    100% {background-color: #69306d;}
 }
 
 #notice { /* something need to change here in order to make the notices align correctly */
@@ -36,8 +38,8 @@
 
 #temporary_background {
     animation-name: fadeOut;
-    animation-duration: 1s;
-    animation-delay: 2s;
+    animation-duration: 3s;
+    /*animation-delay: 2s;*/
     background-color: #e36397;
     animation-fill-mode: forwards; 
 }
