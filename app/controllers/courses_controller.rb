@@ -9,6 +9,10 @@ class CoursesController < ApplicationController
     
 	def show
   	    @course = Course.find(params[:id]) 
+  	    if Teacher.find(session[:user_id]) != @course.teacher
+  	        flash[:notice] = "Access Denied"
+  	        redirect_to courses_path
+  	    end
   	    @students = Student.where(:course => @course)
   	    session[:current_course] = @course.id
 	end

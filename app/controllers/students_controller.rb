@@ -11,6 +11,10 @@ class StudentsController < ApplicationController
 
     def show
         @student = Student.find(params[:id])
+        if Teacher.find(session[:user_id]) != @student.course.teacher
+  	        flash[:notice] = "Access Denied"
+  	        redirect_to courses_path
+  	    end
         @course = session[:current_course]
         if @course == nil
             @students = Student.all
