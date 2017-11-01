@@ -3,7 +3,9 @@ class StudentsController < ApplicationController
     before_action :confirm_logged_in
 
     def index
-        @students = Student.all
+        @teacher = Teacher.find(session[:user_id])
+        @courses = Course.where(:teacher => @teacher)
+        @students = Student.all.where(course: @courses)
         session.delete(:current_course)
     end
 
@@ -49,7 +51,8 @@ class StudentsController < ApplicationController
 
     def new
        @student = Student.new
-       @courses = Course.all
+       @teacher = Teacher.find(session[:user_id])
+       @courses = Course.where(:teacher => @teacher)
     end
     
     def destroy
@@ -78,9 +81,11 @@ class StudentsController < ApplicationController
     def quiz
         @course = session[:current_course]
         if @course == nil
-            @students = Student.all
+            @teacher = Teacher.find(session[:user_id])
+            @all_courses = Course.where(:teacher => @teacher)
+            @students = Student.where(course: @all_courses)
         else
-            @students = Student.all.where(:course => session[:current_course])
+            @students = Student.where(:course => session[:current_course])
         end
         if flash[:page] == nil
             @students = Kaminari.paginate_array(@students).page(params[:page]).per(1)

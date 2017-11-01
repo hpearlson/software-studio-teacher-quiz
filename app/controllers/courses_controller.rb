@@ -3,31 +3,36 @@ class CoursesController < ApplicationController
     before_action :confirm_logged_in
     
     def index
-        @courses = Course.all
+        @teacher = Teacher.find(session[:user_id])
+        @courses = Course.where(:teacher => @teacher)
     end
     
-	def show 
+	def show
   	    @course = Course.find(params[:id]) 
-  	    @students = Student.all.where(:course => @course)
+  	    @students = Student.where(:course => @course)
   	    session[:current_course] = @course.id
 	end
     
     def new
-       @couse = Course.new 
+        @teacher = Teacher.where(:username => session[:username]).take
+        @couse = Course.new 
     end
     
     def create
         @course = Course.new(course_params)
+        @teacher = Teacher.find(params[:teacher_id])
+        @course.teacher = @teacher
         if @course.save
             flash[:notice] = "#{@course.course_name} was successfully created."
         else
-            flash[:warning] = "Course could not be created because #{@course.errors.full_messages}"
+            flash[:notice] = "Course could not be created because #{@course.errors.full_messages}"
         end
         redirect_to courses_path
     end
     
     def edit
        @course = Course.find params[:id] 
+       @teacher = @course.teacher
     end
     
     def update
@@ -42,7 +47,11 @@ class CoursesController < ApplicationController
     
     def destroy
         @course = Course.find params[:id]
+        @students = Student.where(:course => @course)
         @course.destroy
+        @students.each do |student|
+            student.destroy
+        end
         flash[:notice] = "#{@course.course_name} was successfully deleted"
         redirect_to courses_path
     end
@@ -50,7 +59,7 @@ class CoursesController < ApplicationController
     private
     
     def course_params
-        params.require(:course).permit(:course_name, :student_list)
+        params.require(:course).permit(:course_name)
     end
     
     def confirm_logged_in

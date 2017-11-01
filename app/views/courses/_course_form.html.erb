@@ -3,8 +3,7 @@
         <td><%= f.label :course_name, 'Course Name' %> </th>
         <td><%= f.text_field :course_name %> </td>
         
-        <td><%= f.label :teacher_id, 'Teacher' %></th>
-        <td><%= f.collection_select :teacher_id, Teacher.all, :id, :last_name %> </td>
+        <td><%= hidden_field_tag :teacher_id, session[:user_id] %>
     </tr>
     
     
