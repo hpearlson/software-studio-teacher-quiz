@@ -27,8 +27,8 @@
  
  @keyframes fadeOut {
     0% {background-color: #69306d;}
-    5% {background-color: #e36397;}
-    66% {background-color: #e36397;}
+    5% {background-color: #ccbbea;} /* ccbbea */
+    66% {background-color: #ccbbea;} /* e36397 */
     100% {background-color: #69306d;}
 }
 
@@ -37,6 +37,8 @@
     position: absolute;
     width: 100%;
     display: block; 
+    padding-top: 34px;
+    font-size: 1.3em;
     color: #FFFFFF;
     text-decoration: none;
     letter-spacing: 1px;
@@ -75,8 +77,8 @@ body {
 }
 ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin: -100;
+    padding: -100;
     overflow: hidden;
     background-color: #69306D; 
 }
