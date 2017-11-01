@@ -34,3 +34,7 @@ CqF_PMGT96i26J-MEZRRPkAk
 
 tutorial for google:
 https://richonrails.com/articles/google-authentication-in-ruby-on-rails/
+
+
+Tutorial for CSS:
+Mackenzie Child https://www.youtube.com/watch?v=87fBAWc25Sk

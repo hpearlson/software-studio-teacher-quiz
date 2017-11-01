@@ -24,17 +24,31 @@
     top: 0;
     width: 100%;
     z-index: 999;
-    background: rgba(105, 48, 109, .85);
+    padding-top: 15px;
+    /*background: rgba(227, 99, 121, .85);*/
  }
  
 .notice {
-    padding: 2rem 0;
+    padding: 1rem 0;
     text-align: center;
     margin: 0;
     font-size: 1.25rem;
     font-weight: 700;
     color: #FFFFFF;
     letter-spacing: 1px;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px
 }
 
 body {
@@ -62,7 +76,7 @@ li {
 }
 
 li a {
-    display: block;
+    display: block; /* used to be block */
     color: #FFFFFF;
     text-align: center;
     padding: 14px 16px;
