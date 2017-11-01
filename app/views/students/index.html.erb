@@ -1,6 +1,15 @@
-<h1>All students</h1>
+<% @page_title = "QuizMe! - Your Students" %>
 
-<div>
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+        <h1>All students
+            <%= link_to 'Take Quiz', quiz_students_path %>
+            <%= link_to 'Add Student', new_student_path, :class => "button"  %></h1>
+    </div>
+</div>
+
+
+<div class="content-wrapper">
     <table>
         <thead>
             <tr>
@@ -22,5 +31,3 @@
         </tbody>
     </table>
 </div>
-    <p><%= link_to 'Take Quiz', quiz_students_path %></p>
-    <p><%= link_to 'Add Student', new_student_path, :class => "button"  %></p>

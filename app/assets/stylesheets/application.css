@@ -77,8 +77,8 @@ body {
 }
 ul {
     list-style-type: none;
-    margin: -100;
-    padding: -100;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     background-color: #69306D; 
 }
@@ -98,6 +98,22 @@ li a {
 .content-wrapper {
     max-width: 950px;
     margin: 0 auto;
+}
+
+.width-restraint {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.page_header {
+    background-color: gray; /* not working right now */
+}
+
+.navigation-header {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #69306D; 
 }
 
 
