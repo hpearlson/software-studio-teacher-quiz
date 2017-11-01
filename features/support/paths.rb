@@ -17,6 +17,8 @@ module NavigationHelpers
       '/'
     when "the Courses home page" then '/courses'
     when "the Create New Course page" then new_course_path
+      
+    when "the Login page" then '/access/login'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
