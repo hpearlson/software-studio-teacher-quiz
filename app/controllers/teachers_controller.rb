@@ -2,9 +2,6 @@ class TeachersController < ApplicationController
     
     before_action :confirm_logged_in, :except => [:new, :create]
     
-    def index
-        @teachers = Teacher.all
-    end
     
     def show
         @teacher = Teacher.find(params[:id])
@@ -56,6 +53,10 @@ class TeachersController < ApplicationController
     end
     
     private
+
+    def index
+        @teachers = Teacher.all
+    end
     
     def teacher_params
         params.require(:teacher).permit(:username, :first_name, :last_name, :description, :image, :password_digest, :password, :email_address)

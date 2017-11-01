@@ -15,21 +15,24 @@
   <% end %>
 
   <% if session[:username] != nil %>
+  
     <li><%= link_to "Students", students_path %></li>
     <li><a href="/courses">Courses</a></li>
-    <li><a href="/teachers">Teacher</a></li>
+    <!-- <li><a href="/teachers">Teacher</a></li> -->
     <% if notice %>
       <li style="float:center" id="notice"><%= notice %></li> 
     <% end %>
     <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
-    <li style="float:right"><a class="active" href="#"><%= session[:username] %></a></li>
+    <li style="float:right"> <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %> </li>
   <% else %>
+  
     <li><a href="/home">QuizMe!</a></li>
     <% if notice %>
       <li style="float:center" id="notice"><%= notice %></li> 
     <% end %>
     <li style="float:right"><a class="active" href="/teachers/new">Sign Up</a></li>
     <li style="float:right"><a class="active" href="/access/login">Login</a></li>
+    
   <% end %>
   
 
