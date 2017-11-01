@@ -14,12 +14,17 @@
  *= require_self
  */
  
+ @font-face {
+     font-family: "Neris";
+     src: url('/assets/Neris-Black.otf');
+ }
+ 
  #notice_wrapper {
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 999;
-    background: rgba(204, 187, 234, .7);
+    background: rgba(105, 48, 109, .85);
  }
  
 .notice {
@@ -34,7 +39,7 @@
 
 body {
     background-color: #FFFBFF;
-    font-family: 'Trebuchet MS';
+    font-family: "Neris",'Trebuchet MS';
 }
 
 h1 {
@@ -49,7 +54,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #69306D;
+    background-color: #69306D; 
 }
 
 li {
@@ -64,7 +69,7 @@ li a {
     text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
+/* Change the link color to #56285A on hover */
 li a:hover {
     background-color: #56285A;
 }
