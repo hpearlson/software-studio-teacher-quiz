@@ -8,6 +8,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   
+
   <% if notice %>
     <ul id="temporary_background">
   <% else %>
@@ -37,6 +38,39 @@
   
 
 </ul>
+
+<% if false %> <!-- trying to create a new header that isn't an unordered list -->
+  <% if notice %>
+    <div class="navigation-header temporary_background">
+  <% else %>
+    <div class="navigation-header">
+  <% end %>
+    
+  <% if session[:username] != nil %>
+    
+    <a href="/courses" style="font-size:1.5em;">QuizMe!</a>
+    <a href="/courses">Courses</a></li>
+    <%= link_to "Students", students_path %>
+    <% if notice %>
+      <p style="float:center" id="notice"><%= notice %></p> 
+    <% end %>
+    <a class="active" href="/access/logout">Logout</a>
+    <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %>
+  <% else %>
+  
+    <a href="/home" style="font-size:1.5em;">QuizMe!</a>
+    <% if notice %>
+      <p style="float:center" id="notice"><%= notice %></p> 
+    <% end %>
+    <a class="active button" href="/teachers/new">Sign Up</a>
+    <a class="active" href="/access/login">Login</a>
+    
+  <% end %>
+  </div>
+  <% end %>
+
+
+
 </head>
 <body>
   
@@ -64,9 +98,7 @@
     <% end %>
 
     
-  <div class="content-wrapper">
     <%= yield %>
-  </div>
 
 
 <script>
