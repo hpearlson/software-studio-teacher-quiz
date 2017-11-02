@@ -5,8 +5,8 @@ class Student < ActiveRecord::Base
         :storage => :cloudinary, :path => ':id/:style/:filename'
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
     
-    ALPHA = /\A[a-z]\Z/i
-    ALPHANUMERIC = /\A[a-z0-9]\Z/i
+    ALPHA = /\A[A-Za-z]+\Z/
+    ALPHANUMERIC = /\A[a-zA-Z0-9]+\Z/i
     
     validates :first_name, :presence => true,
                             :length => { :within => 3..25 },
