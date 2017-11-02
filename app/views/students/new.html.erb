@@ -1,4 +1,4 @@
-<% @page_title = "QuizMe! - Add Student" %>
+<% @page_title = "QuizMe - Add Student" %>
 
 
 <div class="pagehead innerHeadContainer">
@@ -10,14 +10,11 @@
 
 
 <div class="content-wrapper">
+    <p style="color:red;">*all fields are mandatory</p>
     <%= form_for @student, :html => { :multipart => true } do |f| %>
 
         <%= render(:partial => 'student_form', :locals => {:f => f}) %>
         
-    <tr>
-        <td><%= f.label :course_id, 'Course' %> </th>
-        <td><%= f.collection_select :course_id, @courses, :id, :course_name %> </td>
-    </tr>
     
         <%= f.submit 'Create Student', :class => "button" %>
     

@@ -10,7 +10,10 @@
         <td><%= f.text_field :last_name %> </td>
     </tr>
     
-
+    <tr>
+        <td><%= f.label :course_id, 'Course' %> </th>
+        <td><%= f.collection_select :course_id, @courses, :id, :course_name %> </td>
+    </tr>
     
     <tr>
         <td><%= f.label :description, 'Description' %> </th>
