@@ -6,17 +6,27 @@ class Teacher < ActiveRecord::Base
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
     
     EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
+    ALPHA = /\A[a-z]\Z/i
+    ALPHANUMERIC = /\A[a-z0-9]\Z/i
     
     validates :username, :presence => true,
                         :uniqueness => true,
-                        :length => { :within => 3..25 }
+                        :length => { :within => 3..25 },
+                        :format => ALPHANUMERIC
+                        
                         
     validates :password, :presence => true,
                         :confirmation => true,
-                        :length => { :within => 3..25 }
+                        :length => { :within => 3..25 },
+                        :format => ALPHANUMERIC
     
-    validates_presence_of :first_name
-    validates_presence_of :last_name
+    validates :first_name, :presence => true,
+                            :length => { :within => 3..25 },
+                            :format => ALPHA                        
+    
+    validates :last_name, :presence => true,
+                            :length => { :within => 3..25 },
+                            :format => ALPHA
     
     validates :email_address, :presence => true,
                             :format => EMAIL_REGEX
