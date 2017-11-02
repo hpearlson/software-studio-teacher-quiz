@@ -17,4 +17,24 @@
     <p>Last Name: <%= @teacher.last_name %></p>
     <p>Username: <%= @teacher.username %></p>
     
+    
+    <h2>This button will eventually go in the header.</h2>
+      <% if session[:username] != nil %>
+  
+        <div class="dropdown btn-group">
+          <button type="button" data-toggle="dropdown" id="profileoptions" aria-haspopup="true" 
+            aria-expanded="true" class="btn btn-info dropdown-toggle"><%= session[:username] %>
+            <span class="caret"></span></button>
+            
+          <ul class="dropdown-menu" aria-labelledby="profileoptions">
+            <li> <%= link_to "Your profile", Teacher.find_by(:username => session[:username]) %> </li>
+            <!-- <li role="separator" class="divider"></li> -->
+            <li> <a href='#'>Settings</a>  </li>
+          </ul>
+        </div>
+  
+      <% end %>
+
+    
 </div>
+

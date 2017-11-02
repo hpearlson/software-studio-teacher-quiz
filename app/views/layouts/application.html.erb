@@ -10,21 +10,26 @@
 
 
   <% if notice %>
-    <ul id="temporary_background" class="navbar navbar-static-top">
+    <nav id="temporary_background" class="navbar navbar-static-top">
+    <div class="container">
   <% else %>
-    <ul class="navbar navbar-static-top">
+    <nav class="navbar navbar-static-top">
+    <div class="container">
   <% end %>
+    <ul>
 
   <% if session[:username] != nil %>
     
-    <li><a href="/courses" style="font-size:1.5em;">QuizMe!</a></li>
+    <li class="active"><a href="/courses" style="font-size:1.5em;">QuizMe!</a></li>
     <li><a href="/courses">Courses</a></li>
     <li><%= link_to "Students", students_path %></li>
     <% if notice %>
       <li style="float:center" id="notice"><%= notice %></li> 
     <% end %>
+    
     <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
     <li style="float:right"> <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %> </li>
+  
   <% else %>
   
     <li><a href="/home" style="font-size:1.5em;">QuizMe!</a></li>
@@ -37,7 +42,10 @@
   <% end %>
   
 
+
 </ul>
+</div>
+</nav>
 
 <% if false %> <!-- trying to create a new header that isn't an unordered list -->
   <% if notice %>
