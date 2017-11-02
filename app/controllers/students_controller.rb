@@ -48,7 +48,7 @@ class StudentsController < ApplicationController
         if @student.save
             flash[:notice] = "#{@student.first_name} was successfully created."
         else
-            flash[:warning] = "Student could not be created because #{@student.errors.full_messages}"
+            flash[:notice] = "Student could not be created because #{@student.errors.full_messages}"
         end
         redirect_to students_path
     end
