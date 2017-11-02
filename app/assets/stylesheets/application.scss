@@ -20,6 +20,18 @@
 
 .navbar {
     background-color: #69306D;
+    padding: 0px;
+    margin-bottom: -20px;
+    height: 60px;
+    
+    container {
+        height: 60px;
+    }
+}
+
+
+nav {
+    background-color: #69306D;
 }
 
 
@@ -32,6 +44,15 @@
  @font-face {
      font-family: "Neris";
      src: url('/assets/Neris-Black.otf');
+ }
+ 
+ .pagehead {
+     background-color: #FFFBFF;
+     height: 75px;
+     
+     h1,h2,p {
+         padding-top: 15px;
+     }
  }
  
  @keyframes fadeOut {
@@ -84,11 +105,17 @@
 body {
     background-color: gainsboro;
     font-family: "Neris",'Trebuchet MS';
+    padding-top: 0px;
+    
 }
 
 .hidden {
     display: none;
 }
+
+
+
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -102,26 +129,22 @@ li {
 }
 
 li a {
-    display: block; 
     color: #FFFFFF;
     text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
 }
 
 .content-wrapper {
     max-width: 950px;
-    margin: 0 auto;
+    margin: 0px auto;
 }
 
 .width-restraint {
     max-width: 950px;
     margin: 0 auto;
+    padding: 0px;
 }
 
-.page_header {
-    background-color: black; /* not working right now */
-}
 
 .navigation-header {
     margin: 0;
