@@ -1,12 +1,26 @@
-<h1>Edit Teacher</h1>
+<% @page_title = "QuizMe! - Edit Profile" %>
 
 
+<<<<<<< HEAD
 <p>Please Note: You must reenter your password. Otherwise, any changes you make will be lost.</p>
 <%= form_for @teacher, :html => { :multipart => true } do |f| %>
+=======
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+        <h1>Edit your profile</h1>
+    </div>
+</div>
+
+
+
+<div class="content-wrapper">
+    <%= form_for @teacher, :html => { :multipart => true } do |f| %>
+>>>>>>> a47dc1f835941b7f69c46119a0a4c94a40ddb3c0
 
     <%= render(:partial => 'teacher_form', :locals => {:f => f}) %>
     
     <%= f.submit 'Update Teacher' %>
     
-<% end %>
+    <% end %>
     
+</div>

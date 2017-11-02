@@ -12,10 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require style.scss
  */
- 
- .innerHeadContainer {
-    background-color: lightgray;
+
+
+@import 'style';
+
+
+.innerHeadContainer {
+    background-color: #FFFBFF;
     display: block;
     overflow: inherit;
 }
@@ -35,9 +40,10 @@
 #notice { /* something need to change here in order to make the notices align correctly */
     /* also while the notice is visible, you can't click on buttons (due to width 100%). need to find a workaround for that */
     position: absolute;
+    text-align:center;
     width: 100%;
     display: block; 
-    padding-top: 34px;
+    padding-top: 14px;
     font-size: 1.3em;
     color: #FFFFFF;
     text-decoration: none;
@@ -67,8 +73,12 @@
     border-radius: 12px
 }
 
+.caution {
+    background-color: red;
+}
+
 body {
-    background-color: #FFFBFF;
+    background-color: gainsboro;
     font-family: "Neris",'Trebuchet MS';
 }
 
@@ -106,7 +116,7 @@ li a {
 }
 
 .page_header {
-    background-color: gray; /* not working right now */
+    background-color: black; /* not working right now */
 }
 
 .navigation-header {

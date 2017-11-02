@@ -1,10 +1,20 @@
-<h1>Add Student</h1>
+<% @page_title = "QuizMe! - Add Student" %>
 
-<%= form_for @student, :html => { :multipart => true } do |f| %>
 
-    <%= render(:partial => 'student_form', :locals => {:f => f}) %>
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+        <h1>Add Student</h1>
+    </div>
+</div>
+
+
+
+<div class="content-wrapper">
+    <%= form_for @student, :html => { :multipart => true } do |f| %>
+
+        <%= render(:partial => 'student_form', :locals => {:f => f}) %>
+        <%= f.submit 'Create Student', :class => "button" %>
     
-    <%= f.submit 'Create Student' %>
+    <% end %>
     
-<% end %>
-    
+</div>
