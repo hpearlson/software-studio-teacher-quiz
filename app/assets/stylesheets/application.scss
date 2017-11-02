@@ -24,10 +24,22 @@
     display: block;
     overflow: inherit;
 }
+
+.pagehead {
+    height: 75px;
+    
+    h1, h2, h3, p {
+        padding-top: 15px;
+    }
+}
  
  @font-face {
      font-family: "Neris";
      src: url('/assets/Neris-Black.otf');
+ }
+ 
+ .navbar {
+     margin-bottom: -20px;
  }
  
  @keyframes fadeOut {

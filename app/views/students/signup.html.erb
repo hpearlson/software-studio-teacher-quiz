@@ -1,26 +1,25 @@
-<% @page_title = "QuizMe! - Add Student" %>
-
-
 <div class="pagehead innerHeadContainer">
     <div class="width-restraint">
-        <h1>Add a student manually - they will not be able to log in. </h1>
+        <h1> Create an account as a student </h1>
     </div>
 </div>
 
-
-
 <div class="content-wrapper">
+    
     <%= form_for @student, :html => { :multipart => true } do |f| %>
-
+    
+    
         <%= render(:partial => 'student_form', :locals => {:f => f}) %>
         
-    <tr>
-        <td><%= f.label :course_id, 'Course' %> </th>
-        <td><%= f.collection_select :course_id, @courses, :id, :course_name %> </td>
-    </tr>
-    
         <%= f.submit 'Create Student', :class => "button" %>
-    
+        
+        <br />
+        
+        <p>Or, sign in using your Google account:</p>
+        
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        
+        
     <% end %>
-    
+
 </div>

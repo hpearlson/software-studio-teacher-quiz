@@ -17,6 +17,8 @@
 
   <% if session[:username] != nil %>
     
+    
+      
     <li><a href="/courses" style="font-size:1.5em;">QuizMe!</a></li>
     <li><a href="/courses">Courses</a></li>
     <li><%= link_to "Students", students_path %></li>
@@ -31,73 +33,20 @@
     <% if notice %>
       <li style="float:center" id="notice"><%= notice %></li> 
     <% end %>
-    <li style="float:right"><a class="active button" href="/teachers/new">Sign Up</a></li>
+    <li style="float:right"><a class="active button" href="/access/accountType">Sign Up</a></li>
     <li style="float:right"><a class="active" href="/access/login">Login</a></li>
     
   <% end %>
   
 
-</ul>
-
-<% if false %> <!-- trying to create a new header that isn't an unordered list -->
-  <% if notice %>
-    <div class="navigation-header temporary_background">
-  <% else %>
-    <div class="navigation-header">
-  <% end %>
-    
-  <% if session[:username] != nil %>
-    
-    <a href="/courses" style="font-size:1.5em;">QuizMe!</a>
-    <a href="/courses">Courses</a></li>
-    <%= link_to "Students", students_path %>
-    <% if notice %>
-      <p style="float:center" id="notice"><%= notice %></p> 
-    <% end %>
-    <a class="active" href="/access/logout">Logout</a>
-    <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %>
-  <% else %>
   
-    <a href="/home" style="font-size:1.5em;">QuizMe!</a>
-    <% if notice %>
-      <p style="float:center" id="notice"><%= notice %></p> 
-    <% end %>
-    <a class="active button" href="/teachers/new">Sign Up</a>
-    <a class="active" href="/access/login">Login</a>
-    
-  <% end %>
-  </div>
-  <% end %>
 
+</ul>
 
 
 </head>
 <body>
-  
-  <% if false %>
-  <% if notice %>
-    <div id="notice_wrapper">
-      <p class="notice"><%= notice %></p>
-    </div>
-  <% end %>
-  <% end %>
-    
 
-<!-- commenting this out for now -->
-  <% if false %>
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <% if key != "page" %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
-        <% end %>
-      <% end %>
-  <% end %>
-
-    <% if false %>
-      <%= debug(params) if Rails.env.development? %>
-    <% end %>
-
-    
     <%= yield %>
 
 

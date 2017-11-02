@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get 'access/login'
   post 'access/attempt_login'
   get 'access/logout'
-
+  get 'access/accountType'
+  
+  get 'students/signup'
+  
   resources :courses
   
   resources :students do

@@ -3,21 +3,30 @@
 
 <% @page_title = "Register for an account" %>
 
-<h1>Create an account as a teacher</h1>
+    
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+        <h1> Create an account as a teacher </h1>
+    </div>
+</div>
 
-<%= form_for @teacher, :html => { :multipart => true } do |f| %>
+<div class="content-wrapper">
+    
+    
+    <%= form_for @teacher, :html => { :multipart => true } do |f| %>
+    
+    
+        <%= render(:partial => 'teacher_form', :locals => {:f => f}) %>
+        
+        <%= f.submit 'Create Teacher', :class => "button" %>
+        
+        <br />
+        
+        <p>Or, sign in using your Google account:</p>
+        
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        
+        
+    <% end %>
 
-
-    <%= render(:partial => 'teacher_form', :locals => {:f => f}) %>
-    
-    <%= f.submit 'Create Teacher', :class => "button" %>
-    
-    <br />
-    
-    <p>Or, sign in using your Google account:</p>
-    
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    
-    
-<% end %>
-    
+</div>

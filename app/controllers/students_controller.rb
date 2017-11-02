@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController  
     
-    before_action :confirm_logged_in
+    before_action :confirm_logged_in, :except => [:signup]
 
     def index
         @teacher = Teacher.find(session[:user_id])
@@ -15,6 +15,7 @@ class StudentsController < ApplicationController
   	        flash[:notice] = "Access Denied"
   	        redirect_to courses_path
   	    end
+  	    
         @course = session[:current_course]
         if @course == nil
             @students = Student.where(course: Course.where(:teacher => Teacher.find(session[:user_id])))
@@ -57,6 +58,10 @@ class StudentsController < ApplicationController
        @student = Student.new
        @teacher = Teacher.find(session[:user_id])
        @courses = Course.where(:teacher => @teacher)
+    end
+    
+    def signup
+       @student = Student.new
     end
     
     def destroy

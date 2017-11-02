@@ -1,6 +1,6 @@
 class AccessController < ApplicationController
 
-  before_action :confirm_logged_in, :except => [:home, :login, :attempt_login, :logout]
+  before_action :confirm_logged_in, :except => [:home, :login, :attempt_login, :logout, :accountType]
   
   def menu
     # display text & links
@@ -12,6 +12,10 @@ class AccessController < ApplicationController
 
   def login
     # login form
+  end
+  
+  def accountType
+    # display text & links
   end
   
   def attempt_login
