@@ -9,10 +9,10 @@ class CoursesController < ApplicationController
     
 	def show
   	    @course = Course.find(params[:id]) 
-  	    if Teacher.find(session[:user_id]) != @course.teacher
-  	        flash[:notice] = "Access Denied"
-  	        redirect_to courses_path
-  	    end
+  	    #if Teacher.find(session[:user_id]) != @course.teacher
+  	     #   flash[:notice] = "Access Denied"
+  	      #  redirect_to courses_path
+  	    #end
   	    @students = Student.where(:course => @course)
   	    session[:current_course] = @course.id
 	end
@@ -23,9 +23,10 @@ class CoursesController < ApplicationController
     end
     
     def create
+        params[:course][:teacher_id] = session[:user_id] 
         @course = Course.new(course_params)
-        @teacher = Teacher.find(params[:teacher_id])
-        @course.teacher = @teacher
+        #@teacher = Teacher.find(session[:user_id])
+        #@course.teacher = @teacher
         if @course.save
             flash[:notice] = "#{@course.course_name} was successfully created."
         else
@@ -63,7 +64,7 @@ class CoursesController < ApplicationController
     private
     
     def course_params
-        params.require(:course).permit(:course_name)
+        params.require(:course).permit(:course_name, :teacher_id)
     end
     
     def confirm_logged_in

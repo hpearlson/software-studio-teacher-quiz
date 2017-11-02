@@ -8,10 +8,13 @@ class Teacher < ActiveRecord::Base
     EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
     
     validates :username, :presence => true,
-                        :uniqueness => true
+                        :uniqueness => true,
+                        :length => { :within => 3..25 }
                         
     validates :password, :presence => true,
-                        :confirmation => true
+                        :confirmation => true,
+                        :length => { :within => 3..25 }
+    
     validates_presence_of :first_name
     validates_presence_of :last_name
     

@@ -37,6 +37,7 @@ class TeachersController < ApplicationController
     def update
         @teacher = Teacher.find params[:id]
        if @teacher.update_attributes(teacher_params)
+           session[:username] = @teacher.username
            flash[:notice] = "#{@teacher.first_name} #{@teacher.last_name} was successfully updated."
        else
            flash[:warning] = "Teacher could not be updated because #{@teacher.errors.full_messages}"

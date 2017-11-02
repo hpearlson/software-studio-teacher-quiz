@@ -17,9 +17,9 @@ class StudentsController < ApplicationController
   	    end
         @course = session[:current_course]
         if @course == nil
-            @students = Student.all
+            @students = Student.where(course: Course.where(:teacher => Teacher.find(session[:user_id])))
         else
-            @students = Student.all.where(:course => @student.course)
+            @students = Student.where(:course => @student.course)
         end
         @next = nil
         @prev = nil
@@ -110,7 +110,7 @@ class StudentsController < ApplicationController
         @page = params[:page]
         flash[:page] = @page
         @student = Student.find(params[:student_id])
-        if @student.first_name == @name
+        if @student.full_name == @name
             flash[:correct] = "Correct!"
         else
             flash[:correct] = "Incorrect!"

@@ -3,4 +3,5 @@ class Course < ActiveRecord::Base
     belongs_to :teacher
     
     validates_presence_of :course_name
+    validates_presence_of :teacher_id
 end

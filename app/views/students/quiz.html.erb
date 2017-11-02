@@ -6,7 +6,7 @@
     <%= form_tag quiz_students_path, :method => :post %>
         <%= hidden_field_tag :page, @students.current_page %>
         <%= hidden_field_tag :student_id, student.id %>
-        <%= text_field :student, :first_name %>
+        <%= text_field :student, :full_name %>
         <%= submit_tag "Check Answer" %>
     
     <%= div_for(student, class: @class) do %>
