@@ -16,8 +16,8 @@ class Student < ActiveRecord::Base
                             :length => { :within => 3..25 },
                             :format => ALPHA
     
-    validates_presence_of :course
-    validates_associated :course
+    #validates_presence_of :course
+    #validates_associated :course
     validates_presence_of :image
     
     def full_name

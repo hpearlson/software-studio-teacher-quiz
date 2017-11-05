@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get 'access/logout'
   get 'access/accountType'
   
-  get 'students/signup'
+
+  post 'students/signup', :to => 'students#register'
+  get 'students/signup', :to => 'students#signup'
   
   resources :courses
   

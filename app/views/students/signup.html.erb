@@ -7,13 +7,13 @@
 <div class="content-wrapper">
     <p style="color:red;">*all fields are mandatory</p>
     
-    <%= form_for @student, :html => { :multipart => true } do |f| %>
+    <%= form_for @student, :url => {:action => "register"}, :html => { :method => :post } do |f| %>
     
     
     <table summary="Student form fields">
         
         <tr>
-            <td><%= f.label :first_name, 'First Name' %> </th>
+            <td><%= f.label :first_name, 'First Name' %> </td>
             <td><%= f.text_field :first_name %> </td>
         </tr>
         
@@ -23,8 +23,8 @@
         </tr>
         
         <tr>
-            <td><%= f.label :course_id, 'Course ID (your teacher gives you this)' %> </th>
-            <td> Implement this </td>
+            <td><%= f.label :generatedID, 'Course ID (your teacher gives you this)' %> </th>
+            <td> <%= f.text_area :generatedID %> </td>
         </tr>
         
         <tr>
@@ -38,15 +38,12 @@
         </tr>
     
         
-    </table>
+        </table>
         
-        <%= f.submit 'Create Student', :class => "button" %>
+
+    <%= f.submit 'Register Student', :class => "button" %>
         
-        <br />
-        
-        <p>Or, sign in using your Google account:</p>
-        <p>implement this</p>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <br />
         
         
     <% end %>

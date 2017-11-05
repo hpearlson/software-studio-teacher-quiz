@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController  
     
-    before_action :confirm_logged_in, :except => [:signup]
+    #before_action :confirm_logged_in, :except => [:signup, :new]
 
     def index
         @teacher = Teacher.find(session[:user_id])
@@ -55,14 +55,29 @@ class StudentsController < ApplicationController
     end
 
     def new
-       @student = Student.new
+       @student = Student.new(student_params)
        @teacher = Teacher.find(session[:user_id])
        @courses = Course.where(:teacher => @teacher)
     end
     
     def signup
        @student = Student.new
+       @courses = Course.all
     end
+    
+    def register
+        @student = Student.new(student_params)
+        @local_course = Course.where(:generatedID => @student.generatedID).take
+        @student.course_id = @local_course.id
+        if @student.save
+            flash[:notice] = "#{@student.first_name} was  created."
+            flash[:notice] = "#{@local_course} was  found."
+        else
+            flash[:notice] = "Student could not be created because #{@student.errors.full_messages}"
+        end
+        redirect_to '/'
+    end
+
     
     def destroy
         @student = Student.find params[:id]
@@ -126,7 +141,7 @@ class StudentsController < ApplicationController
     private
     
     def student_params
-        params.require(:student).permit(:first_name, :last_name, :description, :image, :course_id)
+        params.require(:student).permit(:first_name, :last_name, :description, :image, :course_id, :generatedID)
     end
     
     def confirm_logged_in
