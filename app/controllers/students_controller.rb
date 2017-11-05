@@ -141,7 +141,7 @@ class StudentsController < ApplicationController
     private
     
     def student_params
-        params.require(:student).permit(:first_name, :last_name, :description, :image, :course_id, :generatedID)
+        params.require(:student).permit(:first_name, :last_name, :description, :image, :course_id, :generatedID, :email)
     end
     
     def confirm_logged_in

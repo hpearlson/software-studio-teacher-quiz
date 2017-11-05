@@ -20,7 +20,7 @@ class AccessController < ApplicationController
   
   def attempt_login
     if params[:username].present? && params[:password].present?
-      found_user = Teacher.where(:username => params[:username]).first
+      found_user = Teacher.where(:username => params[:username]).first || Student.where(:username => params[:username]).first
       if found_user
         authorized_user = found_user.authenticate(params[:password])
         
