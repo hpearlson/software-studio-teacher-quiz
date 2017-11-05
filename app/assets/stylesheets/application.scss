@@ -33,11 +33,6 @@
     }
 }
  
- @font-face {
-     font-family: "Neris";
-     src: url('/assets/Neris-Black.otf');
- }
- 
  .navbar {
      margin-bottom: -20px;
  }
@@ -78,7 +73,7 @@
     background-color: #4CAF50;
     border: none;
     color: white;
-    font-family: "Neris",'Trebuchet MS';
+    font-family: 'Nunito', sans-serif;
     padding: 10px;
     letter-spacing: 1px;
     text-align: center;
@@ -95,7 +90,7 @@
 
 body {
     background-color: gainsboro;
-    font-family: "Neris",'Trebuchet MS';
+    font-family: 'Nunito', sans-serif;
 }
 
 .hidden {
