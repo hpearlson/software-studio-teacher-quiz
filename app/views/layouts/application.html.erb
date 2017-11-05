@@ -18,7 +18,7 @@
 
     <% if session[:username] != nil %>
         
-      <li><a href="/courses" style="font-size:1.5em;">QuizMe</a></li>
+      <li><a href="/courses" class="title">QuizMe</a></li>
       <li><a href="/courses">Courses</a></li>
       <li><%= link_to "Students", students_path %></li>
       <% if !flash.empty? %>
@@ -32,7 +32,7 @@
       
     <% else %>
     
-      <li><a href="/home" style="font-size:1.5em;">QuizMe</a></li>
+      <li><a href="/home" class="title">QuizMe</a></li>
       <% if !flash.empty? %>
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
