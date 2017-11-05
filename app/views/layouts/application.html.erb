@@ -9,46 +9,47 @@
   <%= csrf_meta_tags %>
 
 
-  <% if notice %>
+  <% if !flash.empty? %>
     <ul id="temporary_background" class="navbar navbar-static-top">
   <% else %>
     <ul class="navbar navbar-static-top">
   <% end %>
 
-  <% if session[:username] != nil %>
-    
-    
+    <% if session[:username] != nil %>
+        
+      <li><a href="/courses" style="font-size:1.5em;">QuizMe</a></li>
+      <li><a href="/courses">Courses</a></li>
+      <li><%= link_to "Students", students_path %></li>
+      <% if !flash.empty? %>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+        <% end %>
+      <% end %>
+
+      <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+      <li style="float:right"> <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %> </li>
       
-    <li><a href="/courses" style="font-size:1.5em;">QuizMe</a></li>
-    <li><a href="/courses">Courses</a></li>
-    <li><%= link_to "Students", students_path %></li>
-    <% if notice %>
-      <li style="float:center" id="notice"><%= notice %></li> 
-    <% end %>
-    <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
-    <li style="float:right"> <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %> </li>
-  <% else %>
-  
-    <li><a href="/home" style="font-size:1.5em;">QuizMe</a></li>
-    <% if notice %>
-      <li style="float:center" id="notice"><%= notice %></li> 
-    <% end %>
-    <li style="float:right"><a class="active button" href="/access/accountType">Sign Up</a></li>
-    <li style="float:right"><a class="active" href="/access/login">Login</a></li>
+    <% else %>
     
-  <% end %>
-  
+      <li><a href="/home" style="font-size:1.5em;">QuizMe</a></li>
+      <% if !flash.empty? %>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+        <% end %>
+      <% end %>
 
-  
-
-</ul>
+      <li style="float:right"><a class="active button" href="/access/accountType">Sign Up</a></li>
+      <li style="float:right"><a class="active" href="/access/login">Login</a></li>
+      
+    <% end %>
+    
+  </ul>
 
 
 </head>
 <body>
 
     <%= yield %>
-
 
 <script>
   $(document).ready(function() {

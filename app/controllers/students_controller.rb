@@ -128,7 +128,7 @@ class StudentsController < ApplicationController
         @check2 = @check[1].split('"')
         @name = @check2[1]
         @page = params[:page]
-        flash[:page] = @page
+        #flash[:page] = @page
         @student = Student.find(params[:student_id])
         if @student.full_name == @name
             flash[:correct] = "Correct!"
