@@ -55,7 +55,7 @@ class StudentsController < ApplicationController
     end
 
     def new
-       @student = Student.new(student_params)
+       @student = Student.new
        @teacher = Teacher.find(session[:user_id])
        @courses = Course.where(:teacher => @teacher)
     end
@@ -141,7 +141,7 @@ class StudentsController < ApplicationController
     private
     
     def student_params
-        params.require(:student).permit(:first_name, :last_name, :description, :image, :course_id, :generatedID, :email)
+        params.require(:student).permit(:first_name, :last_name, :description, :image, :course_id, :generatedID, :email_address)
     end
     
     def confirm_logged_in
