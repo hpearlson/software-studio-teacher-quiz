@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+
+<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Nunito:600" rel="stylesheet">
 <head>
   
   <title><%= @page_title || "Quizme" %></title>
@@ -7,7 +9,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Nunito:600" rel="stylesheet">
 
 
   <% if !flash.empty? %>
