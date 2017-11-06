@@ -2,9 +2,10 @@
 
 <div class="pagehead innerHeadContainer">
     <div class="width-restraint">
-        <p> <%= session[:username] %>
-            <%= link_to 'Edit Your Profile', edit_teacher_path, :class => "button" %>
-            <%= link_to 'Delete Your Profile', teacher_path(@teacher), :method => :delete, :class => "button", :style => "background:red" %></p> 
+        <h1> <%= session[:username] %>
+            <span class="button-box"><%= link_to 'Delete Your Profile', teacher_path(@teacher), :method => :delete, :class => "button", :style => "background:red" %></span>
+            <span class="button-box"><%= link_to 'Edit Your Profile', edit_teacher_path, :class => "button", :style => "background:tan" %></span>
+            </h1> 
     </div>
 </div>
 

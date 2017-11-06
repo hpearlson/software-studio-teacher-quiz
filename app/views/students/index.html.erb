@@ -3,8 +3,10 @@
 <div class="pagehead innerHeadContainer">
     <div class="width-restraint">
         <h1>All students
-            <%= link_to 'Quiz Me', quiz_students_path, :class => "button" %>
-            <%= link_to 'Add Student', new_student_path, :class => "button"  %></h1>
+            <span class="button-box"><%= link_to 'Add Student', new_student_path, :class => "button"  %></span>
+            <span class="button-box"><%= link_to 'Quiz Me', quiz_students_path, :class => "button" %></span>
+            </h1>
+            
     </div>
 </div>
 
