@@ -21,7 +21,7 @@
 
 .innerHeadContainer {
     background-color: #FFFBFF;
-    display: block;
+    //display: block;
     overflow: inherit;
 }
 
@@ -86,7 +86,40 @@
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    border-radius: 12px
+    border-radius: 12px;
+}
+
+.title-bar-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    //display: inline-block;
+    font-size: 16px;
+    //margin: 4px 2px;
+    border-radius: 12px;
+    margin: 0px 10px 0px 10px;
+}
+
+.quiz-button {
+    float: left;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    //display: inline-block;
+    font-size: 16px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 12px;
+    width: 150px;
+    height: 100px;
 }
 
 .caution {
@@ -126,6 +159,10 @@ li a {
     margin: 0 auto;
 }
 
+.course-overview {
+    height: 120px;
+}
+
 .width-restraint {
     max-width: 950px;
     margin: 0 auto;
@@ -142,6 +179,33 @@ li a {
     background-color: #69306D; 
 }
 
+.floating-box {
+    float: left;
+    width: 214px;
+    height: 250px;
+    margin: 10px;
+    border: 3px solid #FFFBFF;  
+    background-color: #FFFBFF;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.course-id-box {
+    float: right;
+    width: 250px;
+    height: 100px;
+    margin: 10px;
+    border: 3px solid #FFFBFF;  
+    background-color: #FFFBFF;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.button-box {
+    float: right;
+}
+
+
 
 /* Change the link color to #56285A on hover */
 li a:hover {
@@ -152,6 +216,7 @@ li a:hover {
 
 // just messing around with video here
 
+/*
 .homepage-hero-module {
     border-right: none;
     border-left: none;
@@ -208,3 +273,4 @@ li a:hover {
   justify-content: center;
   z-index: 999;
 }
+*/
