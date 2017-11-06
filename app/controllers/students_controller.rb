@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController  
     
-    #before_action :confirm_logged_in, :except => [:signup, :new]
+    before_action :confirm_logged_in, :except => [:signup, :new]
 
     def index
         @teacher = Teacher.find(session[:user_id])
@@ -99,43 +99,6 @@ class StudentsController < ApplicationController
            flash[:warning] = "#{@student.first_name} #{@student.last_name} could not be updated because #{@student.errors.full_messages}"
        end
        redirect_to student_path(@student)
-    end
-    
-    
-    def quiz
-        @course = session[:current_course]
-        if @course == nil
-            @teacher = Teacher.find(session[:user_id])
-            @all_courses = Course.where(:teacher => @teacher)
-            @students = Student.where(course: @all_courses)
-        else
-            @students = Student.where(:course => session[:current_course])
-        end
-        if flash[:page] == nil
-            @students = Kaminari.paginate_array(@students).page(params[:page]).per(1)
-        else
-            @students = Kaminari.paginate_array(@students).page(flash[:page]).per(1)
-        end
-        if flash[:correct] == "Correct!"
-           @class = "visible"
-        else
-            @class = "hidden"
-        end
-    end
-    
-    def check_answer
-        @check = params[:student].to_s.split('=>')
-        @check2 = @check[1].split('"')
-        @name = @check2[1]
-        @page = params[:page]
-        #flash[:page] = @page
-        @student = Student.find(params[:student_id])
-        if @student.full_name == @name
-            flash[:correct] = "Correct!"
-        else
-            flash[:correct] = "Incorrect!"
-        end
-        redirect_to quiz_students_path
     end
     
     private

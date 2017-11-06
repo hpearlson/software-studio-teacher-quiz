@@ -17,13 +17,14 @@ Rails.application.routes.draw do
   
   resources :courses
   
-  resources :students do
-    collection do
-      get :quiz
-      post :quiz, :to => "students#check_answer"
-    end
-  end
+  resources :students
   
   resources :teachers
+  
+  resources :quizzes do
+    collection do
+      post :check_answer
+    end
+  end
 
 end

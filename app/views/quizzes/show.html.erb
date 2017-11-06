@@ -1,0 +1,22 @@
+
+
+<div class="width-restraint">
+    <%= image_tag @student.image.url(:medium) %>
+    <h2>What is my name?</h2>
+    <%= form_tag check_answer_quizzes_path %>
+        <%= hidden_field_tag :student_id, @student.id %>
+        <%= text_field :student, :full_name, :autocomplete => :off, :value => nil %>
+        <%= submit_tag "Check Answer" %>
+        
+    <%= div_for(@student, class: @class) do %>
+        <p>Name: <%= @student.first_name %> <%= @student.last_name %></p>
+        <p>Description: <%= @student.description %></p>
+        <p>Enrolled in: <%= @student.course.course_name %></p>
+    
+        <p><%= link_to "Next", quiz_path(@teacher.id) %></p>
+        <br />
+    
+    <% end %>
+    
+    <p><%= link_to 'Back to Students', students_path %></p>
+</div>
