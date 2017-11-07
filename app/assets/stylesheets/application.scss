@@ -205,7 +205,22 @@ li a {
     float: right;
 }
 
+.profile-image-container {
+    float: block;
+    margin: 0 auto;
+    justify-content:center;
+    align-items:center;
+    img {
+        border-radius: 125px;
+        width: 250px;
+        height: 250px;
+        margin: 20px 350px 20px 350px;
+    }
+}
 
+img {
+    display: block;
+}
 
 /* Change the link color to #56285A on hover */
 li a:hover {

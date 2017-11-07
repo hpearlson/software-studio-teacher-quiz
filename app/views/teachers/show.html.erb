@@ -1,5 +1,9 @@
 <% @page_title = "QuizMe - Your Profile" %>
 
+<style>
+body {background-color: #ccbbea;}
+</style>
+
 <div class="pagehead innerHeadContainer">
     <div class="width-restraint">
         <h1> <%= session[:username] %>
@@ -13,9 +17,12 @@
 
 <div class="content-wrapper">
     
-    <p><%= image_tag @teacher.image.url(:medium) %></p>
-    <p>First Name: <%= @teacher.first_name %></p>
-    <p>Last Name: <%= @teacher.last_name %></p>
-    <p>Username: <%= @teacher.username %></p>
+    <div class="profile-image-container">
+        <%= image_tag @teacher.image.url(:medium) %>
+        <h2>First Name: <%= @teacher.first_name %></h2>
+        <h2>Last Name: <%= @teacher.last_name %></h2>
+        <h2>Username: <%= @teacher.username %></h2>
+    
+    </div>
     
 </div>
