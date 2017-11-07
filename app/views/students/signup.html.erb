@@ -7,7 +7,7 @@
 <div class="content-wrapper">
     <p style="color:red;">*all fields are mandatory</p>
     
-    <%= form_for @student, :url => {:action => "register"}, :html => { :method => :post } do |f| %>
+    <%= form_for @student, :url => {:action => "register"}, :html => { :multipart => true } do |f| %>
     
     
     <table summary="Student form fields">
