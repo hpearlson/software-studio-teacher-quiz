@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController  
     
-    before_action :confirm_logged_in, :except => [:signup, :new]
+    before_action :confirm_logged_in, :except => [:signup, :new, :register]
 
     def index
         @teacher = Teacher.find(session[:user_id])
@@ -74,7 +74,7 @@ class StudentsController < ApplicationController
         else
             flash[:notice] = "Student could not be created because #{@student.errors.full_messages}"
         end
-        redirect_to '/'
+        redirect_to '/home'
     end
 
     
