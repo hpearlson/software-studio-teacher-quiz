@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20171105193857) do
     t.integer  "true_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "GeneratedID"
     t.string   "generatedID"
   end
 
@@ -30,6 +29,7 @@ ActiveRecord::Schema.define(version: 20171105193857) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "description"
+    t.boolean  "is_correct"
     t.integer  "course_id"
     t.integer  "true_id"
     t.datetime "created_at"
