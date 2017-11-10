@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :quizzes do
     collection do
       post :check_answer
+      get :review
     end
   end
 

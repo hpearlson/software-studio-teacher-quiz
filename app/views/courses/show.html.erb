@@ -4,40 +4,68 @@
 
 <div class="pagehead innerHeadContainer">
     <div class="width-restraint">
-        <h1>Here are the students in <%= @course.course_name %></h1>
+        <h1><%= @course.course_name %>
         
+        <span class="button-box"><%= link_to 'Delete Course', course_path(@course), :method => :delete, :class => "title-bar-button", :style => "background:red" %></span>
+        
+        <span class="button-box"><%= link_to 'Edit Course', edit_course_path, :class => "title-bar-button", :style => "background: tan" %></span>
+        
+        
+    
+        </h1>
+        
+        
+
     </div>
 </div>
 
 
+<div class="content-wrapper course-overview">
+    
+    <div class="course-id-box">
+        <h3><%= @course.generatedID %></h3>
+        <p>Course ID</p>
+    </div>
+    <div>
+        <span class="button-box"><%= link_to 'Take Quiz', quiz_students_path, :class => "quiz-button" %></span>
+    </div>
+
+
+</div>
+
 
 <div class="content-wrapper">
-    <h2>To let other join the course, give them this course ID: <%= @course.generatedID %></h2>
+    
+    <% @students.each do |student| %>
+                <div class="floating-box">
+                    <h3><%= image_tag student.image.url(:thumb) %></h3>
+                    <h3><%= student.first_name %></h3>
+                    <h3><%= student.last_name %></h3>
+                    <p><%= link_to "More information", student_path(student) %></p>
+                </div>
+    <% end %>
+    
+    <% if false %>
     <div>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @students.each do |student| %>
+        <table>
+            <thead>
                 <tr>
-                    <td><%= image_tag student.image.url(:thumb) %></td>
-                    <td><%= student.first_name %></td>
-                    <td><%= student.last_name %></td>
-                    <td><%= link_to "More information", student_path(student) %>
+                    <th></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                 </tr>
-            <% end %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% @students.each do |student| %>
+                    <tr>
+                        <td><%= image_tag student.image.url(:thumb) %></td>
+                        <td><%= student.first_name %></td>
+                        <td><%= student.last_name %></td>
+                        <td><%= link_to "More information", student_path(student) %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
     </div>
-    <p><%= link_to 'Take Quiz', new_quiz_path, :class => "button" %></p>
-    <br />
-    <p><%= link_to 'Edit Course', edit_course_path %></p>
-    <p><%= link_to 'Delete Course', course_path(@course), :method => :delete, :class => "button", :style => "background:red" %>
-    <p><%= link_to 'Back to Courses Home', courses_path %></p>
 
 </div>

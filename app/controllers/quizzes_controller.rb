@@ -6,9 +6,9 @@ class QuizzesController < ApplicationController
         @class = "hidden"
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
-            @student = Student.where(course: @all_courses).where('is_correct = ?', false).take
+            @student = Student.where(course: @all_courses).where('is_correct = ?', false).order("RANDOM()").first
         else
-            @student = Student.where(:course => session[:current_course]).where('is_correct = ?', false).take
+            @student = Student.where(:course => session[:current_course]).where('is_correct = ?', false).order("RANDOM()").take
         end
         if @student == nil
             flash[:notice] = "Quiz complete!"
@@ -48,8 +48,13 @@ class QuizzesController < ApplicationController
             
         else
             flash[:correct] = "Incorrect!"
-            redirect_to quiz_path(@teacher.id)
+            redirect_to review_quizzes
         end
         
+    end
+    
+    def review
+        @teacher = Teacher.find(session[user_id])
+        redirect_to quiz_path(@teacher.id)
     end
 end

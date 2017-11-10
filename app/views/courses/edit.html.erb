@@ -1,12 +1,24 @@
 <% @page_title = "Quizme - Course edit" %>
 
-<h1>Edit Course</h1>
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+        <h1>Edit Course</h1>    
+    </div>
 
-<%= form_for @course do |f| %>
+</div>
 
-    <%= render(:partial => "course_form", :locals => {:f => f}) %>
+
+
+<div class="content-wrapper">
+    
+    <%= form_for @course do |f| %>
+
+        <%= render(:partial => "course_form", :locals => {:f => f}) %>
     
     
-    <%= submit_tag value='Save Changes', :class => "button" %>
+        <%= submit_tag value='Save Changes', :class => "button" %>
     
-<% end %>
+    <% end %>
+
+
+</div>

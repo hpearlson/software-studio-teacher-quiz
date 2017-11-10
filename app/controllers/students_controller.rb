@@ -71,7 +71,6 @@ class StudentsController < ApplicationController
         @student.course_id = @local_course.id
         if @student.save
             flash[:notice] = "#{@student.first_name} was  created."
-            flash[:notice] = "#{@local_course} was  found."
         else
             flash[:notice] = "Student could not be created because #{@student.errors.full_messages}"
         end
@@ -104,7 +103,7 @@ class StudentsController < ApplicationController
     private
     
     def student_params
-        params.require(:student).permit(:first_name, :last_name, :description, :image, :course_id, :generatedID, :email_address)
+        params.require(:student).permit(:username, :password, :password_digest, :first_name, :last_name, :description, :image, :course_id, :generatedID, :email_address)
     end
     
     def confirm_logged_in
