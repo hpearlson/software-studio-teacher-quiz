@@ -48,7 +48,7 @@ class QuizzesController < ApplicationController
             
         else
             flash[:correct] = "Incorrect!"
-            redirect_to review_quizzes
+            redirect_to quiz_path(@teacher.id)
         end
         
     end
