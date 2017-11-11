@@ -3,12 +3,11 @@ class QuizzesController < ApplicationController
     def show
         @course = session[:current_course]
         @teacher = Teacher.find(params[:id])
-        @class = "hidden"
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
-            @student = Student.where(course: @all_courses).where('is_correct = ?', false).order("RANDOM()").first
+            @student = Student.where(course: @all_courses).where('is_correct = ?', false).shuffle.first
         else
-            @student = Student.where(:course => session[:current_course]).where('is_correct = ?', false).order("RANDOM()").take
+            @student = Student.where(:course => session[:current_course]).where('is_correct = ?', false).shuffle.first
         end
         if @student == nil
             flash[:notice] = "Quiz complete!"
@@ -36,7 +35,7 @@ class QuizzesController < ApplicationController
     end
     
     def check_answer
-        @teacher = Teacher.find(session[:user_id])
+        @teacher = Teacher.find(params[:id])
         @check = params[:student].to_s.split('=>')
         @check2 = @check[1].split('"')
         @name = @check2[1]
@@ -48,13 +47,13 @@ class QuizzesController < ApplicationController
             
         else
             flash[:correct] = "Incorrect!"
-            redirect_to quiz_path(@teacher.id)
+            redirect_to review_quiz_path(@student.id)
         end
         
     end
     
     def review
-        @teacher = Teacher.find(session[user_id])
-        redirect_to quiz_path(@teacher.id)
+        @student = Student.find(params[:id])
+        @teacher = Teacher.find(session[:user_id])
     end
 end

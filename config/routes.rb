@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   resources :teachers
   
   resources :quizzes do
-    collection do
-      post :check_answer
+    member do
       get :review
+      post :check_answer
     end
   end
 

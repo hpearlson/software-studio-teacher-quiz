@@ -11,7 +11,7 @@
 
 <div class="content-wrapper">
     <p style="color:red;">*all fields are mandatory</p>
-    <%= form_for @student, :html => { :multipart => true } do |f| %>
+    <%= form_for @student, :url => {:action => :create}, :html => { :multipart => true } do |f| %>
 
         <%= render(:partial => 'student_form', :locals => {:f => f}) %>
         
