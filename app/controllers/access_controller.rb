@@ -51,6 +51,7 @@ class AccessController < ApplicationController
   def logout
     session[:user_id] = nil
     session[:username] = nil
+    session[:user_type] = nil
     flash[:notice] = 'Logged out'
     redirect_to('/home')
   end
