@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
     
 	def show
   	    @course = Course.find(params[:id]) 
+  	    @page_title = "Quizme - " + @course.course_name
   	    if session[:user_type] == "teacher"
   	        if Teacher.find(session[:user_id]) != @course.teacher
   	            flash[:notice] = "Access Denied"
