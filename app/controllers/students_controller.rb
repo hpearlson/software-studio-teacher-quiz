@@ -25,6 +25,13 @@ class StudentsController < ApplicationController
   	            flash[:notice] = "Access Denied"
   	            redirect_to course_path(Student.find(session[:user_id]).course_id)
   	        end
+  	        if Student.find(session[:user_id]) != @student
+  	            @edit_button = "hidden"
+  	            @delete_button = "hidden"
+  	        else
+  	            @edit_button = "button"
+  	            @delete_button = "button caution"
+  	        end
   	    end
     end
 
@@ -70,8 +77,14 @@ class StudentsController < ApplicationController
     end
     
     def edit
-       @student = Student.find params[:id] 
+       @student = Student.find params[:id]
        @courses = Course.all
+       if session[:user_type] == "student"
+           if Student.find(session[:user_id]) != @student
+               flash[:notice] = "Access Denied"
+               redirect_to student_path(@student)
+           end
+       end
     end
     
     def update
