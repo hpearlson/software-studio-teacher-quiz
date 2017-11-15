@@ -1,13 +1,25 @@
-<% @students.each do |student| %>
-    <%= image_tag student.image.url(:medium) %>
-
-    <p>First Name: <%= student.first_name %></p>
-    <p>Last Name: <%= student.last_name %></p>
-    <p>Description: <%= student.description %></p>
-    <p>Enrolled in: <%= student.course.course_name %></p>
-
-    <p><%= link_to_previous_page @students, "Previous" %>  <%= link_to_next_page @students, "Next" %> </p>
-    <p><%= link_to 'Remove Student', student_path(student), :method => :delete %></p>
-    <p><%= link_to 'Back to Students', students_path %>   <%= link_to 'Back to Course', course_path(student.course) %></p>
+<% @page_title = "QuizMe - Student Profile" %>
     
-<% end %>
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+         <h1> <%= @student.first_name + " " + @student.last_name %>
+             <span class="button-box"><%= link_to 'Remove Student', student_path(@student), :method => :delete, :class => "button caution" %></span>
+             <span class="button-box"><%= link_to 'Edit Student', edit_student_path, :class => "button" %> </span>
+             </h1>
+    </div>
+</div>
+
+
+
+<div class="content-wrapper">
+    
+    <%= image_tag @student.image.url(:medium) %>
+
+    <p>Description: <%= @student.description %></p>
+    <p>Enrolled in: <%= @student.course.course_name %></p>
+
+    <p><%= div_for(@prev, class: @prev_class) do %><%= link_to 'Previous', student_path(@prev) %> <% end %>  <%= div_for(@next, class: @next_class) do %><%= link_to 'Next', student_path(@next) %> <% end %></p>
+    <p><%= link_to 'Back to Students', students_path %>   <%= link_to 'Back to Course', course_path(@student.course) %></p>
+    
+</div>
+

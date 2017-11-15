@@ -1,8 +1,9 @@
-<H1>Hello world</H1>
+<H1>All teachers</H1>
 
 <% @teachers.each do |teacher| %>
     <div>
     <tr>
+        <td><%= image_tag teacher.image.url(:thumb) %></td>
         <td><%= teacher.first_name %></td>
         <td><%= teacher.last_name %></td>
         <td><%= link_to "More information", teacher_path(teacher) %>
@@ -11,5 +12,4 @@
 <% end %>
                     
 
-<p><%= link_to 'Add Teacher', new_teacher_path %></p>
-<p><%= link_to 'Back to Home', '/' %></p>
+<p><%= link_to 'Add Teacher', new_teacher_path, :class => "button" %></p>

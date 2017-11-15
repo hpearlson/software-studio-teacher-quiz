@@ -1,6 +1,28 @@
-<h1>Hello</h1>
+<% @page_title = "QuizMe - Your Students" %>
 
-<div>
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+        <h1>All students
+            <span class="button-box"><%= link_to 'Add Student', new_student_path, :class => "title-bar-button"  %></span>
+            <span class="button-box"><%= link_to 'Quiz Me', new_quiz_path, :class => "title-bar-button" %></span>
+            </h1>
+            
+    </div>
+</div>
+
+
+<div class="content-wrapper">
+    <% @students.each do |student| %>
+                <div class="floating-box">
+                    <h3><%= image_tag student.image.url(:thumb) %></h3>
+                    <h3><%= student.first_name %></h3>
+                    <h3><%= student.last_name %></h3>
+                    <p><%= link_to "More information", student_path(student) %></p>
+                </div>
+    <% end %>
+    
+    
+    <% if false %>
     <table>
         <thead>
             <tr>
@@ -21,8 +43,6 @@
             <% end %>
         </tbody>
     </table>
+    <% end %>
+    
 </div>
-    <p><%= link_to 'Take Quiz', quiz_students_path %></p>
-    <p><%= link_to 'Go to Courses', courses_path %></p>
-    <p><%= link_to 'Add Student', new_student_path %></p>
-    <p><%= link_to 'Back to Home', '/' %></p>

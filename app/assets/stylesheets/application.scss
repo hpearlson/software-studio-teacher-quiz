@@ -1,0 +1,229 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require style.scss
+ */
+
+
+@import 'style';
+
+
+.innerHeadContainer {
+    background-color: #FFFBFF;
+    //display: block;
+    overflow: inherit;
+}
+
+.pagehead {
+    height: 75px;
+    
+    h1, h2, h3, p {
+        padding-top: 15px;
+    }
+}
+ 
+ .navbar {
+     margin-bottom: -20px;
+ }
+ 
+ @keyframes fadeOut {
+    0% {background-color: #69306d;}
+    5% {background-color: #ccbbea;} /* ccbbea */
+    66% {background-color: #ccbbea;} /* e36397 */
+    100% {background-color: #69306d;}
+}
+
+#notice { /* something need to change here in order to make the notices align correctly */
+    /* also while the notice is visible, you can't click on buttons (due to width 100%). need to find a workaround for that */
+    position: absolute;
+    text-align:center;
+    width: 100%;
+    display: block; 
+    padding-top: 14px;
+    font-size: 1.3em;
+    color: #FFFFFF;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.title {
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 2em;
+}
+
+
+#temporary_background {
+    animation-name: fadeOut;
+    animation-duration: 3s;
+    background-color: #e36397;
+    animation-fill-mode: forwards; 
+}
+
+.page-footer {
+    background: #69306D;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
+}
+
+.title-bar-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    //display: inline-block;
+    font-size: 16px;
+    //margin: 4px 2px;
+    border-radius: 12px;
+    margin: 0px 10px 0px 10px;
+}
+
+.quiz-button {
+    float: left;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    //display: inline-block;
+    font-size: 16px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 12px;
+    width: 150px;
+    height: 100px;
+}
+
+.caution {
+    background-color: red;
+}
+
+body {
+    background-color: gainsboro;
+    font-family: 'Nunito', sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #69306D; 
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block; 
+    color: #FFFFFF;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.content-wrapper {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.course-overview {
+    height: 120px;
+}
+
+.width-restraint {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.page_header {
+    background-color: black; /* not working right now */
+}
+
+.navigation-header {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #69306D; 
+}
+
+.floating-box {
+    float: left;
+    width: 214px;
+    height: 250px;
+    margin: 10px;
+    border: 3px solid #FFFBFF;  
+    background-color: #FFFBFF;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.course-id-box {
+    float: right;
+    width: 250px;
+    height: 100px;
+    margin: 10px;
+    border: 3px solid #FFFBFF;  
+    background-color: #FFFBFF;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.button-box {
+    float: right;
+}
+
+.profile-image-container {
+    float: block;
+    margin: 0 auto;
+    justify-content:center;
+    align-items:center;
+    img {
+        border-radius: 125px;
+        width: 250px;
+        height: 250px;
+        margin: 20px 350px 20px 350px;
+    }
+}
+
+img {
+    display: block;
+}
+
+/* Change the link color to #56285A on hover */
+li a:hover {
+    background-color: #56285A;
+}
+

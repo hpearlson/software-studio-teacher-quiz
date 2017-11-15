@@ -1,0 +1,13 @@
+
+
+<div class="width-restraint">
+    <%= image_tag @student.image.url(:medium) %>
+    <h2>What is my name?</h2>
+    <%= form_tag check_answer_quiz_path(@teacher.id) %>
+        <%= hidden_field_tag :student_id, @student.id %>
+        <%= text_field :student, :full_name, :autocomplete => :off, :value => nil %>
+        <%= submit_tag "Check Answer" %>
+        
+    
+    <p><%= link_to 'Back to Students', students_path %></p>
+</div>

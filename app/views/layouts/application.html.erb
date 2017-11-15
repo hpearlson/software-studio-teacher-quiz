@@ -1,38 +1,69 @@
 <!DOCTYPE html>
 <html>
+
+<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Nunito:600" rel="stylesheet">
 <head>
-  <title>Workspace</title>
+  
+  <title><%= @page_title || "Quizme" %></title>
   
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <ul>
-  <li><a href="/home">Home</a></li>
-  <li><a href="/students">Students</a></li>
-  <li><a href="/courses">Courses</a></li>
-  <li><a href="/teachers">Teacher</a></li>
 
-  <li style="float:right"><a class="active" href="/access/login">Login</a></li>
-  <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
 
-</ul>
-</head>
-<body>
+  <% if !flash.empty? %>
+    <ul id="temporary_background" class="navbar navbar-static-top">
+  <% else %>
+    <ul class="navbar navbar-static-top">
+  <% end %>
 
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <% if key != "page" %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
+    <% if session[:username] != nil %>
+        
+      <li><a href="/courses" class="title">QuizMe</a></li>
+      <li><a href="/courses">Courses</a></li>
+      <li><%= link_to "Students", students_path %></li>
+      <% if !flash.empty? %>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
         <% end %>
       <% end %>
 
-    <% if false %>
-      <%= debug(params) if Rails.env.development? %>
-    <% end %>
+      <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+      <li style="float:right"> <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %> </li>
+      
+    <% else %>
+    
+      <li><a href="/home" class="title">QuizMe</a></li>
+      <% if !flash.empty? %>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+        <% end %>
+      <% end %>
 
+      <li style="float:right"><a class="active button" href="/access/accountType">Sign Up</a></li>
+      <li style="float:right"><a class="active" href="/access/login">Login</a></li>
+      
+    <% end %>
     
-    
-<%= yield %>
+  </ul>
+
+
+</head>
+<body>
+
+    <%= yield %>
+
+<script>
+  $(document).ready(function() {
+
+    setTimeout(function(){
+      $('#notice').fadeOut("slow"), function() {
+        $(this).remove();
+      };
+      
+    }, 2000);
+  });
+</script>
 
 </body>
 </html>

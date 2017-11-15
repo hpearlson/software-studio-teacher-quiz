@@ -9,16 +9,23 @@ Rails.application.routes.draw do
   get 'access/login'
   post 'access/attempt_login'
   get 'access/logout'
+  get 'access/accountType'
+  
 
+  post 'students/signup', :to => 'students#register'
+  get 'students/signup', :to => 'students#signup'
+  
   resources :courses
   
-  resources :students do
-    collection do
-      get :quiz
-      post :quiz, :to => "students#check_answer"
-    end
-  end
+  resources :students
   
   resources :teachers
+  
+  resources :quizzes do
+    member do
+      get :review
+      post :check_answer
+    end
+  end
 
 end

@@ -1,11 +1,16 @@
-<h1>Add Course</h1>
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+        <h1>Add Course</h1>
+    </div>
+</div>
 
-<%= form_for Course.new do |f| %>
-
-    <%= render(:partial => "course_form", :locals => {:f => f}) %>
+<div class="width-restraint">
+    <%= form_for Course.new do |f| %>
     
-    
-    <%= submit_tag value='Save Changes', options={} %>
-    
-<% end %>
-    
+        <%= render(:partial => "course_form", :locals => {:f => f}) %>
+        
+        
+        <%= submit_tag value='Save Changes', :class => "button" %>
+        
+    <% end %>
+</div>

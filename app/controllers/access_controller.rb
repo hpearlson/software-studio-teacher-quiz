@@ -1,6 +1,6 @@
 class AccessController < ApplicationController
 
-  before_action :confirm_logged_in, :except => [:home, :login, :attempt_login, :logout]
+  before_action :confirm_logged_in, :except => [:home, :login, :attempt_login, :logout, :accountType]
   
   def menu
     # display text & links
@@ -14,9 +14,17 @@ class AccessController < ApplicationController
     # login form
   end
   
+  def accountType
+    # display text & links
+  end
+  
   def attempt_login
     if params[:username].present? && params[:password].present?
-      found_user = Teacher.where(:username => params[:username]).first
+      if Student.where(:username => params[:username]).first == nil
+        found_user = Teacher.where(:username => params[:username]).first
+      else
+        found_user = Student.where(:username => params[:username]).first
+      end
       if found_user
         authorized_user = found_user.authenticate(params[:password])
         
@@ -25,8 +33,9 @@ class AccessController < ApplicationController
   
     if authorized_user
       session[:user_id] = authorized_user.id
+      session[:username] = authorized_user.username
       flash[:notice] = "You are now logged in, " + authorized_user.username
-      redirect_to(admin_path)
+      redirect_to("/courses")
     else
       flash.now[:notice] = "Invalid username/password combination."
       render('login')
@@ -36,17 +45,9 @@ class AccessController < ApplicationController
   
   def logout
     session[:user_id] = nil
+    session[:username] = nil
     flash[:notice] = 'Logged out'
-    redirect_to(access_login_path)
-  end
-  
-  private
-  
-  def confirm_logged_in
-    unless session[:user_id]
-      flash[:notice] = "Please log in."
-      redirect_to(access_login_path)
-    end
+    redirect_to('/home')
   end
   
   

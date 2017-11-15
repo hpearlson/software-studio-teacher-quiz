@@ -1,10 +1,23 @@
-<h1>Add Student</h1>
+<% @page_title = "QuizMe - Add Student" %>
 
-<%= form_for @student, :html => { :multipart => true } do |f| %>
 
-    <%= render(:partial => 'student_form', :locals => {:f => f}) %>
+<div class="pagehead innerHeadContainer">
+    <div class="width-restraint">
+        <h1>Add a student manually - they will not be able to log in. </h1>
+    </div>
+</div>
+
+
+
+<div class="content-wrapper">
+    <p style="color:red;">*all fields are mandatory</p>
+    <%= form_for @student, :url => {:action => :create}, :html => { :multipart => true } do |f| %>
+
+        <%= render(:partial => 'student_form', :locals => {:f => f}) %>
+        
     
-    <%= f.submit 'Create Student' %>
+        <%= f.submit 'Create Student', :class => "button" %>
     
-<% end %>
+    <% end %>
     
+</div>

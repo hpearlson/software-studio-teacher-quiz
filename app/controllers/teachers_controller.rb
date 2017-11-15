@@ -1,8 +1,7 @@
 class TeachersController < ApplicationController
     
-    def index
-        @teachers = Teacher.all
-    end
+    before_action :confirm_logged_in, :except => [:new, :create]
+    
     
     def show
         @teacher = Teacher.find(params[:id])
@@ -14,30 +13,57 @@ class TeachersController < ApplicationController
             flash[:notice] = "#{@teacher.first_name} was successfully created."
             redirect_to teachers_path
         else
-            flash[:notice] = "Something went wrong."
+            flash[:warning] = "Something went wrong."
             redirect_to '/teachers/new'
         end
     end
     
     def destroy
         @teacher = Teacher.find params[:id]
+        if session[:username] == @teacher.username
+            session[:username] = nil
+            session[:user_id] = nil
+        end
         @teacher.destroy
         flash[:notice] = "#{@teacher.username} was successfully deleted"
-        redirect_to teachers_path
+        redirect_to "/"
     end
     
     def edit
        @teacher = Teacher.find params[:id] 
-       #@courses = Course.all
+       @courses = Course.all
+    end
+    
+    def update
+        @teacher = Teacher.find params[:id]
+       if @teacher.update_attributes(teacher_params)
+           session[:username] = @teacher.username
+           flash[:notice] = "#{@teacher.first_name} #{@teacher.last_name} was successfully updated."
+       else
+           flash[:warning] = "Teacher could not be updated because #{@teacher.errors.full_messages}"
+       end
+       redirect_to teacher_path(@teacher)
     end
     
     def new
        @teacher = Teacher.new
     end
     
+    def onSignIn(googleUser)
+        profile = googleUser.getBasicProfile();
+        puts('ID: ' + profile.getId()); # Do not send to your backend! Use an ID token instead.
+        puts('Name: ' + profile.getName());
+        puts('Image URL: ' + profile.getImageUrl());
+        puts('Email: ' + profile.getEmail()); # This is null if the 'email' scope is not present.
+    end
+    
     private
+
+    def index
+        @teachers = Teacher.all
+    end
     
     def teacher_params
-        params.require(:teacher).permit(:username, :first_name, :last_name, :description, :image, :password_digest, :password)
+        params.require(:teacher).permit(:username, :first_name, :last_name, :description, :image, :password_digest, :password, :email_address)
     end
 end
