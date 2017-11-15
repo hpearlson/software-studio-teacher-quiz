@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController  
     
     before_action :confirm_logged_in, :except => [:signup, :new, :register]
-    before_action :is_teacher, :except => [:show, :edit, :update]
+    before_action :is_teacher, :except => [:show, :edit, :update, :signup, :register]
 
     def index
         @teacher = Teacher.find(session[:user_id])
