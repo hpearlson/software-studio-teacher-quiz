@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
 
     before_action :confirm_logged_in
+    before_action :is_teacher, :except => [:show]
     
     def index
         @teacher = Teacher.find(session[:user_id])
@@ -9,10 +10,27 @@ class CoursesController < ApplicationController
     
 	def show
   	    @course = Course.find(params[:id]) 
-  	    #if Teacher.find(session[:user_id]) != @course.teacher
-  	     #   flash[:notice] = "Access Denied"
-  	      #  redirect_to courses_path
-  	    #end
+  	    if session[:user_type] == "teacher"
+  	        if Teacher.find(session[:user_id]) != @course.teacher
+  	            flash[:notice] = "Access Denied"
+  	            redirect_to courses_path
+  	        end
+  	        @button_class = "title-bar-button"
+  	        @quiz_button = "quiz-button"
+  	        @course_id_box = "course-id-box"
+  	    elsif session[:user_type] == "student"
+  	        if Student.find(session[:user_id]).course != @course
+  	            flash[:notice] = "Access Denied"
+  	            redirect_to students_path
+  	        end
+  	        @button_class = "hidden"
+  	        @quiz_button = "hidden"
+  	        @course_id_box = "hidden"
+  	        
+  	    else
+  	        flash[:notice] = "Access Denied"
+  	        redirect_to "/"
+  	    end
   	    @students = Student.where(:course => @course)
   	    session[:current_course] = @course.id
 	end
@@ -26,8 +44,8 @@ class CoursesController < ApplicationController
         params[:course][:teacher_id] = session[:user_id] 
         @course = Course.new(course_params)
         @course.generatedID = 16.times.map{rand(10)}.join
-        #@teacher = Teacher.find(session[:user_id])
-        #@course.teacher = @teacher
+        @teacher = Teacher.find(session[:user_id])
+        @course.teacher = @teacher
         if @course.save
             flash[:notice] = "#{@course.course_name} was successfully created."
         else

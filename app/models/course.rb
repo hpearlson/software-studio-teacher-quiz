@@ -4,4 +4,8 @@ class Course < ActiveRecord::Base
     
     validates_presence_of :course_name
     validates_presence_of :teacher_id
+    
+    def get_type
+        "course"
+    end
 end

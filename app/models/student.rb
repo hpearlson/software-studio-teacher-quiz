@@ -23,5 +23,9 @@ class Student < ActiveRecord::Base
     def full_name
         "#{self.first_name} #{self.last_name}"
     end
+    
+    def get_type
+       "student" 
+    end
 
 end

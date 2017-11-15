@@ -34,8 +34,13 @@ class AccessController < ApplicationController
     if authorized_user
       session[:user_id] = authorized_user.id
       session[:username] = authorized_user.username
+      session[:user_type] = authorized_user.get_type
       flash[:notice] = "You are now logged in, " + authorized_user.username
-      redirect_to("/courses")
+      if session[:user_type] == "teacher"
+        redirect_to courses_path
+      elsif session[:user_type] == "student"
+        redirect_to student_path(Student.find(session[:user_id]))
+      end
     else
       flash.now[:notice] = "Invalid username/password combination."
       render('login')
