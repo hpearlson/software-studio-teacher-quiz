@@ -18,18 +18,34 @@
   <% end %>
 
     <% if session[:username] != nil %>
-        
-      <li><a href="/courses" class="title">QuizMe</a></li>
-      <li><a href="/courses">Courses</a></li>
-      <li><%= link_to "Students", students_path %></li>
-      <% if !flash.empty? %>
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+      <% if session[:user_type] == "teacher" %>
+        <li><a href="/courses" class="title">QuizMe</a></li>
+        <li><a href="/courses">Courses</a></li>
+        <li><%= link_to "Students", students_path %></li>
+        <% if !flash.empty? %>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+          <% end %>
         <% end %>
+        
+        <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+        <li style="float:right"> <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %> </li>
+      
+      <% elsif session[:user_type] == "student" %>
+        <li><%= link_to "QuizMe", course_path(Student.find(session[:user_id]).course_id), :class => "title" %></li>
+        <li><%= link_to "Course", course_path(Student.find(session[:user_id]).course_id) %></li>
+        <li><%= link_to "Teacher",  teacher_path(Student.find(session[:user_id]).course.teacher_id) %> </li>
+        <% if !flash.empty? %>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+          <% end %>
+        <% end %>
+        
+        <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+        <li style="float:right"> <%= link_to session[:username], Student.find_by(:username => session[:username]) %> </li>
       <% end %>
 
-      <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
-      <li style="float:right"> <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %> </li>
+      
       
     <% else %>
     
