@@ -17,7 +17,19 @@
     <ul class="navbar navbar-static-top">
   <% end %>
 
-    <% if session[:username] != nil %>
+    <% if session[:username] == nil %>
+    
+      <li><a href="/home" class="title">QuizMe</a></li>
+      <% if !flash.empty? %>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+        <% end %>
+      <% end %>
+
+      <li style="float:right"><a class="active button" href="/access/accountType">Sign Up</a></li>
+      <li style="float:right"><a class="active" href="/access/login">Login</a></li>
+    
+    <% else %>
       <% if session[:user_type] == "teacher" %>
         <li><a href="/courses" class="title">QuizMe</a></li>
         <li><a href="/courses">Courses</a></li>
@@ -44,20 +56,6 @@
         <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
         <li style="float:right"> <%= link_to session[:username], Student.find_by(:username => session[:username]) %> </li>
       <% end %>
-
-      
-      
-    <% else %>
-    
-      <li><a href="/home" class="title">QuizMe</a></li>
-      <% if !flash.empty? %>
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
-        <% end %>
-      <% end %>
-
-      <li style="float:right"><a class="active button" href="/access/accountType">Sign Up</a></li>
-      <li style="float:right"><a class="active" href="/access/login">Login</a></li>
       
     <% end %>
     
