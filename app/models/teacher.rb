@@ -32,8 +32,4 @@ class Teacher < ActiveRecord::Base
                             :format => EMAIL_REGEX
                             
     
-    
-    def get_type
-        "teacher"
-    end
 end

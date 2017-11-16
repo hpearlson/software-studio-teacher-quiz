@@ -18,7 +18,7 @@
   <% end %>
 
     <% if session[:username] != nil %>
-      <% if session[:user_type] == "teacher" %>
+      <% if session[:user_type] == "Teacher" %>
         <li><a href="/courses" class="title">QuizMe</a></li>
         <li><a href="/courses">Courses</a></li>
         <li><%= link_to "Students", students_path %></li>
@@ -31,7 +31,7 @@
         <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
         <li style="float:right"> <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %> </li>
       
-      <% elsif session[:user_type] == "student" %>
+      <% elsif session[:user_type] == "Student" %>
         <li><%= link_to "QuizMe", course_path(Student.find(session[:user_id]).course_id), :class => "title" %></li>
         <li><%= link_to "Course", course_path(Student.find(session[:user_id]).course_id) %></li>
         <li><%= link_to "Teacher",  teacher_path(Student.find(session[:user_id]).course.teacher_id) %> </li>

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
   
   def is_teacher
-    if session[:user_type] != "teacher"
+    if session[:user_type] != "Teacher"
       flash[:notice] = "Access Denied"
       redirect_to "/home"
     end

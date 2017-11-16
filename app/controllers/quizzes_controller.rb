@@ -1,4 +1,6 @@
 class QuizzesController < ApplicationController
+    before_action :confirm_logged_in
+    before_action :is_teacher
     
     def show
         @course = session[:current_course]

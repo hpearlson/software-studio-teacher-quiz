@@ -6,14 +6,14 @@ class TeachersController < ApplicationController
     
     def show
         @teacher = Teacher.find(params[:id])
-        if session[:user_type] == "teacher"
+        if session[:user_type] == "Teacher"
             if session[:user_id] != @teacher.id
                 flash[:notice] = "Access Denied"
                 redirect_to courses_path
             end
             @page_title = "QuizMe - Your Profile"
             @button_class = "title-bar-button"
-        elsif session[:user_type] == "student"
+        elsif session[:user_type] == "Student"
             if @teacher != Student.find(session[:user_id]).course.teacher
                 flash[:notice] = "Access Denied"
                 redirect_to course_path(Student.find(session[:user_id]).course_id)

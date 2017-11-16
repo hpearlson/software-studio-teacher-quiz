@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
 	def show
   	    @course = Course.find(params[:id]) 
   	    @page_title = "Quizme - " + @course.course_name
-  	    if session[:user_type] == "teacher"
+  	    if session[:user_type] == "Teacher"
   	        if Teacher.find(session[:user_id]) != @course.teacher
   	            flash[:notice] = "Access Denied"
   	            redirect_to courses_path
@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
   	        @button_class = "title-bar-button"
   	        @quiz_button = "quiz-button"
   	        @course_id_box = "course-id-box"
-  	    elsif session[:user_type] == "student"
+  	    elsif session[:user_type] == "Student"
   	        if Student.find(session[:user_id]).course != @course
   	            flash[:notice] = "Access Denied"
   	            redirect_to students_path

@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
 
     def show
         @student = Student.find(params[:id])
-        if session[:user_type] == "teacher"
+        if session[:user_type] == "Teacher"
             if Teacher.find(session[:user_id]) != @student.course.teacher
   	            flash[:notice] = "Access Denied"
   	            redirect_to courses_path
@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
   	        @class = nil
   	        @edit_button = "button"
   	        @delete_button = "button caution"
-  	    elsif session[:user_type] == "student"
+  	    elsif session[:user_type] == "Student"
   	        @class = "hidden"
   	        @course = @student.course
   	        if @student.course != Student.find(session[:user_id]).course
