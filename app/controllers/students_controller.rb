@@ -18,6 +18,8 @@ class StudentsController < ApplicationController
   	            redirect_to courses_path
   	        end
   	        @class = nil
+  	        @edit_button = "button"
+  	        @delete_button = "button caution"
   	    elsif session[:user_type] == "student"
   	        @class = "hidden"
   	        @course = @student.course
