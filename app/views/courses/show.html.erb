@@ -15,21 +15,20 @@
 </div>
 
 
-<div class="content-wrapper course-overview">
-    
-    <%= div_for @course, :class => @course_id_box do %>
-        <h3><%= @course.generatedID %></h3>
-        <p>Course ID</p>
-    <% end %>
-    <div>
-        <span class="button-box"><%= link_to 'Take Quiz', new_quiz_path, :class => @quiz_button %></span>
-    </div>
-
-
-</div>
-
 
 <div class="content-wrapper">
+    <div class="course-overview">
+    
+        <%= div_for @course, :class => @course_id_box do %>
+            <h3><%= @course.generatedID %></h3>
+            <p>Course ID</p>
+        <% end %>
+        <div>
+            <span class="button-box"><%= link_to 'Take Quiz', new_quiz_path, :class => @quiz_button %></span>
+        </div>
+
+
+    </div>
     
     <% @students.each do |student| %>
                 <div class="floating-box">
@@ -40,28 +39,4 @@
                 </div>
     <% end %>
     
-    <% if false %>
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @students.each do |student| %>
-                    <tr>
-                        <td><%= image_tag student.image.url(:thumb) %></td>
-                        <td><%= student.first_name %></td>
-                        <td><%= student.last_name %></td>
-                        <td><%= link_to "More information", student_path(student) %>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-    </div>
-    <% end %>
-
 </div>
