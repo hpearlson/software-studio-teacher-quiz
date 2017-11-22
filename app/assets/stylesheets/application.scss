@@ -21,7 +21,7 @@
 
 .innerHeadContainer {
     background-color: #FFFBFF;
-    //display: block;
+    display: block;
     overflow: inherit;
 }
 
@@ -147,7 +147,8 @@
 }
 
 body {
-    background-color: gainsboro;
+    background-image: url("../assets/halftone.png");
+    background-repeat: repeat;
     font-family: 'Nunito', sans-serif;
 }
 
