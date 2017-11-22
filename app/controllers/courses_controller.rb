@@ -44,7 +44,7 @@ class CoursesController < ApplicationController
     def create
         params[:course][:teacher_id] = session[:user_id] 
         @course = Course.new(course_params)
-        @course.generatedID = 16.times.map{rand(10)}.join
+        @course.generatedID = Time.now.to_i.to_s
         @teacher = Teacher.find(session[:user_id])
         @course.teacher = @teacher
         if @course.save
