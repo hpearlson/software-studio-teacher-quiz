@@ -94,6 +94,21 @@
     border-radius: 12px;
 }
 
+.home-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 25px;
+    margin: 50px 230px;
+    border-radius: 12px;
+}
+
 .title-bar-button {
     background-color: #4CAF50;
     border: none;
@@ -170,6 +185,23 @@ li {
     margin: 0 auto;
     padding-bottom: 150px;
     min-height: 700px;
+}
+
+.home-body {
+    background-image: url("../assets/teacherteaching.jpg");
+    background-size: cover;
+    height: 75%;
+    
+    img {
+        max-width: 100%;
+        position: absolute;
+        z-index: -10;
+    }
+    
+    .overlay-container {
+        background: rgba(105, 48, 109, .75);
+    }
+    
 }
 
 .course-overview {
