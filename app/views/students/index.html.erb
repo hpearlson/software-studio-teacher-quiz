@@ -11,10 +11,10 @@
 </div>
 
 
-<div class="content-wrapper">
+<div class="content-wrapper clearfix">
     <% @students.each do |student| %>
                 <div class="floating-box">
-                    <h3><%= image_tag student.image.url(:thumb) %></h3>
+                    <h3 class="box-image"><%= image_tag student.image.url(:thumb) %></h3>
                     <h3><%= student.first_name %></h3>
                     <h3><%= student.last_name %></h3>
                     <p><%= link_to "More information", student_path(student) %></p>

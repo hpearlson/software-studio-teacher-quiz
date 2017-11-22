@@ -8,16 +8,13 @@
     </div>
 </div>
 
-<div class="content-wrapper">
-    <div id="listCourses">
+
+
+<div class="content-wrapper clearfix">
     <% @courses.each do |course| %>
-    <div>
-       <p><%= link_to course.course_name, course_path(course) %></p>
-    </div>
+        <div class="floating-box">
+            <p><%= link_to course.course_name, course_path(course) %></p>
+        </div>
     <% end %>
-    </div>
     
-
 </div>
-
-
