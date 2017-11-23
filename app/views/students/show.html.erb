@@ -11,6 +11,35 @@
 
 
 
+
+<div class="content-wrapper">
+    
+    <div class="profile-image-container">
+        <%= image_tag @student.image.url(:medium) %>
+    
+    </div>
+    
+    <div class="floating-profile-box">
+        
+        <div style="margin-bottom: 20px;">
+            <h2>Name:</h2>
+            <h3><%= @student.full_name %></h3>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <h2>Username:</h2>   
+            <h3><%= @student.username %></h3>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <h2>Email address:</h2>
+            <h3><%= @student.email_address %></h3>
+        </div>
+    </div>
+    
+</div>
+
+
 <div class="content-wrapper">
     
     <%= image_tag @student.image.url(:medium) %>
