@@ -10,8 +10,10 @@
     </div>
 </div>
 
-
 <div class="content-wrapper clearfix">
+    <%= paginate @students %>
+    <br>
+    
     <% @students.each do |student| %>
                 <div class="floating-box">
                     <h3 class="box-image"><%= image_tag student.image.url(:thumb) %></h3>
@@ -20,29 +22,4 @@
                     <p><%= link_to "More information", student_path(student) %></p>
                 </div>
     <% end %>
-    
-    
-    <% if false %>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @students.each do |student| %>
-                <tr>
-                    <td><%= image_tag student.image.url(:thumb) %></td>
-                    <td><%= student.first_name %></td>
-                    <td><%= student.last_name %></td>
-                    <td><%= link_to "More information", student_path(student) %>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-    <% end %>
-    
 </div>

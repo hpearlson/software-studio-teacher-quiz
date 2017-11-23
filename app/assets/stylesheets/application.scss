@@ -272,6 +272,26 @@ li {
     
 }
 
+.list-box {
+    float: center;
+    width: 500px;
+    height: 250px;
+    margin: 10px;
+    border: 3px solid #FFFBFF;  
+    background-color: #FFFBFF;
+    text-align: left;
+    border-radius: 12px;
+    padding: 30px;
+    font-size: 18px;
+    color: black;
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+}
+
 .course-id-box {
     float: right;
     width: 250px;

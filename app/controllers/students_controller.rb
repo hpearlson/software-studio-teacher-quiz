@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
     def index
         @teacher = Teacher.find(session[:user_id])
         @courses = Course.where(:teacher => @teacher)
-        @students = Student.all.where(course: @courses)
+        @students = Student.all.where(course: @courses).order(:last_name).page(params[:page])
         session.delete(:current_course)
     end
 

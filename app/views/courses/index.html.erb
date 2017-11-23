@@ -11,10 +11,9 @@
 
 
 <div class="content-wrapper clearfix">
-    <% @courses.each do |course| %>
-        <div class="floating-box">
+    <div class="list-box">
+        <% @courses.each do |course| %>
             <p><%= link_to course.course_name, course_path(course) %></p>
-        </div>
-    <% end %>
-    
+        <% end %>
+    </div>
 </div>

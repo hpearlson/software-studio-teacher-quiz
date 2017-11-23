@@ -270,7 +270,7 @@ DEPENDENCIES
   database_cleaner
   jbuilder (~> 2.0)
   jquery-rails
-  kaminari (~> 0.16.1)
+  kaminari
   launchy
   omniauth-google-oauth2 (~> 0.2.1)
   paperclip (= 5.1.0)
