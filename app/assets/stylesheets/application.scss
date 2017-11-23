@@ -300,6 +300,22 @@ li {
     padding: 30px;
 }
 
+.student-registration {
+    color:white;
+    width: 380px;
+    height: 600px;
+    top: 65%;
+    left: 50%;
+    position: absolute;
+    background: rgba(105, 48, 109, .8);
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 30px;
+    
+    input {
+        margin-bottom: 10px !important;
+    }
+}
 
 .teacher-registration {
     color:white;
@@ -313,6 +329,8 @@ li {
     box-sizing: border-box;
     padding: 30px;
 }
+
+
 .stylish-forms {
     
     h1 {
