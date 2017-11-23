@@ -5,10 +5,15 @@ body {background-color: #ccbbea;}
 <div class="pagehead innerHeadContainer">
     <div class="width-restraint">
         <div class="sub-header"> 
-        <div class="sub-header-text"><%= @teacher.username %></div>
-            <span class="button-box"><%= link_to 'Delete Your Profile', teacher_path(@teacher), :method => :delete, :class => @button_class, :style => "background:red" %></span>
-            <span class="button-box"><%= link_to 'Edit Your Profile', edit_teacher_path, :class => @button_class, :style => "background:tan" %></span>
-        </div> 
+        
+            <div class="sub-header-text"><%= @teacher.username %></div>
+                <div style="display: inline-block; float:right;">
+                    <span class="button-box"><%= link_to 'Delete Your Profile', teacher_path(@teacher), :method => :delete, :class => @button_class, :style => "background:red" %></span>
+                    <span class="button-box"><%= link_to 'Edit Your Profile', edit_teacher_path, :class => @button_class, :style => "background:tan" %></span>
+                </div>
+            </div> 
+        
+        </div>
     </div>
 </div>
 
