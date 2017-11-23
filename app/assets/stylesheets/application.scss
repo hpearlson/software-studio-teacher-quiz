@@ -41,6 +41,13 @@
     100% {background-color: #69306d;}
 }
 
+ @keyframes alarm {
+    0% {background-color: #69306d;}
+    5% {background-color: darkred;} /* ccbbea */
+    66% {background-color: darkred;} /* e36397 */
+    100% {background-color: #69306d;}
+}
+
 #notice { /* something need to change here in order to make the notices align correctly */
     /* also while the notice is visible, you can't click on buttons (due to width 100%). need to find a workaround for that */
     position: absolute;
@@ -63,6 +70,13 @@
 
 #temporary_background {
     animation-name: fadeOut;
+    animation-duration: 3s;
+    background-color: #e36397;
+    animation-fill-mode: forwards; 
+}
+
+#incorrect_background {
+    animation-name: alarm;
     animation-duration: 3s;
     background-color: #e36397;
     animation-fill-mode: forwards; 
@@ -475,6 +489,22 @@ input:-webkit-autofill {
     font-size: 30px;
     display: inline-block;
     float: left;
+}
+
+.quiz {
+    img {
+        border-radius: 125px;
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+        border: 5px solid rgba(105, 48, 109, .5);
+        margin-bottom: 15px;
+    }
+    margin-bottom: 10px;
+    
+    input {
+        text-align: center;
+    }
 }
 
 .profile-image-container {

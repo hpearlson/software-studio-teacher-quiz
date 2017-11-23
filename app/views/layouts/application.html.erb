@@ -16,7 +16,11 @@
 
 
   <% if !flash.empty? %>
-    <ul id="temporary_background" class="navbar navbar-static-top">
+    <% if flash[:incorrect] %>
+      <ul id="incorrect_background" class="navbar navbar-static-top">
+    <% else %>
+      <ul id="temporary_background" class="navbar navbar-static-top">
+    <% end %>
   <% else %>
     <ul class="navbar navbar-static-top">
   <% end %>
