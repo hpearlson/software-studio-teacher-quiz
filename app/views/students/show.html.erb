@@ -1,14 +1,14 @@
 <% @page_title = "QuizMe - Student Profile" %>
-    
+
 <div class="pagehead innerHeadContainer">
-    <div class="width-restraint">
-         <h1> <div class="sub-header-text"><%= @student.first_name + " " + @student.last_name %></div>
-             <span class="button-box"><%= link_to 'Remove Student', student_path(@student), :method => :delete, :class => @button_class, :style => "background:red"  %></span>
-             <span class="button-box"><%= link_to 'Edit Student', edit_student_path, :class => @button_class, :style => "background:tan"  %> </span>
-         </h1>
+    <div class="sub-header">
+        <div class="width-restraint">
+            <span class="sub-header-text"><%= @student.full_name %></span>
+            <span class="button-box"><%= link_to 'Remove Student', student_path(@student), :method => :delete, :class => @button_class, :style => "background:red"  %></span>
+            <span class="button-box"><%= link_to 'Edit Student', edit_student_path, :class => @button_class, :style => "background:tan"  %> </span>
+        </div>
     </div>
 </div>
-
 
 
 
