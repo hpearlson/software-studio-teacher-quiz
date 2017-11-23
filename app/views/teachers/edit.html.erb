@@ -1,21 +1,20 @@
 <% @page_title = "QuizMe - Edit Profile" %>
 
 
-<div class="pagehead innerHeadContainer">
-    <div class="width-restraint">
+
+
+
+<div class="content-wrapper stylish-forms" style="min-height: 800px">
+    
+    <div class="floating-profile-box" style="margin: 60px 175px 60px 175px">
         <h1>Edit your profile</h1>
-    </div>
-</div>
-
-
-
-<div class="content-wrapper">
-    <%= form_for @teacher, :html => { :multipart => true } do |f| %>
+   <%= form_for @teacher, :html => { :multipart => true } do |f| %>
 
     <%= render(:partial => 'teacher_form', :locals => {:f => f}) %>
     
     <%= f.submit 'Update Teacher' %>
     
     <% end %>
+    </div>
     
 </div>

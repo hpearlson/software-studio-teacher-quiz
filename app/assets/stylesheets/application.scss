@@ -429,7 +429,21 @@ li {
     .simple-link:hover {
         color: #ffc107;
     }
-     
+    
+    select {
+        background: #ccbbea;
+        margin-bottom: 20px;
+    }
+    
+    textarea {
+        margin-bottom: 20px;  
+        background: #ccbbea;
+        width: 100%;
+    }
+    
+    input[type="file"] {
+        margin-bottom: 0px;
+    }
 }
 
 .login {
@@ -447,6 +461,11 @@ li {
 
 input:-webkit-autofill {
     -webkit-box-shadow: inset 0 0 0px 9999px #ccbbea;
+}
+
+.sub-header-text {
+    margin-top: 10px;
+    display: inline-block;
 }
 
 .profile-image-container {

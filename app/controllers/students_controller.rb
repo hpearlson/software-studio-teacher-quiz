@@ -35,6 +35,7 @@ class StudentsController < ApplicationController
   	            @delete_button = "button caution"
   	        end
   	    end
+  	    @button_class = "title-bar-button"
     end
 
     def create
