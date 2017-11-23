@@ -6,6 +6,7 @@ class TeachersController < ApplicationController
     
     def show
         @teacher = Teacher.find(params[:id])
+        @courses = Course.where(:teacher => @teacher)
         if session[:user_type] == "Teacher"
             if session[:user_id] != @teacher.id
                 flash[:notice] = "Access Denied"

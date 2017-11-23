@@ -15,15 +15,32 @@ body {background-color: #ccbbea;}
 
 <div class="content-wrapper">
     
-    <div class="floating-box">
-        <h2>First Name: <%= @teacher.first_name %></h2>
-        <h2>Last Name: <%= @teacher.last_name %></h2>
-        <h2>Username: <%= @teacher.username %></h2>           
-    </div>
-    
     <div class="profile-image-container">
         <%= image_tag @teacher.image.url(:medium) %>
     
+    </div>
+    
+    <div class="floating-profile-box">
+        
+        <div style="margin-bottom: 20px;">
+            <h2>Name:</h2>
+            <h3><%= @teacher.full_name %></h3>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <h2>Username:</h2>   
+            <h3><%= @teacher.username %></h3>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <h2>Email address:</h2>
+            <h3><%= @teacher.email_address %></h3>
+        </div>
+
+        <h2>My courses:</h2>
+        <% @courses.each do |course| %>
+            <h3><%= link_to course.course_name, course_path(course) %></h3>
+        <% end %>
     </div>
     
 </div>
