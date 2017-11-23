@@ -1,17 +1,11 @@
 <% @page_title = "QuizMe - Add Student" %>
 
 
-<div class="pagehead innerHeadContainer">
-    <div class="width-restraint">
-        <h1>Add a student manually - they will not be able to log in. </h1>
-    </div>
-</div>
-
-
-
-<div class="content-wrapper">
-    <p style="color:red;">*all fields are mandatory</p>
-    <%= form_for @student, :url => {:action => :create}, :html => { :multipart => true } do |f| %>
+<div class="content-wrapper stylish-forms" style="min-height: 800px">
+    
+    <div class="floating-profile-box" style="margin: 60px 175px 60px 175px">
+        <h1>Add student manually - they will not be able to log in.</h1>
+            <%= form_for @student, :url => {:action => :create}, :html => { :multipart => true } do |f| %>
 
         <%= render(:partial => 'student_form', :locals => {:f => f}) %>
         
@@ -19,5 +13,7 @@
         <%= f.submit 'Create Student', :class => "button" %>
     
     <% end %>
+
+    </div>
     
 </div>

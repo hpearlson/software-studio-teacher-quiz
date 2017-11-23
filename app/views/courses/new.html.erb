@@ -1,16 +1,18 @@
-<div class="pagehead innerHeadContainer">
-    <div class="width-restraint">
-        <h1>Add Course</h1>
-    </div>
-</div>
+<% @page_title = "QuizMe - Add Course" %>
 
-<div class="width-restraint">
-    <%= form_for Course.new do |f| %>
+
+<div class="content-wrapper stylish-forms" style="min-height: 800px">
     
-        <%= render(:partial => "course_form", :locals => {:f => f}) %>
+    <div class="floating-profile-box" style="margin: 60px 175px 60px 175px">
+        <h1>Add course</h1>
+        <%= form_for Course.new do |f| %>
         
-        
-        <%= submit_tag value='Save Changes', :class => "button" %>
-        
-    <% end %>
+            <%= render(:partial => "course_form", :locals => {:f => f}) %>
+            
+            
+            <%= submit_tag value='Save Changes', :class => "button" %>
+            
+        <% end %>
+    </div>
+    
 </div>
