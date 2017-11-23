@@ -1,20 +1,22 @@
 <% @page_title = "Quizme - Courses" %>
 
-<div class="pagehead innerHeadContainer">
-    <div class="sub-header">
-        <div class="width-restraint">
+<div class="content-wrapper stylish-forms" style="min-height: 800px">
+    
+    <div class="floating-profile-box" style="margin: 60px 175px 60px 175px">
+        
+        <div style="display:block; height: 50px;">
             <span class="sub-header-text">Your courses</span>
             <span class="button-box"><%= link_to "Add New Course", new_course_path, :class => "title-bar-button" %></span>
         </div>
+        
+        <hr style="margin-top:0px">
+        
+        <div style="display:block;">
+            <% @courses.each do |course| %>
+                <h3><%= link_to course.course_name, course_path(course) %></h3>
+            <% end %>  
+        </div>
+        
     </div>
-</div>
-
-
-
-<div class="content-wrapper clearfix">
-    <div class="list-box">
-        <% @courses.each do |course| %>
-            <p><%= link_to course.course_name, course_path(course) %></p>
-        <% end %>
-    </div>
+    
 </div>
