@@ -209,7 +209,7 @@ li {
     }
     
     .overlay-container {
-        background: rgba(105, 48, 109, .75);
+        background: rgba(105, 48, 109, .5);
     }    
     
     
@@ -287,17 +287,20 @@ li {
     float: right;
 }
 
-.login {
+.accountType {
     color:white;
     width: 320px;
-    height: 360px;
-    top: 55%;
+    height: 180px;
+    top: 42%;
     left: 50%;
     position: absolute;
     background: rgba(105, 48, 109, .8);
     transform: translate(-50%,-50%);
     box-sizing: border-box;
     padding: 30px;
+}
+
+.stylish-forms {
     
     h1 {
         margin: 0;
@@ -332,15 +335,30 @@ li {
         font-size: 18px;
         border-radius: 12px;
     }
-    a {
+
+    .simple-link {
         text-decoration: none;
         font-size: 12px;
         line-height: 20px;
         color: darkgrey;
         }
-    a:hover {
+    .simple-link:hover {
         color: #ffc107;
     }
+     
+}
+
+.login {
+    color:white;
+    width: 320px;
+    height: 360px;
+    top: 55%;
+    left: 50%;
+    position: absolute;
+    background: rgba(105, 48, 109, .8);
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 30px;
 }
 
 input:-webkit-autofill {

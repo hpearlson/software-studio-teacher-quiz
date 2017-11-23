@@ -2,33 +2,27 @@
 
 <div class="login-body">
     <div class="overlay-container">
-        
-        
-    <div class="content-wrapper">
-    <div class="login">
-        
-        <h1>Login here</h1>
-        
-        <%= form_tag(access_attempt_login_path, :method => :post) do %>
-        
-        <p>Username</p>
-        <span class="form-input"><%= text_field_tag(:username, params[:username]) %></span>
-        
-        <p>Password</p>
-        
-        <span class="form-input"><%= password_field_tag(:password) %></span>
-        
-        <%= submit_tag "Log In" %>
-        
-        <a href="#">Lost your password? (dead link)</a>
-        <br>
-        <a href='#'>Don't have an account? (dead link)</a>
-        <% end %>
+        <div class="content-wrapper">
+            <div class="login stylish-forms">
+                
+                <h1>Login here</h1>
+                
+                <%= form_tag(access_attempt_login_path, :method => :post) do %>
+                
+                <p>Username</p>
+                <%= text_field_tag(:username, params[:username]) %>
+                
+                <p>Password</p>
+                <%= password_field_tag(:password) %>
+                
+                <%= submit_tag "Log In" %>
+                
+                <a class="simple-link" href="#">Lost your password? (dead link)</a>
+                <br>
+                <a class="simple-link" href='/access/accountType'>Don't have an account?</a>
+                <% end %>
+                
+            </div>
+        </div>
     </div>
-</div>
-        
-        
-    </div>
-    
-    
 </div>
