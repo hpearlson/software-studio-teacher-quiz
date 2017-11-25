@@ -3,7 +3,7 @@
     <div class="sub-header">
         <div class="width-restraint">
             <span class="sub-header-text"><%= @teacher.username %></span>
-            <span class="button-box"><%= link_to 'Delete Your Profile', teacher_path(@teacher), :method => :delete, :class => @button_class, :style => "background:red" %></span>
+            <span class="button-box"><%= link_to 'Delete Your Profile', teacher_path(@teacher), :method => :delete, data: {confirm: 'Are you sure? This action is not reversible.'}, :class => @button_class, :style => "background:red" %></span>
             <span class="button-box"><%= link_to 'Edit Your Profile', edit_teacher_path, :class => @button_class, :style => "background:tan" %></span>
         </div>
     </div>

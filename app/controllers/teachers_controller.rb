@@ -64,6 +64,7 @@ class TeachersController < ApplicationController
     
     def new
        @teacher = Teacher.new
+       #@teacher.image = File.new("#{Rails.root}/app/assets/images/default_profile.jpg")
     end
     
     def onSignIn(googleUser)
