@@ -84,4 +84,7 @@ class QuizzesController < ApplicationController
         @student = Student.find(params[:id])
         @teacher = Teacher.find(session[:user_id])
     end
+    
+    def about
+    end
 end

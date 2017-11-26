@@ -211,6 +211,15 @@ li {
         background: rgba(105, 48, 109, .3);
     }
 }
+
+.quiz-about-body{
+    background-image: url("../assets/classroom-back-view.jpg");
+    background-size: cover;
+    
+    .overlay-container{
+        background: rgba(105, 48, 109, .3);
+    }
+}
 .home-body {
     background-image: url("../assets/teacherteaching.jpg");
     background-size: cover;
@@ -316,8 +325,13 @@ li {
     p {
         margin-bottom: 20px;
     }
-    
 }
+
+.darker {
+    background-color: rgba(105, 48, 109, .9) !important;
+    border: none !important;
+}
+    
 
 .list-box {
     float: center;
