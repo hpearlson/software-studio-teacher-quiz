@@ -40,6 +40,7 @@ class StudentsController < ApplicationController
 
     def create
         @student = Student.new(student_params)
+        @student.quiz_score = 0
         if @student.save
             flash[:notice] = "#{@student.first_name} was successfully created."
         else

@@ -31,6 +31,19 @@
             <h3><%= @student.username %></h3>
         </div>
         
+        <% if :is_teacher %>
+            <div style="margin-bottom: 20px;">
+                <h2>How well you know me:</h2>
+                <% if @student.quiz_score > 0 %>
+                    <h3 style="color:green"><%= "+" + @student.quiz_score.to_s %></h3>
+                <% elsif @student.quiz_score < 0 %>
+                    <h3 style="color:red"><%= @student.quiz_score %></h3>
+                <% else %>
+                    <h3><%= @student.quiz_score %></h3>
+                <% end %>
+            </div>
+        <% end %>
+        
         <div style="margin-bottom: 20px;">
             <h2>Email address:</h2>
             <h3><%= @student.email_address %></h3>
@@ -44,7 +57,6 @@
         <div style="margin-bottom: 20px;">
             <h2>Enrolled in:</h2>
             <h3><%= @student.course.course_name %></h3>
-
         </div>
         
     </div>

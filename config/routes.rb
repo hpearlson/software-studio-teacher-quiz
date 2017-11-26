@@ -27,5 +27,7 @@ Rails.application.routes.draw do
       post :check_answer
     end
   end
+  
+  get "remedial_quiz", :to => 'quizzes#remedial'
 
 end

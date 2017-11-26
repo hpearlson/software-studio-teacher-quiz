@@ -17,8 +17,16 @@
     <% @students.each do |student| %>
                 <div class="floating-box">
                     <h3 class="box-image"><%= image_tag student.image.url(:thumb) %></h3>
-                    <h3><%= student.first_name %></h3>
-                    <h3><%= student.last_name %></h3>
+                    <h3><%= student.full_name %></h3>
+                    
+                    <% if student.quiz_score > 0 %>
+                        <h3 style="color:green"><%= "+" + student.quiz_score.to_s %></h3>
+                    <% elsif student.quiz_score < 0 %>
+                        <h3 style="color:red"><%= student.quiz_score %></h3>
+                    <% else %>
+                        <h3><%= student.quiz_score %></h3>
+                    <% end %>
+                    
                     <p><%= link_to "More information", student_path(student) %></p>
                 </div>
     <% end %>
