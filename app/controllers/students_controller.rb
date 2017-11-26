@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
         @teacher = Teacher.find(session[:user_id])
         @courses = Course.where(:teacher => @teacher)
         @students = Student.all.where(course: @courses).order(:last_name).page(params[:page])
+        Student.apply_spaced_repetition(session[:user_id])
         session.delete(:current_course)
     end
 
@@ -41,6 +42,7 @@ class StudentsController < ApplicationController
     def create
         @student = Student.new(student_params)
         @student.quiz_score = 0
+        @student.quiz_score_day_updated = Time.now.beginning_of_day.to_i
         if @student.save
             flash[:notice] = "#{@student.first_name} was successfully created."
         else

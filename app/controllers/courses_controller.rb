@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
     def index
         @teacher = Teacher.find(session[:user_id])
         @courses = Course.where(:teacher => @teacher).page(params[:page])
+        Student.apply_spaced_repetition(session[:user_id])
     end
     
 	def show

@@ -57,6 +57,7 @@ class QuizzesController < ApplicationController
         redirect_to new_quiz_path
     end
 
+
     def check_answer
         @teacher = Teacher.find(params[:id])
         @check = params[:student].to_s.split('=>')
@@ -67,11 +68,13 @@ class QuizzesController < ApplicationController
             flash[:correct] = "Correct!"
             @student.update_attribute(:is_correct, true)
             @student.update_attribute(:quiz_score, @student.quiz_score + 1)
+            @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
             redirect_to quiz_path(@teacher.id)
             
         else
             flash[:incorrect] = "Incorrect!"
             @student.update_attribute(:quiz_score, @student.quiz_score - 1)
+            @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
             redirect_to review_quiz_path(@student.id)
         end
         
