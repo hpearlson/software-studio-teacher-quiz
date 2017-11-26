@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
     
     def index
         @teacher = Teacher.find(session[:user_id])
-        @courses = Course.where(:teacher => @teacher)
+        @courses = Course.where(:teacher => @teacher).page(params[:page])
     end
     
 	def show
@@ -32,7 +32,7 @@ class CoursesController < ApplicationController
   	        flash[:notice] = "Access Denied"
   	        redirect_to "/"
   	    end
-  	    @students = Student.where(:course => @course)
+  	    @students = Student.where(:course => @course).page(params[:page])
   	    session[:current_course] = @course.id
 	end
     

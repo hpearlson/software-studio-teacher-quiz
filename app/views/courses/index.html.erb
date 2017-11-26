@@ -12,6 +12,8 @@
         <hr style="margin-top:0px">
         
         <div style="display:block;">
+            <%= paginate @courses %>
+            <br>
             <% @courses.each do |course| %>
                 <h3><%= link_to course.course_name, course_path(course) %></h3>
             <% end %>  
