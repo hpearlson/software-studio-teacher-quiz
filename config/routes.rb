@@ -26,8 +26,9 @@ Rails.application.routes.draw do
       get :review
       post :check_answer
     end
+    collection do
+      get :take_remedial_quiz
+    end
   end
   
-  get "remedial_quiz", :to => 'quizzes#remedial'
-
 end

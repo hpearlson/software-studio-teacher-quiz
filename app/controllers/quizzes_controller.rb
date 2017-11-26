@@ -5,12 +5,14 @@ class QuizzesController < ApplicationController
     def show
         @course = session[:current_course]
         @teacher = Teacher.find(params[:id])
+
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
             @student = Student.where(course: @all_courses).where('is_correct = ?', false).shuffle.first
         else
             @student = Student.where(:course => session[:current_course]).where('is_correct = ?', false).shuffle.first
         end
+        
         if @student == nil
             flash[:notice] = "Quiz complete!"
             if @course == nil
@@ -26,11 +28,10 @@ class QuizzesController < ApplicationController
         @teacher = Teacher.find(session[:user_id])
         
         @course = session[:current_course]
+
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
             @students = Student.where(course: @all_courses)
-        elsif session[:quiz_type] == "behind"
-            @students = Student.where(:course => session[:current_course]).where("quiz_score < ?", 1)
         else
             @students = Student.where(:course => session[:current_course])
         end
@@ -39,27 +40,23 @@ class QuizzesController < ApplicationController
             student.update_attribute(:is_correct, false)
         end
         
-        redirect_to quiz_path(@teacher.id)
-    end
-    
-  
-    def remedial
-        @teacher = Teacher.find(session[:user_id])
-        
-        @course = session[:current_course]
-        if @course == nil
-            @all_courses = Course.where(:teacher => @teacher)
-            @students = Student.where(:course => session[:current_course]).where("quiz_score < ?", 1)
-        end
-        
-        @students.each do |student|
-            student.update_attribute(:is_correct, false)
+        if session[:quiz_type] == "behind"
+            
+            @otherStudents = Student.where("quiz_score > ?", 0)
+            @otherStudents.each do |student|
+                student.update_attribute(:is_correct, true)
+            end
+            session[:quiz_type] = "normal"
         end
         
         redirect_to quiz_path(@teacher.id)
     end
     
-    
+    def take_remedial_quiz
+        session[:quiz_type] = "behind"
+        redirect_to new_quiz_path
+    end
+
     def check_answer
         @teacher = Teacher.find(params[:id])
         @check = params[:student].to_s.split('=>')
