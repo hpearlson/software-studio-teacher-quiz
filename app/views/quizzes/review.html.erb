@@ -14,10 +14,25 @@
                     <h1><%= @student.first_name %> <%= @student.last_name %></h1>
                     <h1><%= @student.description %></h1>
                 
-                    <h1 style="text-align:center;"><%= link_to "Next", quiz_path(@teacher.id), :class => "button" %></h1>
+                    <h1 style="text-align:center;"><%= link_to "Next", quiz_path(@teacher.id), :class => "button", :id => "next" %></h1>
 
                 <% end %>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    
+    var ENTER = 13; //This is the js keycode for ENTER
+    
+    function my_custom_keypress(e){
+      key = e.which;
+      if(key == ENTER){
+        $('a#next').trigger('click');
+      }
+    }
+    
+    $(document).on('keydown', my_custom_keypress);
+
+</script>

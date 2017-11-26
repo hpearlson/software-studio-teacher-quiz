@@ -271,7 +271,7 @@ li {
 .floating-box {
     float: left;
     width: 214px;
-    height: 250px;
+    min-height: 260px;
     margin: 10px;
     border: 3px solid #FFFBFF;  
     background-color: #FFFBFF;
