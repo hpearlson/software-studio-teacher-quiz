@@ -18,7 +18,7 @@
             <p>Course ID</p>
         <% end %>
         <div>
-            <span class="button-box"><%= link_to "Quiz Only Students You Don't Know", {:controller => "quizzes", :action => "take_remedial_quiz"}, :class => @quiz_button, :style => "background-color: tomato" %></span>
+            <span class="button-box"><%= link_to "Quiz Only Unfamiliar Students", {:controller => "quizzes", :action => "take_remedial_quiz"}, :class => @quiz_button, :style => "background-color: tomato" %></span>
         </div>
         <div>
             <span class="button-box"><%= link_to 'Take Quiz', new_quiz_path, :class => @quiz_button %></span>

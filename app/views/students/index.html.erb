@@ -5,7 +5,8 @@
         <div class="width-restraint">
             <span class="sub-header-text">All students</span>
             <span class="button-box"><%= link_to 'Add Student', new_student_path, :class => "title-bar-button"  %></span>
-            <span class="button-box"><%= link_to 'Quiz Me', new_quiz_path, :class => "title-bar-button" %></span>
+            <span class="button-box"><%= link_to "Quiz Unfamiliar Students", {:controller => "quizzes", :action => "take_remedial_quiz"}, :class => "title-bar-button", :style => "background-color: tomato" %></span>
+            <span class="button-box"><%= link_to 'Quiz All', new_quiz_path, :class => "title-bar-button" %></span>
         </div>
     </div>
 </div>
