@@ -1,17 +1,25 @@
 class QuizzesController < ApplicationController
+    before_action :confirm_logged_in
+    before_action :is_teacher
     
     def show
         @course = session[:current_course]
         @teacher = Teacher.find(params[:id])
+
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
             @student = Student.where(course: @all_courses).where('is_correct = ?', false).shuffle.first
         else
             @student = Student.where(:course => session[:current_course]).where('is_correct = ?', false).shuffle.first
         end
+        
         if @student == nil
             flash[:notice] = "Quiz complete!"
-            redirect_to students_path
+            if @course == nil
+                redirect_to students_path
+            else
+                redirect_to course_path(@course)
+            end
         end
         
     end
@@ -20,6 +28,7 @@ class QuizzesController < ApplicationController
         @teacher = Teacher.find(session[:user_id])
         
         @course = session[:current_course]
+
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
             @students = Student.where(course: @all_courses)
@@ -31,9 +40,24 @@ class QuizzesController < ApplicationController
             student.update_attribute(:is_correct, false)
         end
         
+        if session[:quiz_type] == "behind"
+            
+            @otherStudents = Student.where("quiz_score > ?", 0)
+            @otherStudents.each do |student|
+                student.update_attribute(:is_correct, true)
+            end
+            session[:quiz_type] = "normal"
+        end
+        
         redirect_to quiz_path(@teacher.id)
     end
     
+    def take_remedial_quiz
+        session[:quiz_type] = "behind"
+        redirect_to new_quiz_path
+    end
+
+
     def check_answer
         @teacher = Teacher.find(params[:id])
         @check = params[:student].to_s.split('=>')
@@ -43,10 +67,14 @@ class QuizzesController < ApplicationController
         if @student.full_name == @name
             flash[:correct] = "Correct!"
             @student.update_attribute(:is_correct, true)
+            @student.update_attribute(:quiz_score, @student.quiz_score + 1)
+            @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
             redirect_to quiz_path(@teacher.id)
             
         else
-            flash[:correct] = "Incorrect!"
+            flash[:incorrect] = "Incorrect!"
+            @student.update_attribute(:quiz_score, @student.quiz_score - 1)
+            @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
             redirect_to review_quiz_path(@student.id)
         end
         
@@ -55,5 +83,8 @@ class QuizzesController < ApplicationController
     def review
         @student = Student.find(params[:id])
         @teacher = Teacher.find(session[:user_id])
+    end
+    
+    def about
     end
 end

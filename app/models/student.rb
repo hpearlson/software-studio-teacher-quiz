@@ -23,5 +23,28 @@ class Student < ActiveRecord::Base
     def full_name
         "#{self.first_name} #{self.last_name}"
     end
-
+    
+    def self.apply_spaced_repetition(usr_id)
+        @teacher = Teacher.find(usr_id)
+        @all_courses = Course.where(:teacher => @teacher)
+        @students = Student.where(course: @all_courses)
+        
+        @students.each do |student|
+            if student.quiz_score_day_updated.nil?
+                student.quiz_score_day_updated = Time.now.beginning_of_day.to_i
+            end
+            
+            if student.quiz_score > 1
+                if Time.now.to_i - ((student.quiz_score - 1)**2)*84000 >= student.quiz_score_day_updated
+                    student.update_attribute(:quiz_score, student.quiz_score - 1)
+                end
+            elsif student.quiz_score == 1
+                if Time.now.to_i - 84000 >= student.quiz_score_day_updated
+                    student.update_attribute(:quiz_score, student.quiz_score - 1)
+                end
+            end
+        end
+    end
+    
+    paginates_per 20
 end

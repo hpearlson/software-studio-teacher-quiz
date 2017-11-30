@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
+  
+<html lang="en">
 
 <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Nunito:600" rel="stylesheet">
 <head>
+  
+  <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type => "image/x-icon" %>
   
   <title><%= @page_title || "Quizme" %></title>
   
@@ -12,24 +16,53 @@
 
 
   <% if !flash.empty? %>
-    <ul id="temporary_background" class="navbar navbar-static-top">
+    <% if flash[:incorrect] %>
+      <ul id="incorrect_background" class="navbar navbar-static-top">
+    <% else %>
+      <ul id="temporary_background" class="navbar navbar-static-top">
+    <% end %>
   <% else %>
     <ul class="navbar navbar-static-top">
   <% end %>
 
     <% if session[:username] != nil %>
-        
-      <li><a href="/courses" class="title">QuizMe</a></li>
-      <li><a href="/courses">Courses</a></li>
-      <li><%= link_to "Students", students_path %></li>
-      <% if !flash.empty? %>
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+      <% if session[:user_type] == "Teacher" %>
+        <li><a href="/courses" class="title">QuizMe</a></li>
+        <li><a href="/courses">Courses</a></li>
+        <li><%= link_to "Students", students_path %></li>
+        <% if !flash.empty? %>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+          <% end %>
         <% end %>
+        
+        <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+        <li style="float:right"> <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %> </li>
+      
+      <% elsif session[:user_type] == "Student" %>
+        <li><%= link_to "QuizMe", course_path(Student.find(session[:user_id]).course_id), :class => "title" %></li>
+        <li><%= link_to "Course", course_path(Student.find(session[:user_id]).course_id) %></li>
+        <li><%= link_to "Teacher",  teacher_path(Student.find(session[:user_id]).course.teacher_id) %> </li>
+        <% if !flash.empty? %>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+          <% end %>
+        <% end %>
+        
+        <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
+        <li style="float:right"> <%= link_to session[:username], Student.find_by(:username => session[:username]) %> </li>
+      
+      <% else %>
+        <li> Something went wrong.</li>
+        <% if !flash.empty? %>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+          <% end %>
+        <% end %>
+        <li style="float:right"><%= link_to "Logout", access_logout_path %></li>
       <% end %>
 
-      <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
-      <li style="float:right"> <%= link_to session[:username], Teacher.find_by(:username => session[:username]) %> </li>
+      
       
     <% else %>
     
@@ -52,6 +85,12 @@
 <body>
 
     <%= yield %>
+    
+    
+    
+  <div class="page-footer">
+    <p>This application brought to you by Walter, Autumn, and Hana</p>
+  </div>
 
 <script>
   $(document).ready(function() {

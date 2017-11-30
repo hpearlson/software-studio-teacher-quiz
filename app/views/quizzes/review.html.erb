@@ -1,17 +1,38 @@
+<% @page_title = "Quizme - Quiz" %>
 
+<div class="content-wrapper stylish-forms" style="min-height: 800px">
+    
+    <div class="floating-profile-box" style="margin: 60px 175px 60px 175px">
+        
+        <div style="display:block; height: 50px;">
+            <h1>What is my name?</h1>
+        </div>
+        
+        <div style="display:block;">
+            <div class="quiz"><%= image_tag @student.image.url(:medium) %>
+                <%= div_for(@student) do %>
+                    <h1><%= @student.first_name %> <%= @student.last_name %></h1>
+                    <h1><%= @student.description %></h1>
+                
+                    <h1 style="text-align:center;"><%= link_to "Next", quiz_path(@teacher.id), :class => "button", :id => "next" %></h1>
 
-<div class="width-restraint">
-    <%= image_tag @student.image.url(:medium) %>
-    
-    <%= div_for(@student) do %>
-        <p>Name: <%= @student.first_name %> <%= @student.last_name %></p>
-        <p>Description: <%= @student.description %></p>
-        <p>Enrolled in: <%= @student.course.course_name %></p>
-    
-        <p><%= link_to "Next", quiz_path(@teacher.id) %></p>
-        <br />
-    
-    <% end %>
-    
-    <p><%= link_to 'Back to Students', students_path %></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    
+    var ENTER = 13; //This is the js keycode for ENTER
+    
+    function my_custom_keypress(e){
+      key = e.which;
+      if(key == ENTER){
+        $('a#next').trigger('click');
+      }
+    }
+    
+    $(document).on('keydown', my_custom_keypress);
+
+</script>

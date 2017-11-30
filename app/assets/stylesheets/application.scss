@@ -21,7 +21,7 @@
 
 .innerHeadContainer {
     background-color: #FFFBFF;
-    //display: block;
+    display: block;
     overflow: inherit;
 }
 
@@ -33,14 +33,18 @@
     }
 }
  
- .navbar {
-     margin-bottom: -20px;
- }
- 
+
  @keyframes fadeOut {
     0% {background-color: #69306d;}
     5% {background-color: #ccbbea;} /* ccbbea */
     66% {background-color: #ccbbea;} /* e36397 */
+    100% {background-color: #69306d;}
+}
+
+ @keyframes alarm {
+    0% {background-color: #69306d;}
+    5% {background-color: darkred;} /* ccbbea */
+    66% {background-color: darkred;} /* e36397 */
     100% {background-color: #69306d;}
 }
 
@@ -55,6 +59,7 @@
     color: #FFFFFF;
     text-decoration: none;
     letter-spacing: 1px;
+    margin-top: 20px;
 }
 
 .title {
@@ -70,8 +75,23 @@
     animation-fill-mode: forwards; 
 }
 
+#incorrect_background {
+    animation-name: alarm;
+    animation-duration: 3s;
+    background-color: #e36397;
+    animation-fill-mode: forwards; 
+}
+
 .page-footer {
     background: #69306D;
+    color: white;
+    position: block;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    padding: 1rem;
+    text-align: center;
 }
 
 .button {
@@ -86,6 +106,21 @@
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+    border-radius: 12px;
+}
+
+.home-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 25px;
+    margin: 50px 230px;
     border-radius: 12px;
 }
 
@@ -127,13 +162,15 @@
 }
 
 body {
-    background-color: gainsboro;
+    background-image: url("../assets/halftone.png");
+    background-repeat: repeat;
     font-family: 'Nunito', sans-serif;
 }
 
 .hidden {
     display: none;
 }
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -146,17 +183,59 @@ li {
     float: left;
 }
 
-li a {
-    display: block; 
-    color: #FFFFFF;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
+.clearfix {display: inline-block;}
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+
 
 .content-wrapper {
     max-width: 950px;
     margin: 0 auto;
+    padding-bottom: 150px;
+    min-height: 700px;
+}
+
+.login-body{
+    background-image: url("../assets/classroom.jpg");
+    background-size: cover;
+    
+    .overlay-container{
+        background: rgba(105, 48, 109, .3);
+    }
+}
+
+.quiz-about-body{
+    background-image: url("../assets/classroom-back-view.jpg");
+    background-size: cover;
+    
+    .overlay-container{
+        background: rgba(105, 48, 109, .3);
+    }
+}
+.home-body {
+    background-image: url("../assets/teacherteaching.jpg");
+    background-size: cover;
+    height: 75%;
+    
+    img {
+        max-width: 100%;
+        position: absolute;
+        z-index: -10;
+    }
+    
+    .overlay-container {
+        background: rgba(105, 48, 109, .5);
+    }    
+    
+    
 }
 
 .course-overview {
@@ -168,26 +247,110 @@ li a {
     margin: 0 auto;
 }
 
-.page_header {
-    background-color: black; /* not working right now */
-}
-
-.navigation-header {
-    margin: 0;
+.navbar {
+    margin-bottom: -20px;
     padding: 0;
+    height: 100px;
     overflow: hidden;
     background-color: #69306D; 
+    
+    .button {
+        margin: 0px;
+    }
+    .title {
+        padding: 16px 16px;
+    }
+    
+    li {
+        
+        height: 100px;
+        
+        a {
+            display: block; 
+            color: #FFFFFF;
+            text-align: center;
+            padding: 25px 16px;
+            text-decoration: none;
+        }
+        
+    }
+    
 }
 
 .floating-box {
     float: left;
     width: 214px;
-    height: 250px;
+    min-height: 260px;
     margin: 10px;
     border: 3px solid #FFFBFF;  
     background-color: #FFFBFF;
     text-align: center;
     border-radius: 12px;
+    
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+}
+
+.floating-profile-box {
+    display: inline-block;
+    color: white;
+    width: 600px;
+    float: right;
+    padding: 30px;
+    min-height: 300px;
+    margin: 30px 0 30px 30px;
+    border: 3px solid #FFFBFF;  
+    background-color: rgba(105, 48, 109, .5);
+    text-align: left;
+    border-radius: 3px;
+    
+    h2 {
+        font-size: 16px;
+        margin: 0px;
+        font-style: italic;
+        color: lightgrey;
+    }
+    
+    h3 {
+        font-size: 20px;
+        margin-top: 0px;
+        
+        a { color: white; }
+    }
+    
+    p {
+        margin-bottom: 20px;
+    }
+}
+
+.darker {
+    background-color: rgba(105, 48, 109, .9) !important;
+    border: none !important;
+}
+    
+
+.list-box {
+    float: center;
+    width: 500px;
+    height: 250px;
+    margin: 10px;
+    border: 3px solid #FFFBFF;  
+    background-color: #FFFBFF;
+    text-align: left;
+    border-radius: 12px;
+    padding: 30px;
+    font-size: 18px;
+    color: black;
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
 }
 
 .course-id-box {
@@ -202,19 +365,172 @@ li a {
 }
 
 .button-box {
+    display: inline-block;
     float: right;
 }
 
-.profile-image-container {
-    float: block;
-    margin: 0 auto;
-    justify-content:center;
-    align-items:center;
+.accountType {
+    color:white;
+    width: 320px;
+    height: 180px;
+    top: 42%;
+    left: 50%;
+    position: absolute;
+    background: rgba(105, 48, 109, .8);
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+.student-registration {
+    color:white;
+    width: 380px;
+    height: 600px;
+    top: 65%;
+    left: 50%;
+    position: absolute;
+    background: rgba(105, 48, 109, .8);
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 30px;
+    
+    input {
+        margin-bottom: 10px !important;
+    }
+}
+
+.teacher-registration {
+    color:white;
+    width: 380px;
+    height: 480px;
+    top: 58%;
+    left: 50%;
+    position: absolute;
+    background: rgba(105, 48, 109, .8);
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+
+.stylish-forms {
+    
+    h1 {
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 22px;
+    }
+    
+    p {
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+    }
+    
+    input {
+        width: 100%;
+        margin-bottom: 20px;
+        border: none;
+        outline: none;
+        height: 40px;
+        color:white;
+    }
+    
+    input[type="text"], input[type="password"] {
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        font-size: 16px;
+    }
+    
+    input[type="submit"] {
+        background: #4CAF50;
+        font-size: 18px;
+        border-radius: 12px;
+    }
+
+    .simple-link {
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 20px;
+        color: darkgrey;
+        }
+    .simple-link:hover {
+        color: #ffc107;
+    }
+    
+    select {
+        background: #ccbbea;
+        margin-bottom: 20px;
+    }
+    
+    textarea {
+        margin-bottom: 20px;  
+        background: #ccbbea;
+        width: 100%;
+    }
+    
+    input[type="file"] {
+        margin-bottom: 0px;
+    }
+}
+
+.sub-header {
+    margin-top: 20px;
+    padding: 30px 0px 0px 0px;
+    height: 75px;
+}
+
+.login {
+    color:white;
+    width: 320px;
+    height: 360px;
+    top: 55%;
+    left: 50%;
+    position: absolute;
+    background: rgba(105, 48, 109, .8);
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0px 9999px #ccbbea;
+}
+
+.sub-header-text {
+    margin-top: -5px;
+    font-size: 30px;
+    display: inline-block;
+    float: left;
+}
+
+.quiz {
     img {
         border-radius: 125px;
         width: 250px;
         height: 250px;
-        margin: 20px 350px 20px 350px;
+        margin: 0 auto;
+        border: 5px solid rgba(105, 48, 109, .5);
+        margin-bottom: 15px;
+    }
+    margin-bottom: 10px;
+    
+    input {
+        text-align: center;
+    }
+}
+
+.profile-image-container {
+    display: inline-block;
+    width: 290px;
+    padding: 30px;
+    img {
+        border-radius: 125px;
+        width: 250px;
+        height: 250px;
+        margin: 20px 20px 20px 20px;
+        border: 5px solid rgba(105, 48, 109, .5);
     }
 }
 
@@ -226,4 +542,3 @@ img {
 li a:hover {
     background-color: #56285A;
 }
-

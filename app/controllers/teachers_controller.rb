@@ -1,10 +1,27 @@
 class TeachersController < ApplicationController
     
     before_action :confirm_logged_in, :except => [:new, :create]
+    before_action :is_teacher, :except => [:show, :new, :create]
     
     
     def show
         @teacher = Teacher.find(params[:id])
+        @courses = Course.where(:teacher => @teacher)
+        if session[:user_type] == "Teacher"
+            if session[:user_id] != @teacher.id
+                flash[:notice] = "Access Denied"
+                redirect_to courses_path
+            end
+            @page_title = "QuizMe - Your Profile"
+            @button_class = "title-bar-button"
+        elsif session[:user_type] == "Student"
+            if @teacher != Student.find(session[:user_id]).course.teacher
+                flash[:notice] = "Access Denied"
+                redirect_to course_path(Student.find(session[:user_id]).course_id)
+            end
+            @page_title = "QuizMe - " + @teacher.username
+            @button_class = "hidden"
+        end
     end
     
     def create
@@ -47,6 +64,7 @@ class TeachersController < ApplicationController
     
     def new
        @teacher = Teacher.new
+       #@teacher.image = File.new("#{Rails.root}/app/assets/images/default_profile.jpg")
     end
     
     def onSignIn(googleUser)

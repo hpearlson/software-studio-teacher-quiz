@@ -1,51 +1,48 @@
 class StudentsController < ApplicationController  
     
     before_action :confirm_logged_in, :except => [:signup, :new, :register]
+    before_action :is_teacher, :except => [:show, :edit, :update, :signup, :register]
 
     def index
         @teacher = Teacher.find(session[:user_id])
         @courses = Course.where(:teacher => @teacher)
-        @students = Student.all.where(course: @courses)
+        @students = Student.all.where(course: @courses).order(:last_name).page(params[:page])
+        Student.apply_spaced_repetition(session[:user_id])
         session.delete(:current_course)
     end
 
     def show
         @student = Student.find(params[:id])
-        if Teacher.find(session[:user_id]) != @student.course.teacher
-  	        flash[:notice] = "Access Denied"
-  	        redirect_to courses_path
+        if session[:user_type] == "Teacher"
+            if Teacher.find(session[:user_id]) != @student.course.teacher
+  	            flash[:notice] = "Access Denied"
+  	            redirect_to courses_path
+  	        end
+  	        @class = nil
+  	        @edit_button = "button"
+  	        @delete_button = "button caution"
+  	    elsif session[:user_type] == "Student"
+  	        @class = "hidden"
+  	        @course = @student.course
+  	        if @student.course != Student.find(session[:user_id]).course
+  	            flash[:notice] = "Access Denied"
+  	            redirect_to course_path(Student.find(session[:user_id]).course_id)
+  	        end
+  	        if Student.find(session[:user_id]) != @student
+  	            @edit_button = "hidden"
+  	            @delete_button = "hidden"
+  	        else
+  	            @edit_button = "button"
+  	            @delete_button = "button caution"
+  	        end
   	    end
-  	    
-        @course = session[:current_course]
-        if @course == nil
-            @students = Student.where(course: Course.where(:teacher => Teacher.find(session[:user_id])))
-        else
-            @students = Student.where(:course => @student.course)
-        end
-        @next = nil
-        @prev = nil
-        @next_class = "visible"
-        @prev_class = "visible"
-        @students.each_index do |i|
-            if @students[i] == @student
-                if i < @students.size
-                   @next = @students[i+1]
-                end
-                if i > 0
-                   @prev = @students[i-1] 
-                end
-            end
-        end
-        if @next == nil
-            @next_class = "hidden"
-        end
-        if @prev == nil
-            @prev_class = "hidden"
-        end
+  	    @button_class = "title-bar-button"
     end
 
     def create
         @student = Student.new(student_params)
+        @student.quiz_score = 0
+        @student.quiz_score_day_updated = Time.now.beginning_of_day.to_i
         if @student.save
             flash[:notice] = "#{@student.first_name} was successfully created."
         else
@@ -86,8 +83,14 @@ class StudentsController < ApplicationController
     end
     
     def edit
-       @student = Student.find params[:id] 
+       @student = Student.find params[:id]
        @courses = Course.all
+       if session[:user_type] == "student"
+           if Student.find(session[:user_id]) != @student
+               flash[:notice] = "Access Denied"
+               redirect_to student_path(@student)
+           end
+       end
     end
     
     def update

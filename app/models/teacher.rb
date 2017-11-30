@@ -30,4 +30,11 @@ class Teacher < ActiveRecord::Base
     
     validates :email_address, :presence => true,
                             :format => EMAIL_REGEX
+                            
+                            
+    def full_name
+        "#{self.first_name} #{self.last_name}"
+    end
+                            
+    
 end

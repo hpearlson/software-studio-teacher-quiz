@@ -1,12 +1,19 @@
-<div class="pagehead innerHeadContainer">
-    <div class="width-restraint">
-        <h1 style="text-align:center;"> Are you a teacher or student? </h1>
+<% @page_title = "Quizme - Account Type" %>
+
+<div class="login-body">
+    <div class="overlay-container">
+        <div class="content-wrapper">
+            <div class="accountType stylish-forms">
+            
+                <h1 style="text-align:center;"> Are you a teacher or student? </h1>
+                <div class="content-wrapper", style="text-align:center;">
+                    <%= link_to "Teacher", new_teacher_path, :class => "button" %>
+                    <%= link_to "Student", '/students/signup', :class => "button" %>
+                </div>
+            
+            </div>
+        </div>
     </div>
 </div>
 
 
-
-<div class="content-wrapper", style="text-align:center;">
-    <%= link_to "Teacher", new_teacher_path, :class => "button" %>
-    <%= link_to "Student", '/students/signup', :class => "button" %>
-</div>

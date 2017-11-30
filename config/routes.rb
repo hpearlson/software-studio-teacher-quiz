@@ -20,12 +20,19 @@ Rails.application.routes.draw do
   resources :students
   
   resources :teachers
+
+  get 'quizzes/about', :to => 'quizzes#about'
   
   resources :quizzes do
     member do
       get :review
       post :check_answer
     end
+    collection do
+      get :take_remedial_quiz
+    end
   end
-
+  
+  
+  
 end

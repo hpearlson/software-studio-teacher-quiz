@@ -1,33 +1,60 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="21476288076-p1804q3mrjbuc85gvmm94ekk1jn0ius1.apps.googleusercontent.com">
 
-<% @page_title = "Register for an account" %>
+<% @page_title = "Register for a teacher account" %>
 
-    
-<div class="pagehead innerHeadContainer">
-    <div class="width-restraint">
-        <h1> Create an account as a teacher </h1>
+
+<div class="login-body">
+    <div class="overlay-container">
+        <div class="content-wrapper">
+            <div class="teacher-registration stylish-forms">
+                
+                <h1> Create an account as a teacher </h1>
+
+
+                <%= form_for @teacher, :html => { :multipart => true } do |f| %>
+                
+                
+                    <p>Username</p>
+                    <%= f.text_field :username %>
+                    
+                    <p>Password</p>
+                    <%= f.password_field :password %>
+                    
+                    <p>Email address</p>
+                    <%= f.text_field :email_address %>
+                    
+                    <%= f.text_field :first_name, :class => "hidden", :value => "Jane" %> 
+                    <%= f.text_field :last_name, :class => "hidden", :value => "Doe" %>
+                    
+                    <p style="color:yellow;">*all fields are mandatory</p>
+                    
+                    <%= f.submit 'Create Teacher', :class => "button" %>
+                    
+                    <br />
+                    
+                    <p>Or, sign in using your Google account: (this functionality not available currently, sorry)</p>
+                    
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    
+                    
+                <% end %>
+
+            
+            </div>
+        </div>
     </div>
-</div>
+    
 
-<div class="content-wrapper">
-    <p style="color:red;">*all fields are mandatory</p>
-    
-    
-    <%= form_for @teacher, :html => { :multipart => true } do |f| %>
-    
-    
-        <%= render(:partial => 'teacher_form', :locals => {:f => f}) %>
-        
-        <%= f.submit 'Create Teacher', :class => "button" %>
-        
-        <br />
-        
-        <p>Or, sign in using your Google account:</p>
-        
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        
-        
-    <% end %>
+<script>
+  function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('First Name: ' + profile.getGivenName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Family Name: ' + profile.getFamilyName());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+</script>
 
 </div>

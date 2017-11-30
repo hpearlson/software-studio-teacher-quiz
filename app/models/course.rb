@@ -4,4 +4,6 @@ class Course < ActiveRecord::Base
     
     validates_presence_of :course_name
     validates_presence_of :teacher_id
+
+    paginates_per 20
 end

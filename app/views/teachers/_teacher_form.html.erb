@@ -1,32 +1,17 @@
-<table summary="Teacher form fields">
-    <tr>
-        <td><%= f.label :username, 'Username' %></th>
-        <td><%= f.text_field :username %></td>
-    </tr>
-    
-    <tr>
-        <td><%= f.label :password, 'Password' %> </th>
-        <td><%= f.password_field :password %> </td>
-    </tr>
+<p>Username</p>
+<%= f.text_field :username %>
 
-    <tr>
-        <td><%= f.label :email_address, 'Email address' %> </th>
-        <td><%= f.text_field :email_address %> </td>
-    </tr>
-    
-    <tr>
-        <td><%= f.label :first_name, 'First Name' %> </th>
-        <td><%= f.text_field :first_name %> </td>
-    </tr>
-    
-    <tr>
-        <td><%= f.label :last_name, 'Last Name' %> </th>
-        <td><%= f.text_field :last_name %> </td>
-    </tr>
-    
-    <tr>
-        <td><%= f.label :image, 'Upload Photo' %> </th>
-        <td><%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg' %> </td>
-    </tr>
-    
-</table>
+<p>Password</p>
+<%= f.password_field :password %>
+
+<p>Email address</p>
+<%= f.text_field :email_address %>
+
+<p>First name</p>
+<%= f.text_field :first_name %> 
+
+<p>Last name</p>
+<%= f.text_field :last_name %>
+
+<p>Upload photo</p>
+<%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg' %>

@@ -1,65 +1,45 @@
-<div class="pagehead innerHeadContainer">
-    <div class="width-restraint">
-        <h1> Create an account as a student </h1>
+<% @page_title = "Register for a student account" %>
+
+<div class="login-body">
+    <div class="overlay-container">
+        <div class="content-wrapper">
+            <div class="student-registration stylish-forms">
+                
+                <h1> Create an account as a student </h1>
+                
+                <%= form_for @student, :url => {:action => "register"}, :html => { :multipart => true } do |f| %>
+                <p>Username</p>
+                <%= f.text_field :username %>
+                
+                <p>Password</p>
+                <%= f.password_field :password %>
+                
+                <p>First name</p>
+                <%= f.text_field :first_name %>
+                
+                <p>Last name</p>
+                <%= f.text_field :last_name %>
+                
+                <p>Course ID (your teacher gives you this)</p>
+                <%= f.text_field :generatedID %>
+                
+                <%= f.text_field :email_address, :class => "hidden", :value => "yyy@yyy.com" %>
+                <%= f.text_area :description, :class => "hidden", :value => "This is a generic description. Update it by clicking Edit Profile." %>
+                
+                <p>Upload photo</p>
+                <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg' %> 
+                
+                <p style="color:yellow;">*all fields are mandatory</p>
+        
+                <%= f.submit 'Register Student', :class => "button" %>
+                
+            <br />
+                
+                
+            <% end %>
+
+                
+            </div>
+        </div>
     </div>
-</div>
-
-<div class="content-wrapper">
-    <p style="color:red;">*all fields are mandatory</p>
-    
-    <%= form_for @student, :url => {:action => "register"}, :html => { :multipart => true } do |f| %>
-    
-    
-    <table summary="Student form fields">
-        <tr>
-            <td><%= f.label :username, 'Username' %></th>
-            <td><%= f.text_field :username %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :password, 'Password' %> </th>
-            <td><%= f.password_field :password %> </td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :first_name, 'First Name' %> </td>
-            <td><%= f.text_field :first_name %> </td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :last_name, 'Last Name' %> </th>
-            <td><%= f.text_field :last_name %> </td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :email_address, 'Email address' %> </th>
-            <td><%= f.text_field :email_address %> </td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :generatedID, 'Course ID (your teacher gives you this)' %> </th>
-            <td> <%= f.text_area :generatedID %> </td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :description, 'Description' %> </th>
-            <td><%= f.text_area :description %> </td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :image, 'Upload Photo' %> </th>
-            <td><%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg' %> </td>
-        </tr>
-    
-        
-        </table>
-        
-
-    <%= f.submit 'Register Student', :class => "button" %>
-        
-    <br />
-        
-        
-    <% end %>
-
 </div>

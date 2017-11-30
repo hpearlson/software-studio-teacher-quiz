@@ -1,19 +1,39 @@
 class CoursesController < ApplicationController
 
     before_action :confirm_logged_in
+    before_action :is_teacher, :except => [:show]
     
     def index
         @teacher = Teacher.find(session[:user_id])
-        @courses = Course.where(:teacher => @teacher)
+        @courses = Course.where(:teacher => @teacher).page(params[:page])
+        Student.apply_spaced_repetition(session[:user_id])
     end
     
 	def show
   	    @course = Course.find(params[:id]) 
-  	    #if Teacher.find(session[:user_id]) != @course.teacher
-  	     #   flash[:notice] = "Access Denied"
-  	      #  redirect_to courses_path
-  	    #end
-  	    @students = Student.where(:course => @course)
+  	    @page_title = "Quizme - " + @course.course_name
+  	    if session[:user_type] == "Teacher"
+  	        if Teacher.find(session[:user_id]) != @course.teacher
+  	            flash[:notice] = "Access Denied"
+  	            redirect_to courses_path
+  	        end
+  	        @button_class = "title-bar-button"
+  	        @quiz_button = "quiz-button"
+  	        @course_id_box = "course-id-box"
+  	    elsif session[:user_type] == "Student"
+  	        if Student.find(session[:user_id]).course != @course
+  	            flash[:notice] = "Access Denied"
+  	            redirect_to students_path
+  	        end
+  	        @button_class = "hidden"
+  	        @quiz_button = "hidden"
+  	        @course_id_box = "hidden"
+  	        
+  	    else
+  	        flash[:notice] = "Access Denied"
+  	        redirect_to "/"
+  	    end
+  	    @students = Student.where(:course => @course).page(params[:page])
   	    session[:current_course] = @course.id
 	end
     
@@ -25,9 +45,9 @@ class CoursesController < ApplicationController
     def create
         params[:course][:teacher_id] = session[:user_id] 
         @course = Course.new(course_params)
-        @course.generatedID = 16.times.map{rand(10)}.join
-        #@teacher = Teacher.find(session[:user_id])
-        #@course.teacher = @teacher
+        @course.generatedID = Time.now.to_i.to_s
+        @teacher = Teacher.find(session[:user_id])
+        @course.teacher = @teacher
         if @course.save
             flash[:notice] = "#{@course.course_name} was successfully created."
         else

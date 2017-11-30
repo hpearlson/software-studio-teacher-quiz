@@ -1,24 +1,28 @@
 <% @page_title = "Quizme - Login" %>
-<div class="pagehead">
-    
-</div>
-<div class="content-wrapper">
-    <div class="login">
-        <%= form_tag(access_attempt_login_path, :method => :post) do %>
-        <table>
-            <tr>
-                <td><%= label_tag(:username) %></td>
-                <td><%= text_field_tag(:username, params[:username]) %></td>
-            </tr>
-            <tr>
-                <td><%= label_tag(:password) %></td>
-                <td><%= password_field_tag(:password) %></td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td><%= submit_tag "Log In" , :class => "button" %></td>
-            </tr>
-        </table>
-        <% end %>
+
+<div class="login-body">
+    <div class="overlay-container">
+        <div class="content-wrapper">
+            <div class="login stylish-forms">
+                
+                <h1>Login here</h1>
+                
+                <%= form_tag(access_attempt_login_path, :method => :post) do %>
+                
+                <p>Username</p>
+                <%= text_field_tag(:username, params[:username]) %>
+                
+                <p>Password</p>
+                <%= password_field_tag(:password) %>
+                
+                <%= submit_tag "Log In" %>
+                
+                <a class="simple-link" href="#">Lost your password? (dead link)</a>
+                <br>
+                <a class="simple-link" href='/access/accountType'>Don't have an account?</a>
+                <% end %>
+                
+            </div>
+        </div>
     </div>
 </div>

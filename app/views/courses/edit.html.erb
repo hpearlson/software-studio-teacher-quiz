@@ -1,16 +1,9 @@
-<% @page_title = "Quizme - Course edit" %>
+<% @page_title = "Quizme - Edit Course" %>
 
-<div class="pagehead innerHeadContainer">
-    <div class="width-restraint">
-        <h1>Edit Course</h1>    
-    </div>
-
-</div>
-
-
-
-<div class="content-wrapper">
+<div class="content-wrapper stylish-forms" style="min-height: 800px">
     
+    <div class="floating-profile-box" style="margin: 60px 175px 60px 175px">
+        <h1>Edit course</h1>
     <%= form_for @course do |f| %>
 
         <%= render(:partial => "course_form", :locals => {:f => f}) %>
@@ -19,6 +12,6 @@
         <%= submit_tag value='Save Changes', :class => "button" %>
     
     <% end %>
-
-
+    </div>
+    
 </div>

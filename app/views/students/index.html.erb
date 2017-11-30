@@ -1,48 +1,34 @@
 <% @page_title = "QuizMe - Your Students" %>
 
 <div class="pagehead innerHeadContainer">
-    <div class="width-restraint">
-        <h1>All students
+    <div class="sub-header">
+        <div class="width-restraint">
+            <span class="sub-header-text">All students</span>
             <span class="button-box"><%= link_to 'Add Student', new_student_path, :class => "title-bar-button"  %></span>
-            <span class="button-box"><%= link_to 'Quiz Me', new_quiz_path, :class => "title-bar-button" %></span>
-            </h1>
-            
+            <span class="button-box"><%= link_to "Quiz Unfamiliar Students", {:controller => "quizzes", :action => "take_remedial_quiz"}, :class => "title-bar-button", :style => "background-color: tomato" %></span>
+            <span class="button-box"><%= link_to 'Quiz All', new_quiz_path, :class => "title-bar-button" %></span>
+        </div>
     </div>
 </div>
 
-
-<div class="content-wrapper">
+<div class="content-wrapper clearfix">
+    <%= paginate @students %>
+    <br>
+    
     <% @students.each do |student| %>
                 <div class="floating-box">
-                    <h3><%= image_tag student.image.url(:thumb) %></h3>
-                    <h3><%= student.first_name %></h3>
-                    <h3><%= student.last_name %></h3>
+                    <h3 class="box-image"><%= image_tag student.image.url(:thumb) %></h3>
+                    <h3><%= student.full_name %></h3>
+                    
+                    <% if student.quiz_score > 0 %>
+                        <h3 style="color:green"><%= "+" + student.quiz_score.to_s %></h3>
+                    <% elsif student.quiz_score < 0 %>
+                        <h3 style="color:red"><%= student.quiz_score %></h3>
+                    <% else %>
+                        <h3><%= student.quiz_score %></h3>
+                    <% end %>
+                    
                     <p><%= link_to "More information", student_path(student) %></p>
                 </div>
     <% end %>
-    
-    
-    <% if false %>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @students.each do |student| %>
-                <tr>
-                    <td><%= image_tag student.image.url(:thumb) %></td>
-                    <td><%= student.first_name %></td>
-                    <td><%= student.last_name %></td>
-                    <td><%= link_to "More information", student_path(student) %>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-    <% end %>
-    
 </div>
