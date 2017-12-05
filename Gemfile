@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'kaminari'
 
+gem 'rdoc'
+
 gem 'actionview', '4.2.7.1'
 
 # Use jquery as the JavaScript library

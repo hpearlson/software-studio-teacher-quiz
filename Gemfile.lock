@@ -279,6 +279,7 @@ DEPENDENCIES
   paperclip-cloudinary
   pg (~> 0.20.0)
   rails (= 4.2.7.1)
+  rdoc
   sass
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
@@ -288,4 +289,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.4
+   1.16.0.pre.3
