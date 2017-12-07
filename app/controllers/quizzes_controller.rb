@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
-    before_action :confirm_logged_in
-    before_action :is_teacher
+    before_action :confirm_logged_in, :except => [:aboutQuizme]
+    before_action :is_teacher, :except => [:aboutQuizme]
     
     def show
         @course = session[:current_course]
@@ -86,5 +86,8 @@ class QuizzesController < ApplicationController
     end
     
     def about
+    end
+    
+    def aboutQuizme
     end
 end

@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   
   resources :teachers
 
-  get 'quizzes/about', :to => 'quizzes#about'
+  get 'quizzes/aboutquizzes', :to => 'quizzes#about'
+  
+  get 'quizzes/about', :to => 'quizzes#aboutQuizme'
   
   resources :quizzes do
     member do
