@@ -12,10 +12,17 @@
 <div class="content-wrapper">
     
     <div class="profile-image-container">
-        <%= image_tag @teacher.image.url(:medium) %>
+        
+        <% if @teacher.image_file_name.nil?  %>
+            <img src="/assets/default_profile.jpg">
+        <% else %>
+            <%= image_tag @teacher.image.url(:medium) %>
+        <% end %>
+
     
     </div>
-    
+
+
     <div class="floating-profile-box">
         
         <div style="margin-bottom: 20px;">
