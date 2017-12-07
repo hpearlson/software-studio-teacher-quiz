@@ -65,14 +65,14 @@ class QuizzesController < ApplicationController
         @name = @check2[1]
         @student = Student.find(params[:student_id])
         if @student.full_name == @name
-            flash[:correct] = "Correct!"
+            flash[:correctAnswer] = "Correct!"
             @student.update_attribute(:is_correct, true)
             @student.update_attribute(:quiz_score, @student.quiz_score + 1)
             @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
-            redirect_to quiz_path(@teacher.id)
+            redirect_to review_quiz_path(@student.id)
             
         else
-            flash[:incorrect] = "Incorrect!"
+            flash[:incorrectAnswer] = "Incorrect!"
             @student.update_attribute(:quiz_score, @student.quiz_score - 1)
             @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
             redirect_to review_quiz_path(@student.id)

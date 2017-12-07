@@ -15,12 +15,8 @@
   <%= csrf_meta_tags %>
 
 
-  <% if !flash.empty? %>
-    <% if flash[:incorrect] %>
-      <ul id="incorrect_background" class="navbar navbar-static-top">
-    <% else %>
+  <% if !flash[:notice].nil? %>
       <ul id="temporary_background" class="navbar navbar-static-top">
-    <% end %>
   <% else %>
     <ul class="navbar navbar-static-top">
   <% end %>
@@ -32,7 +28,9 @@
         <li><%= link_to "Students", students_path %></li>
         <% if !flash.empty? %>
           <% flash.each do |key, value| %>
-            <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+            <% if !(key == "incorrectAnswer" || key == "correctAnswer") %>
+              <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
+            <% end %>
           <% end %>
         <% end %>
         
