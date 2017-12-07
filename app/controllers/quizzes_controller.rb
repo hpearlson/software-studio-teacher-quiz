@@ -96,6 +96,7 @@ class QuizzesController < ApplicationController
     
     def roundEnd
         @teacher = Teacher.find(session[:user_id])
+        @course = session[:current_course]
         
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
