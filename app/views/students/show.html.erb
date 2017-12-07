@@ -31,7 +31,7 @@
             <h3><%= @student.username %></h3>
         </div>
         
-        <% if :is_teacher %>
+        <% if session[:user_type] == 'Teacher' %>
             <div style="margin-bottom: 20px;">
                 <h2>How well you know me:</h2>
                 <% if @student.quiz_score > 0 %>
