@@ -13,7 +13,6 @@
             
             <% @incorrectStudentsThisRound.each do | incorrectStudent | %>
                     <h1><%= incorrectStudent.full_name %></h1>
-                    <h1><%= incorrectStudent.description %></h1>
             <% end %>
 
             <h1 style="text-align:center;"><%= link_to "Next", quiz_path(@teacher.id), :class => "button", :id => "next" %></h1>
