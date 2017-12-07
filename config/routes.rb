@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   
   get 'quizzes/about', :to => 'quizzes#aboutQuizme'
   
+  get 'quizzes/endofround', :to => 'quizzes#roundEnd'
+  
   resources :quizzes do
     member do
       get :review

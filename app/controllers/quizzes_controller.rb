@@ -8,12 +8,18 @@ class QuizzesController < ApplicationController
 
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
-            @student = Student.where(course: @all_courses).where('is_correct = ?', false).shuffle.first
+            @student = Student.where(course: @all_courses).where('is_correct = ?', false).where(:roundNumber => 1).shuffle.first
+            @quizComplete = !Student.where(course: @all_courses).where('is_correct = ?', false).exists?
         else
-            @student = Student.where(:course => session[:current_course]).where('is_correct = ?', false).shuffle.first
+            @student = Student.where(:course => session[:current_course]).where('is_correct = ?', false).where(:roundNumber => 1).shuffle.first
+            @quizComplete = !Student.where(:course => session[:current_course]).where('is_correct = ?', false).exists?
         end
         
-        if @student == nil
+        if @student == nil && @quizComplete == false
+            redirect_to quizzes_endofround_path
+        end
+        
+        if @quizComplete == true
             flash[:notice] = "Quiz complete!"
             if @course == nil
                 redirect_to students_path
@@ -21,6 +27,7 @@ class QuizzesController < ApplicationController
                 redirect_to course_path(@course)
             end
         end
+        
         
     end
     
@@ -38,6 +45,7 @@ class QuizzesController < ApplicationController
         
         @students.each do |student|
             student.update_attribute(:is_correct, false)
+            student.update_attribute(:roundNumber, 1)
         end
         
         if session[:quiz_type] == "behind"
@@ -64,6 +72,7 @@ class QuizzesController < ApplicationController
         @check2 = @check[1].split('"')
         @name = @check2[1]
         @student = Student.find(params[:student_id])
+        @student.update_attribute(:roundNumber, 0)
         if @student.full_name == @name
             flash[:correctAnswer] = "Correct!"
             @student.update_attribute(:is_correct, true)
@@ -85,9 +94,29 @@ class QuizzesController < ApplicationController
         @teacher = Teacher.find(session[:user_id])
     end
     
+    def roundEnd
+        @teacher = Teacher.find(session[:user_id])
+        
+        if @course == nil
+            @all_courses = Course.where(:teacher => @teacher)
+            @students = Student.where(course: @all_courses)
+            @incorrectStudentsThisRound = Student.where(course: @all_courses).where('is_correct = ?', false)
+        else
+            @students = Student.where(:course => session[:current_course])
+            @incorrectStudentsThisRound = Student.where(:course => session[:current_course]).where('is_correct = ?', false)
+        end
+
+        
+        @students.each do |student|
+            student.update_attribute(:roundNumber, 1)
+        end
+        
+    end
+    
     def about
     end
     
     def aboutQuizme
     end
+    
 end
