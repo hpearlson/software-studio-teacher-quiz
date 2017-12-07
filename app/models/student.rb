@@ -7,6 +7,8 @@ class Student < ActiveRecord::Base
     
     ALPHA = /\A[A-Za-z]+\Z/
     ALPHANUMERIC = /\A[a-zA-Z0-9]+\Z/i
+    SENTENCES = /\A[a-zA-Z0-9.,?!\s]+\Z/i
+    EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
     
     validates :first_name, :presence => true,
                             :length => { :within => 3..25 },
@@ -17,14 +19,19 @@ class Student < ActiveRecord::Base
                             :format => ALPHA
     
     validates :username, :length => { :maximum => 25 },
-                            :format => { :with => ALPHANUMERIC, :allow_blank => true }
+                            :format => { :with => ALPHANUMERIC, :allow_nil => true },
+                            :uniqueness => { :allow_nil => true } 
     
     validates :password, :length => { :maximum => 25 },
-                            :format => { :with => ALPHANUMERIC, :allow_blank => true },
+                            :format => { :with => ALPHANUMERIC, :allow_nil => true },
                             :confirmation => true
     
-    #validates_presence_of :course
-    #validates_associated :course
+    validates :description, :length => { :maximum => 225 },
+                                :format => { :with => SENTENCES, :allow_nil => true, :allow_blank => true }
+    
+    validates :email_address, :format => { :with => EMAIL_REGEX, :allow_nil => true }
+    
+    
     validates_presence_of :image
     
     def full_name
