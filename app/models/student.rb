@@ -16,6 +16,13 @@ class Student < ActiveRecord::Base
                             :length => { :within => 3..25 },
                             :format => ALPHA
     
+    validates :username, :length => { :maximum => 25 },
+                            :format => { :with => ALPHANUMERIC, :allow_blank => true }
+    
+    validates :password, :length => { :maximum => 25 },
+                            :format => { :with => ALPHANUMERIC, :allow_blank => true },
+                            :confirmation => true
+    
     #validates_presence_of :course
     #validates_associated :course
     validates_presence_of :image
