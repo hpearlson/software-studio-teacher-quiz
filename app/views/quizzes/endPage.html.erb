@@ -11,9 +11,8 @@
         <div style="display:block;">
             <div class="quiz">
             
-            
             <% for i in 1..session[:round_number] %>
-                <h1>Round <%= i %> --- <%= link_to "Replay from here", '#' %></h1> 
+                <h1>Round <%= i %> --- <%= link_to "Replay from here (doesn't work)", restart_path %></h1>
                     <% @students.each do |student| %>
                         <% if student.roundNumber == i %>
                             <h3 style="color:green;"><%= student.full_name %></h3>

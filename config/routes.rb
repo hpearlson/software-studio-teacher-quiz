@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   
   #get 'quizzes/overrideIncorrect', :to => 'quizzes#overrideIncorrect'
   
+  get '/quizzes/take_subset_quiz/', to: 'quizzes#take_subset_quiz', as: :restart
+  
   resources :quizzes do
     member do
       get :review
@@ -39,7 +41,7 @@ Rails.application.routes.draw do
     collection do
       get :take_remedial_quiz
       get :overrideIncorrect
-      get :take_subset_quiz
+      #get :take_subset_quiz, param: :settingRound
     end
   end
   
