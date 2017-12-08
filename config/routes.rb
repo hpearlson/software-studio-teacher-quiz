@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   
   get 'quizzes/endofround', :to => 'quizzes#roundEnd'
   
+  get 'quizzes/endofquiz', :to => 'quizzes#endPage'
+  
   #get 'quizzes/overrideIncorrect', :to => 'quizzes#overrideIncorrect'
   
   resources :quizzes do
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
     collection do
       get :take_remedial_quiz
       get :overrideIncorrect
+      get :take_subset_quiz
     end
   end
   

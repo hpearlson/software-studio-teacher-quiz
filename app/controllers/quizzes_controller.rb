@@ -5,8 +5,6 @@ class QuizzesController < ApplicationController
     def show
         @course = session[:current_course]
         @teacher = Teacher.find(params[:id])
-        
-        #flash[:notice] = session[:round_number]
 
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
@@ -24,14 +22,8 @@ class QuizzesController < ApplicationController
         
         if @quizComplete == true
             flash[:notice] = "Quiz complete!"
-            if @course == nil
-                redirect_to students_path
-            else
-                redirect_to course_path(@course)
-            end
+            redirect_to quizzes_endofquiz_path
         end
-        
-        
     end
     
     def new
@@ -72,6 +64,13 @@ class QuizzesController < ApplicationController
         session[:quiz_type] = "behind"
         redirect_to new_quiz_path
     end
+    
+    def take_subset_quiz(settingRound)
+        flash[:notice] = settingRound
+        
+        redirect_to new_quiz_path
+    end
+    
 
 
     def check_answer
@@ -115,7 +114,18 @@ class QuizzesController < ApplicationController
         else
             @students = Student.where(:course => session[:current_course])
         end
-
+    end
+    
+    def endPage
+        @teacher = Teacher.find(session[:user_id])
+        @course = session[:current_course]
+        
+        if @course == nil
+            @all_courses = Course.where(:teacher => @teacher)
+            @students = Student.where(course: @all_courses)
+        else
+            @students = Student.where(:course => session[:current_course])
+        end
     end
     
     def about
