@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   
   get 'quizzes/endofround', :to => 'quizzes#roundEnd'
   
+  #get 'quizzes/overrideIncorrect', :to => 'quizzes#overrideIncorrect'
+  
   resources :quizzes do
     member do
       get :review
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
     end
     collection do
       get :take_remedial_quiz
+      get :overrideIncorrect
     end
   end
   

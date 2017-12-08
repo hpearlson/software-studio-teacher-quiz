@@ -92,6 +92,7 @@ class QuizzesController < ApplicationController
     def review
         @student = Student.find(params[:id])
         @teacher = Teacher.find(session[:user_id])
+        session[:current_student] = @student.id
     end
     
     def roundEnd
@@ -119,5 +120,19 @@ class QuizzesController < ApplicationController
     
     def aboutQuizme
     end
+
+    def overrideIncorrect
+        @student = Student.find(session[:current_student])
+        @teacher = Teacher.find(session[:user_id])
+        
+        @student.update_attribute(:is_correct, true)
+        @student.update_attribute(:quiz_score, @student.quiz_score + 2) # +2 to make up for the erroneous -1 earlier
+        @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
+        session[:current_student] = nil
+        
+        redirect_to quiz_path(@teacher.id)
+    end
+    
+    
     
 end

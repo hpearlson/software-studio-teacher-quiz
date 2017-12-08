@@ -27,6 +27,11 @@
                 <%= div_for(@student) do %>
                     <h1><%= @student.first_name %> <%= @student.last_name %></h1>
                     <h1><%= @student.description %></h1>
+                    
+                    <% if flash[:incorrectAnswer] %>
+                         <span class="button-box"><%= link_to "Override: I was right", {:controller => "quizzes", :action => "overrideIncorrect"} , :class => @quiz_button, :style => "background-color: lightblue" %></span>
+      
+                    <% end %>
             
                     
                 
