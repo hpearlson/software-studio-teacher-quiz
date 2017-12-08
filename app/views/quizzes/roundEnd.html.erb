@@ -5,17 +5,28 @@
     <div class="floating-profile-box" style="margin: 60px 175px 60px 175px">
         
         <div style="display:block; height: 60px;">
-            <h1>Here are the students you got wrong this round:</h1>
+            <h1>Results:</h1>
         </div>
         
         <div style="display:block;">
             <div class="quiz">
             
-            <% @incorrectStudentsThisRound.each do | incorrectStudent | %>
-                    <h1><%= incorrectStudent.full_name %></h1>
+            
+            <% for i in 1..(session[:round_number]-1) %>
+                <h1>Round <%= i %></h1>
+                    <% @students.each do |student| %>
+                        <% if student.roundNumber == i %>
+                            <h3 style="color:green;"><%= student.full_name %></h3>
+                        <% elsif student.roundNumber > i %>
+                            <h3 style="color:red;"><%= student.full_name %></h3>
+                        <% end %>
+                            
+                    <% end %>
+
+                
             <% end %>
 
-            <h1 style="text-align:center;"><%= link_to "Next", quiz_path(@teacher.id), :onClick => "session[:round_number] += 1", :class => "button", :id => "next" %></h1>
+            <h1 style="text-align:center;"><%= link_to "Next", quiz_path(@teacher.id), :class => "button", :id => "next" %></h1>
 
             </div>
         </div>

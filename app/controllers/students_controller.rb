@@ -116,9 +116,5 @@ class StudentsController < ApplicationController
           redirect_to(access_login_path)
         end
     end
-    
-    def overrideIncorrect(usr_id)
-        @student = Student.find(usr_id)
-        @student.update_attribute(:is_correct, true)
-    end
+
 end

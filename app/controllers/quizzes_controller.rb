@@ -5,6 +5,8 @@ class QuizzesController < ApplicationController
     def show
         @course = session[:current_course]
         @teacher = Teacher.find(params[:id])
+        
+        #flash[:notice] = session[:round_number]
 
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
@@ -16,6 +18,7 @@ class QuizzesController < ApplicationController
         end
         
         if @student == nil && @quizComplete == false
+            session[:round_number] += 1
             redirect_to quizzes_endofround_path
         end
         
@@ -37,11 +40,14 @@ class QuizzesController < ApplicationController
         @course = session[:current_course]
         
         session[:round_number] = 1
+        
+        @all_courses = Course.where(:teacher => @teacher)
+        @students = Student.where(course: @all_courses)
+        @students.each do |student| #this is to differentiate students that are not in the quiz, therefore round 0
+            student.update_attribute(:roundNumber, 0)
+        end
 
-        if @course == nil
-            @all_courses = Course.where(:teacher => @teacher)
-            @students = Student.where(course: @all_courses)
-        else
+        if !(@course == nil)
             @students = Student.where(:course => session[:current_course])
         end
         
@@ -85,8 +91,7 @@ class QuizzesController < ApplicationController
             flash[:incorrectAnswer] = "Incorrect!"
             @student.update_attribute(:quiz_score, @student.quiz_score - 1)
             @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
-            @nextRound = session[:round_number] + 1
-            @student.update_attribute(:roundNumber, @nextRound)
+            @student.update_attribute(:roundNumber, session[:round_number] + 1)
             
             
             redirect_to review_quiz_path(@student.id)
@@ -107,17 +112,10 @@ class QuizzesController < ApplicationController
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
             @students = Student.where(course: @all_courses)
-            @incorrectStudentsThisRound = Student.where(course: @all_courses).where('is_correct = ?', false)
         else
             @students = Student.where(:course => session[:current_course])
-            @incorrectStudentsThisRound = Student.where(:course => session[:current_course]).where('is_correct = ?', false)
         end
 
-        
-        @students.each do |student|
-            student.update_attribute(:roundNumber, 1)
-        end
-        
     end
     
     def about
@@ -131,6 +129,7 @@ class QuizzesController < ApplicationController
         @teacher = Teacher.find(session[:user_id])
         
         @student.update_attribute(:is_correct, true)
+        @student.update_attribute(:roundNumber, @student.roundNumber - 1 )
         @student.update_attribute(:quiz_score, @student.quiz_score + 2) # +2 to make up for the erroneous -1 earlier
         @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
         session[:current_student] = nil
