@@ -8,10 +8,10 @@ class QuizzesController < ApplicationController
 
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
-            @student = Student.where(course: @all_courses).where('is_correct = ?', false).where(:roundNumber => 1).shuffle.first
+            @student = Student.where(course: @all_courses).where('is_correct = ?', false).where(:roundNumber => session[:round_number]).shuffle.first
             @quizComplete = !Student.where(course: @all_courses).where('is_correct = ?', false).exists?
         else
-            @student = Student.where(:course => session[:current_course]).where('is_correct = ?', false).where(:roundNumber => 1).shuffle.first
+            @student = Student.where(:course => session[:current_course]).where('is_correct = ?', false).where(:roundNumber => session[:round_number]).shuffle.first
             @quizComplete = !Student.where(:course => session[:current_course]).where('is_correct = ?', false).exists?
         end
         
@@ -35,6 +35,8 @@ class QuizzesController < ApplicationController
         @teacher = Teacher.find(session[:user_id])
         
         @course = session[:current_course]
+        
+        session[:round_number] = 1
 
         if @course == nil
             @all_courses = Course.where(:teacher => @teacher)
@@ -72,7 +74,6 @@ class QuizzesController < ApplicationController
         @check2 = @check[1].split('"')
         @name = @check2[1]
         @student = Student.find(params[:student_id])
-        @student.update_attribute(:roundNumber, 0)
         if @student.full_name == @name
             flash[:correctAnswer] = "Correct!"
             @student.update_attribute(:is_correct, true)
@@ -84,6 +85,10 @@ class QuizzesController < ApplicationController
             flash[:incorrectAnswer] = "Incorrect!"
             @student.update_attribute(:quiz_score, @student.quiz_score - 1)
             @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
+            @nextRound = session[:round_number] + 1
+            @student.update_attribute(:roundNumber, @nextRound)
+            
+            
             redirect_to review_quiz_path(@student.id)
         end
         
