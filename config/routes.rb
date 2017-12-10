@@ -31,12 +31,13 @@ Rails.application.routes.draw do
   
   #get 'quizzes/overrideIncorrect', :to => 'quizzes#overrideIncorrect'
   
-  get '/quizzes/take_subset_quiz/', to: 'quizzes#take_subset_quiz', as: :restart
+  #get '/quizzes/take_subset_quiz/', to: 'quizzes#take_subset_quiz', as: :restart
   
   resources :quizzes do
     member do
       get :review
       post :check_answer
+      get :take_subset_quiz, :as => :restart
     end
     collection do
       get :take_remedial_quiz

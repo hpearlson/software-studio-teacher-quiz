@@ -65,8 +65,9 @@ class QuizzesController < ApplicationController
         redirect_to new_quiz_path
     end
     
-    def take_subset_quiz(settingRound)
-        flash[:notice] = settingRound
+    def take_subset_quiz
+        @settingRound = params[:id]
+        flash[:notice] = @settingRound
         
         redirect_to new_quiz_path
     end
