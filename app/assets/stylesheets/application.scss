@@ -51,12 +51,15 @@
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 .alert {
     text-align: center;
 }
 
 =======
 >>>>>>> 7d8362ee55c5db0bb5f10d0af966f52221986c4e
+>>>>>>> master
 >>>>>>> master
 #notice { /* something need to change here in order to make the notices align correctly */
     /* also while the notice is visible, you can't click on buttons (due to width 100%). need to find a workaround for that */
@@ -83,7 +86,6 @@
     animation-duration: 3s;
     background-color: #e36397;
     animation-fill-mode: forwards; 
-    background-size: 100%;
 }
 
 #incorrect_background {
@@ -91,7 +93,6 @@
     animation-duration: 3s;
     background-color: #e36397;
     animation-fill-mode: forwards; 
-    background-size: 100%;
 }
 
 .page-footer {
@@ -101,11 +102,17 @@
     position: block;
 =======
 >>>>>>> master
+<<<<<<< HEAD
+    position: block;
+=======
+>>>>>>> master
     right: 0;
     bottom: 0;
     left: 0;
     height: 40px;
     padding: 1rem;
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 }
@@ -118,6 +125,7 @@
     width: 100%;
     background-color: red;
     color: white;
+>>>>>>> master
 >>>>>>> master
     text-align: center;
 }
@@ -231,7 +239,11 @@ li {
 <<<<<<< HEAD
     min-height: 700px;
 =======
+<<<<<<< HEAD
+    min-height: 700px;
+=======
     min-height: 900px;
+>>>>>>> master
 >>>>>>> master
 }
 
@@ -421,8 +433,13 @@ li {
     height: 600px;
     top: 65%;
 =======
+<<<<<<< HEAD
+    height: 600px;
+    top: 65%;
+=======
     height: 700px;
     top: 500px;
+>>>>>>> master
 >>>>>>> master
     left: 50%;
     position: absolute;
@@ -439,6 +456,9 @@ li {
 .teacher-registration {
     color:white;
     width: 380px;
+<<<<<<< HEAD
+    height: 480px;
+=======
 <<<<<<< HEAD
     height: 480px;
 =======
@@ -461,6 +481,7 @@ li {
 =========
 
 >>>>>>>>> local version
+>>>>>>> master
 >>>>>>> master
     top: 58%;
     left: 50%;
