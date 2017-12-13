@@ -18,13 +18,22 @@
             <p>Course ID</p>
         <% end %>
         <div>
+<<<<<<< HEAD
+            <span class="button-box"><%= link_to "Quiz Only Unfamiliar Students", {:controller => "quizzes", :action => "take_remedial_quiz"}, :class => @quiz_button, :style => "background-color: tomato" %></span>
+=======
             <span class="button-box"><%= link_to "Quiz Only Unfamiliar Students", {:controller => "quizzes", :action => "take_remedial_quiz"}, :class => @quiz_button %></span>
+>>>>>>> master
         </div>
         <div>
             <span class="button-box"><%= link_to 'Take Quiz', new_quiz_path, :class => @quiz_button %></span>
         </div>
+<<<<<<< HEAD
+        <span class="button-box"><%= link_to 'Add Student', new_student_path, :class => @quiz_button, :style => "background: #ccbbea"  %></span>
+        <span class="button-box"><%= link_to 'About our quizzes', quizzes_about_path, :class => @quiz_button, :style => "background: lightblue"  %></span>
+=======
         <span class="button-box"><%= link_to 'Add Student', new_student_path, :class => @quiz_button %></span>
         <span class="button-box"><%= link_to 'About our quizzes', quizzes_aboutquizzes_path, :class => @quiz_button  %></span>
+>>>>>>> master
 
 
     </div>

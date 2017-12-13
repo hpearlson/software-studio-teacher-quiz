@@ -279,7 +279,10 @@ DEPENDENCIES
   paperclip-cloudinary
   pg (~> 0.20.0)
   rails (= 4.2.7.1)
+<<<<<<< HEAD
+=======
   rdoc
+>>>>>>> master
   sass
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

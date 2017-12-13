@@ -1,6 +1,11 @@
 class QuizzesController < ApplicationController
+<<<<<<< HEAD
+    before_action :confirm_logged_in
+    before_action :is_teacher
+=======
     before_action :confirm_logged_in, :except => [:aboutQuizme]
     before_action :is_teacher, :except => [:aboutQuizme]
+>>>>>>> master
     
     def show
         @course = session[:current_course]
@@ -15,9 +20,19 @@ class QuizzesController < ApplicationController
             @quizComplete = !Student.where(:course => session[:current_course]).where('is_correct = ?', false).exists?
         end
         
+<<<<<<< HEAD
+        if @student == nil
+            flash[:notice] = "Quiz complete!"
+            if @course == nil
+                redirect_to students_path
+            else
+                redirect_to course_path(@course)
+            end
+=======
         if @student == nil && @quizComplete == false
             session[:round_number] += 1
             redirect_to quizzes_endofround_path
+>>>>>>> master
         end
         
         if @quizComplete == true
@@ -30,6 +45,13 @@ class QuizzesController < ApplicationController
         @teacher = Teacher.find(session[:user_id])
         
         @course = session[:current_course]
+<<<<<<< HEAD
+
+        if @course == nil
+            @all_courses = Course.where(:teacher => @teacher)
+            @students = Student.where(course: @all_courses)
+        else
+=======
         
         session[:round_number] = 1
         
@@ -40,12 +62,22 @@ class QuizzesController < ApplicationController
         end
 
         if !(@course == nil)
+>>>>>>> master
             @students = Student.where(:course => session[:current_course])
         end
         
         @students.each do |student|
             student.update_attribute(:is_correct, false)
             student.update_attribute(:roundNumber, 1)
+        end
+        
+        if session[:quiz_type] == "behind"
+            
+            @otherStudents = Student.where("quiz_score > ?", 0)
+            @otherStudents.each do |student|
+                student.update_attribute(:is_correct, true)
+            end
+            session[:quiz_type] = "normal"
         end
         
         if session[:quiz_type] == "behind"
@@ -64,6 +96,8 @@ class QuizzesController < ApplicationController
         session[:quiz_type] = "behind"
         redirect_to new_quiz_path
     end
+<<<<<<< HEAD
+=======
     
     def take_subset_quiz
         @settingRound = params[:id]
@@ -72,6 +106,7 @@ class QuizzesController < ApplicationController
         redirect_to new_quiz_path
     end
     
+>>>>>>> master
 
 
     def check_answer
@@ -85,6 +120,14 @@ class QuizzesController < ApplicationController
             @student.update_attribute(:is_correct, true)
             @student.update_attribute(:quiz_score, @student.quiz_score + 1)
             @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
+<<<<<<< HEAD
+            redirect_to quiz_path(@teacher.id)
+            
+        else
+            flash[:incorrect] = "Incorrect!"
+            @student.update_attribute(:quiz_score, @student.quiz_score - 1)
+            @student.update_attribute(:quiz_score_day_updated, Time.now.beginning_of_day.to_i)
+=======
             redirect_to review_quiz_path(@student.id)
             
         else
@@ -94,6 +137,7 @@ class QuizzesController < ApplicationController
             @student.update_attribute(:roundNumber, session[:round_number] + 1)
             
             
+>>>>>>> master
             redirect_to review_quiz_path(@student.id)
         end
         
@@ -148,6 +192,11 @@ class QuizzesController < ApplicationController
         redirect_to quiz_path(@teacher.id)
     end
     
+<<<<<<< HEAD
+    def about
+    end
+=======
     
     
+>>>>>>> master
 end

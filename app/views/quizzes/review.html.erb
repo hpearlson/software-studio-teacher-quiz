@@ -4,6 +4,17 @@
     
     <div class="floating-profile-box" style="margin: 60px 175px 60px 175px">
         
+<<<<<<< HEAD
+        <div style="display:block; height: 50px;">
+            <h1>What is my name?</h1>
+        </div>
+        
+        <div style="display:block;">
+            <div class="quiz"><%= image_tag @student.image.url(:medium) %>
+                <%= div_for(@student) do %>
+                    <h1><%= @student.first_name %> <%= @student.last_name %></h1>
+                    <h1><%= @student.description %></h1>
+=======
         <div style="display:block; height: 60px;">
                     <% if flash[:correctAnswer] %>
                         <div class="alert alert-success">
@@ -34,6 +45,7 @@
                     <% end %>
             
                     
+>>>>>>> master
                 
                     <h1 style="text-align:center;"><%= link_to "Next", quiz_path(@teacher.id), :class => "button", :id => "next" %></h1>
 
