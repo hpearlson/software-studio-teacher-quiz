@@ -48,10 +48,13 @@
     100% {background-color: #69306d;}
 }
 
+<<<<<<< HEAD
 .alert {
     text-align: center;
 }
 
+=======
+>>>>>>> 7d8362ee55c5db0bb5f10d0af966f52221986c4e
 #notice { /* something need to change here in order to make the notices align correctly */
     /* also while the notice is visible, you can't click on buttons (due to width 100%). need to find a workaround for that */
     position: absolute;
@@ -89,12 +92,21 @@
 .page-footer {
     background: #69306D;
     color: white;
-    position: block;
     right: 0;
     bottom: 0;
     left: 0;
     height: 40px;
     padding: 1rem;
+}
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
     text-align: center;
 }
 
@@ -406,7 +418,25 @@ li {
 .teacher-registration {
     color:white;
     width: 380px;
+<<<<<<< HEAD
     height: 550px;
+    box-sizing: border-box;
+    padding: 30px;
+    
+    input {
+        margin-bottom: 10px !important;
+    }
+}
+
+.teacher-registration {
+    color:white;
+    width: 380px;
+    height: 550px;
+<<<<<<<<< saved version
+
+=========
+
+>>>>>>>>> local version
     top: 58%;
     left: 50%;
     position: absolute;
