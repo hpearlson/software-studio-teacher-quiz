@@ -21,12 +21,32 @@ Rails.application.routes.draw do
   
   resources :teachers
 
+<<<<<<< HEAD
   get 'quizzes/about', :to => 'quizzes#about'
+=======
+  get 'quizzes/aboutquizzes', :to => 'quizzes#about'
+  
+  get 'quizzes/about', :to => 'quizzes#aboutQuizme'
+  
+  get 'quizzes/endofround', :to => 'quizzes#roundEnd'
+  
+  get 'quizzes/endofquiz', :to => 'quizzes#endPage'
+  
+  #get 'quizzes/overrideIncorrect', :to => 'quizzes#overrideIncorrect'
+  
+  #get '/quizzes/take_subset_quiz/', to: 'quizzes#take_subset_quiz', as: :restart
+>>>>>>> master
   
   resources :quizzes do
     member do
       get :review
       post :check_answer
+      get :take_subset_quiz, :as => :restart
+    end
+    collection do
+      get :take_remedial_quiz
+      get :overrideIncorrect
+      #get :take_subset_quiz, param: :settingRound
     end
     collection do
       get :take_remedial_quiz

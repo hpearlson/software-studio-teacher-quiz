@@ -1,0 +1,48 @@
+<% @page_title = "Quizme - Quiz" %>
+
+<div class="content-wrapper stylish-forms" style="min-height: 800px">
+    
+    <div class="floating-profile-box" style="margin: 60px 175px 60px 175px">
+        
+        <div style="display:block; height: 60px;">
+            <h1>Final Results:</h1>
+        </div>
+        
+        <div style="display:block;">
+            <div class="quiz">
+            
+            <% for i in 1..session[:round_number] %>
+                <h1>Round <%= i %> --- <%= link_to "Replay From Here", restart_quiz_path(i) %></h1>
+                    <% @students.each do |student| %>
+                        <% if student.roundNumber == i %>
+                            <h3 style="color:green;"><%= student.full_name %></h3>
+                        <% elsif student.roundNumber > i %>
+                            <h3 style="color:red;"><%= student.full_name %></h3>
+                        <% end %>
+                            
+                    <% end %>
+
+                
+            <% end %>
+
+            <h1 style="text-align:center;"><%= link_to "Finish", quiz_path(@teacher.id), :class => "button", :id => "next" %></h1>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    var ENTER = 13; //This is the js keycode for ENTER
+    
+    function my_custom_keypress(e){
+      key = e.which;
+      if(key == ENTER){
+        $('a#next').trigger('click');
+      }
+    }
+    
+    $(document).on('keydown', my_custom_keypress);
+
+</script>

@@ -5,8 +5,11 @@ class Student < ActiveRecord::Base
         :storage => :cloudinary, :path => ':id/:style/:filename'
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
     
+    
     ALPHA = /\A[A-Za-z]+\Z/
     ALPHANUMERIC = /\A[a-zA-Z0-9]+\Z/i
+    SENTENCES = /\A[a-zA-Z0-9.,?!\s]+\Z/i
+    EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
     
     validates :first_name, :presence => true,
                             :length => { :within => 3..25 },
@@ -16,8 +19,20 @@ class Student < ActiveRecord::Base
                             :length => { :within => 3..25 },
                             :format => ALPHA
     
-    #validates_presence_of :course
-    #validates_associated :course
+    validates :username, :length => { :maximum => 25 },
+                            :format => { :with => ALPHANUMERIC, :allow_nil => true },
+                            :uniqueness => { :allow_nil => true } 
+    
+    validates :password, :length => { :maximum => 25 },
+                            :format => { :with => ALPHANUMERIC, :allow_nil => true },
+                            :confirmation => true
+    
+    validates :description, :length => { :maximum => 225 },
+                                :format => { :with => SENTENCES, :allow_nil => true, :allow_blank => true }
+    
+    validates :email_address, :format => { :with => EMAIL_REGEX, :allow_nil => true }
+    
+    
     validates_presence_of :image
     
     def full_name
@@ -34,7 +49,13 @@ class Student < ActiveRecord::Base
                 student.quiz_score_day_updated = Time.now.beginning_of_day.to_i
             end
             
+<<<<<<< HEAD
             if student.quiz_score > 1
+=======
+            if student.quiz_score == nil
+               student.update_attribute(:quiz_score, 0) 
+            elsif student.quiz_score > 1
+>>>>>>> master
                 if Time.now.to_i - ((student.quiz_score - 1)**2)*84000 >= student.quiz_score_day_updated
                     student.update_attribute(:quiz_score, student.quiz_score - 1)
                 end

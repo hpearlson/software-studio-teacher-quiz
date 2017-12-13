@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>application.scss - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/jquery.js"></script>
+<script src="../../../js/darkfish.js"></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../../../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../../../README_md.html">README</a>
+  
+    <li><a href="../../../README_rdoc.html">README</a>
+  
+    <li><a href="../../../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../Readme_txt.html">Readme</a>
+  
+    <li><a href="../../../app/assets/javascripts/access_coffee.html">access.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/courses_coffee.html">courses.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/quiz_coffee.html">quiz.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/quizzes_coffee.html">quizzes.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/student_coffee.html">student.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/teachers_coffee.html">teachers.coffee</a>
+  
+    <li><a href="../../../app/assets/stylesheets/access_scss.html">access.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/application_scss.html">application.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/courses_scss.html">courses.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/quiz_scss.html">quiz.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/quizzes_scss.html">quizzes.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/student_scss.html">student.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/style_scss.html">style.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/teachers_scss.html">teachers.scss</a>
+  
+    <li><a href="../../../config_ru.html">config.ru</a>
+  
+    <li><a href="../../../features/AddCourse_feature.html">AddCourse.feature</a>
+  
+    <li><a href="../../../features/DoLogin_feature.html">DoLogin.feature</a>
+  
+    <li><a href="../../../lib/tasks/cucumber_rake.html">cucumber.rake</a>
+  
+    <li><a href="../../../log/development_log.html">development.log</a>
+  
+    <li><a href="../../../log/test_log.html">test.log</a>
+  
+    <li><a href="../../../public/404_html.html">404.html</a>
+  
+    <li><a href="../../../public/422_html.html">422.html</a>
+  
+    <li><a href="../../../public/500_html.html">500.html</a>
+  
+    <li><a href="../../../public/assets/application-5c0e0f9fd7606f5eb8646684dc8c8c04a4f56f81bbd68786abd386cd9a25fb5f_js.html">application-5c0e0f9fd7606f5eb8646684dc8c8c04a4f56f81bbd68786abd386cd9a25fb5f.js</a>
+  
+    <li><a href="../../../public/assets/application-74c43fb43d12876ef0384168cd494506adc037c4854785c0e95f9f43d0b1949b_css.html">application-74c43fb43d12876ef0384168cd494506adc037c4854785c0e95f9f43d0b1949b.css</a>
+  
+    <li><a href="../../../public/assets/application-7d3d305d76c444e3892e806bf69a6d71079df0f339689b60ee846f2f10a874b6_css.html">application-7d3d305d76c444e3892e806bf69a6d71079df0f339689b60ee846f2f10a874b6.css</a>
+  
+    <li><a href="../../../public/assets/application-897e513552a5de5d582e156081e9fcf3140c484f49b3c93e50258b4dc5041483_js.html">application-897e513552a5de5d582e156081e9fcf3140c484f49b3c93e50258b4dc5041483.js</a>
+  
+    <li><a href="../../../public/assets/application-927c131bfe04abf62441e34a89136658d3807f835f329d83a577175f40963d60_css.html">application-927c131bfe04abf62441e34a89136658d3807f835f329d83a577175f40963d60.css</a>
+  
+    <li><a href="../../../public/assets/application-cf738fc41a3a661a9fe24ee6a512f2b7e18224fcfa3460c6aa5a83d4bfab5210_css.html">application-cf738fc41a3a661a9fe24ee6a512f2b7e18224fcfa3460c6aa5a83d4bfab5210.css</a>
+  
+    <li><a href="../../../public/assets/application-efcdc065ef2ad8f0fb44686f0cb678500967f8f1813328eccbccfd3e3e1586a7_css.html">application-efcdc065ef2ad8f0fb44686f0cb678500967f8f1813328eccbccfd3e3e1586a7.css</a>
+  
+    <li><a href="../../../public/assets/bootstrap/glyphicons-halflings-regular-42f60659d265c1a3c30f9fa42abcbb56bd4a53af4d83d316d6dd7a36903c43e5_svg.html">glyphicons-halflings-regular-42f60659d265c1a3c30f9fa42abcbb56bd4a53af4d83d316d6dd7a36903c43e5.svg</a>
+  
+    <li><a href="../../../public/favicon_ico.html">favicon.ico</a>
+  
+    <li><a href="../../../public/robots_txt.html">robots</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page app/assets/stylesheets/application.scss">
+
+<pre> This is a manifest file that&#39;ll be compiled into application.css, which will include all the files
+ listed below.
+
+ Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ or any plugin&#39;s vendor/assets/stylesheets directory can be referenced here using a relative path.
+
+ You&#39;re free to add application-wide styles to this file and they&#39;ll appear at the bottom of the
+ compiled file so the styles you add here take precedence over styles defined in any styles
+ defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ file per style scope.
+
+= require_tree .
+= require_self
+= require style.scss</pre>
+
+<p>@import &#39;style&#39;;</p>
+
+<p>.innerHeadContainer {</p>
+
+<pre>background-color: #FFFBFF;
+display: block;
+overflow: inherit;</pre>
+
+<p>}</p>
+
+<p>.pagehead {</p>
+
+<pre>height: 75px;
+
+h1, h2, h3, p {
+    padding-top: 15px;
+}</pre>
+
+<p>}</p>
+
+<pre>@keyframes fadeOut {
+   0% {background-color: #69306d;}
+   5% {background-color: #ccbbea;}    ccbbea   
+   66% {background-color: #ccbbea;} /* e36397 */
+   100% {background-color: #69306d;}</pre>
+
+<p>}</p>
+
+<pre>@keyframes alarm {
+   0% {background-color: #69306d;}
+   5% {background-color: darkred;} /* ccbbea */
+   66% {background-color: darkred;} /* e36397 */
+   100% {background-color: #69306d;}</pre>
+
+<p>}</p>
+
+<p>notice { /* something need to change here in order to make the notices
+align correctly */</p>
+
+<pre>/* also while the notice is visible, you can&#39;t click on buttons (due to width 100%). need to find a workaround for that */
+position: absolute;
+text-align:center;
+width: 100%;
+display: block; 
+padding-top: 14px;
+font-size: 1.3em;
+color: #FFFFFF;
+text-decoration: none;
+letter-spacing: 1px;
+margin-top: 20px;</pre>
+
+<p>}</p>
+
+<p>.title {</p>
+
+<pre>font-family: &#39;Julius Sans One&#39;, sans-serif;
+font-size: 2em;</pre>
+
+<p>}</p>
+
+<p>temporary_background {</p>
+
+<pre>animation-name: fadeOut;
+animation-duration: 3s;
+background-color: #e36397;
+animation-fill-mode: forwards;</pre>
+
+<p>}</p>
+
+<p>incorrect_background {</p>
+
+<pre>animation-name: alarm;
+animation-duration: 3s;
+background-color: #e36397;
+animation-fill-mode: forwards;</pre>
+
+<p>}</p>
+
+<p>.page-footer {</p>
+
+<pre>background: #69306D;
+color: white;
+position: block;
+right: 0;
+bottom: 0;
+left: 0;
+height: 40px;
+padding: 1rem;
+text-align: center;</pre>
+
+<p>}</p>
+
+<p>.button {</p>
+
+<pre>background-color: #4CAF50;
+border: none;
+color: white;
+font-family: &#39;Nunito&#39;, sans-serif;
+padding: 10px;
+letter-spacing: 1px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+border-radius: 12px;</pre>
+
+<p>}</p>
+
+<p>.home-button {</p>
+
+<pre>background-color: #4CAF50;
+border: none;
+color: white;
+font-family: &#39;Nunito&#39;, sans-serif;
+padding: 10px;
+letter-spacing: 1px;
+text-align: center;
+text-decoration: none;
+display: block;
+font-size: 25px;
+margin: 50px 230px;
+border-radius: 12px;</pre>
+
+<p>}</p>
+
+<p>.title-bar-button {</p>
+
+<pre>background-color: #4CAF50;
+border: none;
+color: white;
+font-family: &#39;Nunito&#39;, sans-serif;
+padding: 10px;
+letter-spacing: 1px;
+text-align: center;
+text-decoration: none;
+//display: inline-block;
+font-size: 16px;
+//margin: 4px 2px;
+border-radius: 12px;
+margin: 0px 10px 0px 10px;</pre>
+
+<p>}</p>
+
+<p>.quiz-button {</p>
+
+<pre>float: left;
+background-color: #4CAF50;
+border: none;
+color: white;
+padding: 20px;
+letter-spacing: 1px;
+text-align: center;
+text-decoration: none;
+//display: inline-block;
+font-size: 16px;
+margin: 10px 10px 10px 10px;
+border-radius: 12px;
+width: 150px;
+height: 100px;</pre>
+
+<p>}</p>
+
+<p>.caution {</p>
+
+<pre>background-color: red;</pre>
+
+<p>}</p>
+
+<p>body {</p>
+
+<pre>background-image: url(&quot;../assets/halftone.png&quot;);
+background-repeat: repeat;
+font-family: &#39;Nunito&#39;, sans-serif;</pre>
+
+<p>}</p>
+
+<p>.hidden {</p>
+
+<pre>display: none;</pre>
+
+<p>}</p>
+
+<p>ul {</p>
+
+<pre>list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #69306D;</pre>
+
+<p>}</p>
+
+<p>li {</p>
+
+<pre>float: left;</pre>
+
+<p>}</p>
+
+<p>.clearfix:after {</p>
+
+<pre>content: &quot;.&quot;;
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;</pre>
+
+<p>} .clearfix {display: inline-block;}</p>
+
+<pre>html .clearfix {height: 1%;}</pre>
+
+<p>.clearfix {display: block;}</p>
+
+<p>.content-wrapper {</p>
+
+<pre>max-width: 950px;
+margin: 0 auto;
+padding-bottom: 150px;
+min-height: 700px;</pre>
+
+<p>}</p>
+
+<p>.login-body{</p>
+
+<pre>background-image: url(&quot;../assets/classroom.jpg&quot;);
+background-size: cover;
+
+.overlay-container{
+    background: rgba(105, 48, 109, .3);
+}</pre>
+
+<p>}</p>
+
+<p>.quiz-about-body{</p>
+
+<pre>background-image: url(&quot;../assets/classroom-back-view.jpg&quot;);
+background-size: cover;
+
+.overlay-container{
+    background: rgba(105, 48, 109, .3);
+}</pre>
+
+<p>} .home-body {</p>
+
+<pre>background-image: url(&quot;../assets/teacherteaching.jpg&quot;);
+background-size: cover;
+height: 75%;
+
+img {
+    max-width: 100%;
+    position: absolute;
+    z-index: -10;
+}
+
+.overlay-container {
+    background: rgba(105, 48, 109, .5);
+}</pre>
+
+<p>}</p>
+
+<p>.course-overview {</p>
+
+<pre>height: 120px;</pre>
+
+<p>}</p>
+
+<p>.width-restraint {</p>
+
+<pre>max-width: 950px;
+margin: 0 auto;</pre>
+
+<p>}</p>
+
+<p>.navbar {</p>
+
+<pre>margin-bottom: -20px;
+padding: 0;
+height: 100px;
+overflow: hidden;
+background-color: #69306D; 
+
+.button {
+    margin: 0px;
+}
+.title {
+    padding: 16px 16px;
+}
+
+li {
+
+    height: 100px;
+
+    a {
+        display: block; 
+        color: #FFFFFF;
+        text-align: center;
+        padding: 25px 16px;
+        text-decoration: none;
+    }
+
+}</pre>
+
+<p>}</p>
+
+<p>.floating-box {</p>
+
+<pre>float: left;
+width: 214px;
+min-height: 260px;
+margin: 10px;
+border: 3px solid #FFFBFF;  
+background-color: #FFFBFF;
+text-align: center;
+border-radius: 12px;
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}</pre>
+
+<p>}</p>
+
+<p>.floating-profile-box {</p>
+
+<pre>display: inline-block;
+color: white;
+width: 600px;
+float: right;
+padding: 30px;
+min-height: 300px;
+margin: 30px 0 30px 30px;
+border: 3px solid #FFFBFF;  
+background-color: rgba(105, 48, 109, .5);
+text-align: left;
+border-radius: 3px;
+
+h2 {
+    font-size: 16px;
+    margin: 0px;
+    font-style: italic;
+    color: lightgrey;
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 0px;
+
+    a { color: white; }
+}
+
+p {
+    margin-bottom: 20px;
+}</pre>
+
+<p>}</p>
+
+<p>.darker {</p>
+
+<pre>background-color: rgba(105, 48, 109, .9) !important;
+border: none !important;</pre>
+
+<p>}</p>
+
+<p>.list-box {</p>
+
+<pre>float: center;
+width: 500px;
+height: 250px;
+margin: 10px;
+border: 3px solid #FFFBFF;  
+background-color: #FFFBFF;
+text-align: left;
+border-radius: 12px;
+padding: 30px;
+font-size: 18px;
+color: black;
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}</pre>
+
+<p>}</p>
+
+<p>.course-id-box {</p>
+
+<pre>float: right;
+width: 250px;
+height: 100px;
+margin: 10px;
+border: 3px solid #FFFBFF;  
+background-color: #FFFBFF;
+text-align: center;
+border-radius: 12px;</pre>
+
+<p>}</p>
+
+<p>.button-box {</p>
+
+<pre>display: inline-block;
+float: right;</pre>
+
+<p>}</p>
+
+<p>.accountType {</p>
+
+<pre>color:white;
+width: 320px;
+height: 180px;
+top: 42%;
+left: 50%;
+position: absolute;
+background: rgba(105, 48, 109, .8);
+transform: translate(-50%,-50%);
+box-sizing: border-box;
+padding: 30px;</pre>
+
+<p>}</p>
+
+<p>.student-registration {</p>
+
+<pre>color:white;
+width: 380px;
+height: 600px;
+top: 65%;
+left: 50%;
+position: absolute;
+background: rgba(105, 48, 109, .8);
+transform: translate(-50%,-50%);
+box-sizing: border-box;
+padding: 30px;
+
+input {
+    margin-bottom: 10px !important;
+}</pre>
+
+<p>}</p>
+
+<p>.teacher-registration {</p>
+
+<pre>color:white;
+width: 380px;
+height: 480px;
+top: 58%;
+left: 50%;
+position: absolute;
+background: rgba(105, 48, 109, .8);
+transform: translate(-50%,-50%);
+box-sizing: border-box;
+padding: 30px;</pre>
+
+<p>}</p>
+
+<p>.stylish-forms {</p>
+
+<pre>h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    outline: none;
+    height: 40px;
+    color:white;
+}
+
+input[type=&quot;text&quot;], input[type=&quot;password&quot;] {
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    font-size: 16px;
+}
+
+input[type=&quot;submit&quot;] {
+    background: #4CAF50;
+    font-size: 18px;
+    border-radius: 12px;
+}
+
+.simple-link {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+    }
+.simple-link:hover {
+    color: #ffc107;
+}
+
+select {
+    background: #ccbbea;
+    margin-bottom: 20px;
+}
+
+textarea {
+    margin-bottom: 20px;  
+    background: #ccbbea;
+    width: 100%;
+}
+
+input[type=&quot;file&quot;] {
+    margin-bottom: 0px;
+}</pre>
+
+<p>}</p>
+
+<p>.sub-header {</p>
+
+<pre>margin-top: 20px;
+padding: 30px 0px 0px 0px;
+height: 75px;</pre>
+
+<p>}</p>
+
+<p>.login {</p>
+
+<pre>color:white;
+width: 320px;
+height: 360px;
+top: 55%;
+left: 50%;
+position: absolute;
+background: rgba(105, 48, 109, .8);
+transform: translate(-50%,-50%);
+box-sizing: border-box;
+padding: 30px;</pre>
+
+<p>}</p>
+
+<p>input:-webkit-autofill {</p>
+
+<pre>-webkit-box-shadow: inset 0 0 0px 9999px #ccbbea;</pre>
+
+<p>}</p>
+
+<p>.sub-header-text {</p>
+
+<pre>margin-top: -5px;
+font-size: 30px;
+display: inline-block;
+float: left;</pre>
+
+<p>}</p>
+
+<p>.quiz {</p>
+
+<pre>img {
+    border-radius: 125px;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    border: 5px solid rgba(105, 48, 109, .5);
+    margin-bottom: 15px;
+}
+margin-bottom: 10px;
+
+input {
+    text-align: center;
+}</pre>
+
+<p>}</p>
+
+<p>.profile-image-container {</p>
+
+<pre>display: inline-block;
+width: 290px;
+padding: 30px;
+img {
+    border-radius: 125px;
+    width: 250px;
+    height: 250px;
+    margin: 20px 20px 20px 20px;
+    border: 5px solid rgba(105, 48, 109, .5);
+}</pre>
+
+<p>}</p>
+
+<p>img {</p>
+
+<pre>display: block;</pre>
+
+<p>}</p>
+
+<p>/* Change the link color to #56285A on hover */ li a:hover {</p>
+
+<pre>background-color: #56285A;</pre>
+
+<p>}</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.3.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

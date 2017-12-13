@@ -4,7 +4,11 @@
         <div class="width-restraint">
             <span class="sub-header-text"><%= @teacher.username %></span>
             <span class="button-box"><%= link_to 'Delete Your Profile', teacher_path(@teacher), :method => :delete, data: {confirm: 'Are you sure? This action is not reversible.'}, :class => @button_class, :style => "background:red" %></span>
+<<<<<<< HEAD
             <span class="button-box"><%= link_to 'Edit Your Profile', edit_teacher_path, :class => @button_class, :style => "background:tan" %></span>
+=======
+            <span class="button-box"><%= link_to 'Edit Your Profile', edit_teacher_path, :class => @button_class %></span>
+>>>>>>> master
         </div>
     </div>
 </div>
@@ -12,10 +16,21 @@
 <div class="content-wrapper">
     
     <div class="profile-image-container">
+<<<<<<< HEAD
         <%= image_tag @teacher.image.url(:medium) %>
+=======
+        
+        <% if @teacher.image_file_name.nil?  %>
+            <img src="/assets/default_profile.jpg">
+        <% else %>
+            <%= image_tag @teacher.image.url(:medium) %>
+        <% end %>
+
+>>>>>>> master
     
     </div>
-    
+
+
     <div class="floating-profile-box">
         
         <div style="margin-bottom: 20px;">
@@ -39,4 +54,30 @@
         <% end %>
     </div>
     
+<<<<<<< HEAD
+    <div class="floating-profile-box">
+        
+        <div style="margin-bottom: 20px;">
+            <h2>Name:</h2>
+            <h3><%= @teacher.full_name %></h3>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <h2>Username:</h2>   
+            <h3><%= @teacher.username %></h3>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <h2>Email address:</h2>
+            <h3><%= @teacher.email_address %></h3>
+        </div>
+
+        <h2>My courses:</h2>
+        <% @courses.each do |course| %>
+            <h3><%= link_to course.course_name, course_path(course) %></h3>
+        <% end %>
+    </div>
+    
+=======
+>>>>>>> master
 </div>
