@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20171126145923) do
-=======
 ActiveRecord::Schema.define(version: 20171207181915) do
->>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,10 +44,7 @@ ActiveRecord::Schema.define(version: 20171207181915) do
     t.string   "password_digest"
     t.integer  "quiz_score"
     t.integer  "quiz_score_day_updated"
-<<<<<<< HEAD
-=======
     t.integer  "roundNumber"
->>>>>>> master
   end
 
   create_table "teachers", force: :cascade do |t|

@@ -49,13 +49,9 @@ class Student < ActiveRecord::Base
                 student.quiz_score_day_updated = Time.now.beginning_of_day.to_i
             end
             
-<<<<<<< HEAD
-            if student.quiz_score > 1
-=======
             if student.quiz_score == nil
                student.update_attribute(:quiz_score, 0) 
             elsif student.quiz_score > 1
->>>>>>> master
                 if Time.now.to_i - ((student.quiz_score - 1)**2)*84000 >= student.quiz_score_day_updated
                     student.update_attribute(:quiz_score, student.quiz_score - 1)
                 end

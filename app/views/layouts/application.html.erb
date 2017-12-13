@@ -15,17 +15,8 @@
   <%= csrf_meta_tags %>
 
 
-<<<<<<< HEAD
-  <% if !flash.empty? %>
-    <% if flash[:incorrect] %>
-      <ul id="incorrect_background" class="navbar navbar-static-top">
-    <% else %>
-      <ul id="temporary_background" class="navbar navbar-static-top">
-    <% end %>
-=======
   <% if !flash[:notice].nil? %>
       <ul id="temporary_background" class="navbar navbar-static-top">
->>>>>>> master
   <% else %>
     <ul class="navbar navbar-static-top">
   <% end %>
@@ -37,13 +28,9 @@
         <li><%= link_to "Students", students_path %></li>
         <% if !flash.empty? %>
           <% flash.each do |key, value| %>
-<<<<<<< HEAD
-            <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
-=======
             <% if !(key == "incorrectAnswer" || key == "correctAnswer") %>
               <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
             <% end %>
->>>>>>> master
           <% end %>
         <% end %>
         
@@ -58,7 +45,6 @@
           <% flash.each do |key, value| %>
             <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
           <% end %>
-<<<<<<< HEAD
         <% end %>
         
         <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
@@ -71,20 +57,6 @@
             <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
           <% end %>
         <% end %>
-=======
-        <% end %>
-        
-        <li style="float:right"><a class="active" href="/access/logout">Logout</a></li>
-        <li style="float:right"> <%= link_to session[:username], Student.find_by(:username => session[:username]) %> </li>
-      
-      <% else %>
-        <li> Something went wrong.</li>
-        <% if !flash.empty? %>
-          <% flash.each do |key, value| %>
-            <%= content_tag(:div, value, :class => "flash #{key}", :id => "notice") %>
-          <% end %>
-        <% end %>
->>>>>>> master
         <li style="float:right"><%= link_to "Logout", access_logout_path %></li>
       <% end %>
 

@@ -21,9 +21,6 @@ Rails.application.routes.draw do
   
   resources :teachers
 
-<<<<<<< HEAD
-  get 'quizzes/about', :to => 'quizzes#about'
-=======
   get 'quizzes/aboutquizzes', :to => 'quizzes#about'
   
   get 'quizzes/about', :to => 'quizzes#aboutQuizme'
@@ -35,7 +32,6 @@ Rails.application.routes.draw do
   #get 'quizzes/overrideIncorrect', :to => 'quizzes#overrideIncorrect'
   
   #get '/quizzes/take_subset_quiz/', to: 'quizzes#take_subset_quiz', as: :restart
->>>>>>> master
   
   resources :quizzes do
     member do
@@ -47,9 +43,6 @@ Rails.application.routes.draw do
       get :take_remedial_quiz
       get :overrideIncorrect
       #get :take_subset_quiz, param: :settingRound
-    end
-    collection do
-      get :take_remedial_quiz
     end
   end
   
