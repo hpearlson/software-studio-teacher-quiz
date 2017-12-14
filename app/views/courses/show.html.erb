@@ -37,7 +37,9 @@
                     <h3><%= image_tag student.image.url(:thumb) %></h3>
                     <h3><%= student.full_name %></h3>
                     
-                    <% if student.quiz_score > 0 %>
+                    
+                    <% if session[:user_type] == "Student" %>
+                    <% elsif student.quiz_score > 0 %>
                         <h3 style="color:green"><%= "+" + student.quiz_score.to_s %></h3>
                     <% elsif student.quiz_score < 0 %>
                         <h3 style="color:red"><%= student.quiz_score %></h3>
