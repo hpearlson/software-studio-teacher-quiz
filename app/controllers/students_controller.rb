@@ -9,6 +9,10 @@ class StudentsController < ApplicationController
         @students = Student.all.where(course: @courses).order(:last_name).page(params[:page])
         Student.apply_spaced_repetition(session[:user_id])
         session.delete(:current_course)
+        respond_to do |format|
+            format.html
+            format.csv { send_data @students.to_csv }
+        end
     end
 
     def show

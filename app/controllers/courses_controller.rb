@@ -35,6 +35,11 @@ class CoursesController < ApplicationController
   	    end
   	    @students = Student.where(:course => @course).page(params[:page])
   	    session[:current_course] = @course.id
+  	    
+  	    respond_to do |format|
+            format.html
+            format.csv { send_data @students.to_csv }
+        end
 	end
     
     def new

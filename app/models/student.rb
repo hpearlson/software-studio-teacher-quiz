@@ -1,4 +1,5 @@
 class Student < ActiveRecord::Base
+    require 'csv'
     belongs_to :course
     has_secure_password :validations => false
     has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png", 
@@ -64,4 +65,14 @@ class Student < ActiveRecord::Base
     end
     
     paginates_per 20
+    
+    def self.to_csv(options = {})
+        desired_columns = ["id", "first_name", "last_name", "description"]
+        CSV.generate(options) do |csv|
+            csv << desired_columns
+            all.each do |student|
+                csv << student.attributes.values_at(*desired_columns)
+            end
+        end
+    end
 end
