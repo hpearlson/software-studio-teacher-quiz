@@ -32,9 +32,7 @@
                          <span class="button-box"><%= link_to "Override: I was right", {:controller => "quizzes", :action => "overrideIncorrect"} , :class => @quiz_button, :style => "background-color: lightblue" %></span>
       
                     <% end %>
-            
-                    
-                
+
                     <h1 style="text-align:center;"><%= link_to "Next", quiz_path(@teacher.id), :class => "button", :id => "next" %></h1>
 
                 <% end %>
@@ -44,16 +42,10 @@
 </div>
 
 <script>
-    
-    var ENTER = 13; //This is the js keycode for ENTER
-    
-    function my_custom_keypress(e){
-      key = e.which;
-      if(key == ENTER){
-        $('a#next').trigger('click');
-      }
-    }
-    
-    $(document).on('keydown', my_custom_keypress);
 
+$(this).on('keypress', function(event) {
+    if (event.keyCode == 13) {
+        document.getElementById('next').click();
+    }
+})
 </script>

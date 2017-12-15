@@ -6,6 +6,10 @@
 <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Nunito:600" rel="stylesheet">
 <head>
   
+
+<script src="jquery-3.2.1.min.js"></script>
+
+  
   <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type => "image/x-icon" %>
   
   <title><%= @page_title || "Quizme" %></title>
@@ -85,12 +89,12 @@
 
     <%= yield %>
     
-    
+ <div class="footer"> 
     
   <div class="page-footer">
     <p>This application brought to you by Walter, Autumn, and Hana</p>
   </div>
-
+</div>
 <script>
   $(document).ready(function() {
 
