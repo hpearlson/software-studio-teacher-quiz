@@ -27,6 +27,7 @@ sudo -u postgres pg_ctlcluster 9.3 main restart
 Heroku showing errors you can't see locally? Run this:
 bundle exec rake assets:precompile
 
+https://gorails.com/episodes/user-authentication-with-devise
 
 Google client id:
 21476288076-p1804q3mrjbuc85gvmm94ekk1jn0ius1.apps.googleusercontent.com
