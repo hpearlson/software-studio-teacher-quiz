@@ -75,9 +75,9 @@
         <% end %>
       <% end %>
 
-      <li style="float:right"><a class="active button" href="/access/accountType">Sign Up</a></li>
-      <li style="float:right"><a class="active" href="/access/login">Login</a></li>
-      <li style="float:right"><a class="active" href="/quizzes/about">About</a></li>
+      <li style="float:right"><%= link_to "Sign Up", access_accountType_path, :class => "active button" %></li>
+      <li style="float:right"><%= link_to "Login", access_login_path, :class => "active" %></li>
+      <li style="float:right"><%= link_to "About", quizzes_about_path, :class => "active" %></li>
       
     <% end %>
     
