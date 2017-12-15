@@ -17,7 +17,7 @@ Scenario: Add a course
 Scenario: Try to add an invalid course
   Given a valid teacher
   And a logged in teacher
-  When I go to teh Courses home page
+  When I go to the Courses home page
   And I follow "Add New Course"
   Then I should see "Add course"
   When I fill in "Course Name" with "hi"
