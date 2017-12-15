@@ -10,7 +10,7 @@ class Course < ActiveRecord::Base
     validates_presence_of :teacher_id
     
     validates :course_name, :presence => true,
-                            :length => { :within => 3..25 },
+                            :length => { :within => 3..100 },
                             :format => SENTENCES 
 
     paginates_per 20

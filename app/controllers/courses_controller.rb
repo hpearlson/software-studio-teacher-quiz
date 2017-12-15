@@ -56,7 +56,7 @@ class CoursesController < ApplicationController
         if @course.save
             flash[:notice] = "#{@course.course_name} was successfully created."
         else
-            flash[:notice] = "Course could not be created because #{@course.errors.full_messages}"
+            flash[:warning] = "Course could not be created because #{@course.errors.full_messages}"
         end
         redirect_to courses_path
     end
