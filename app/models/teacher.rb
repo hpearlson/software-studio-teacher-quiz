@@ -37,6 +37,12 @@ class Teacher < ActiveRecord::Base
     end
     
     def self.from_omniauth(auth)
+        @foundTeacher = Teacher.where(:email_address => auth.info.email).first
+        
+        if !@foundTeacher.nil?
+            return @foundTeacher
+        end
+        
         where(email_address: auth.info.email).first_or_initialize.tap do |user|
             user.id = Time.now.to_i.to_s
             user.first_name = auth.info.name
