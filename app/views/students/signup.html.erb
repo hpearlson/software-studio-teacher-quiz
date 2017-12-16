@@ -6,6 +6,9 @@
             <div class="student-registration stylish-forms">
                 
                 <h1> Create an account as a student </h1>
+
+              
+                <% session[:new_user_type] = "student" %>
                 
                 <%= form_for @student, :url => {:action => "register"}, :html => { :multipart => true } do |f| %>
                 <p>Username</p>
@@ -35,8 +38,9 @@
                 <p style="color:yellow;">*all fields are mandatory</p>
         
                 <%= f.submit 'Register Student', :class => "button" %>
+            
                 
-            <br />
+     
                 
                 
             <% end %>
