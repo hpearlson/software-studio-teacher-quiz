@@ -1,7 +1,13 @@
++ ##
++ #This class handles quiz functionality. Methods in this class
++ #interact with student and teacher objects.
 class QuizzesController < ApplicationController
     before_action :confirm_logged_in, :except => [:aboutQuizme]
     before_action :is_teacher, :except => [:aboutQuizme]
     
+    + ##
+    + #This method displays a random student from the pool of students
+    + #that is being quized on.
     def show
         @course = session[:current_course]
         @teacher = Teacher.find(params[:id])
@@ -26,6 +32,8 @@ class QuizzesController < ApplicationController
         end
     end
     
+    + ##
+    + #This method sets up a new quiz for a given teacher.
     def new
         @teacher = Teacher.find(session[:user_id])
         
@@ -60,11 +68,19 @@ class QuizzesController < ApplicationController
         redirect_to quiz_path(@teacher.id)
     end
     
+    + ##
+    + #If a teacher chooses to quiz only unfamiliar students,
+    + #this method records that choice before the quiz is set up.
     def take_remedial_quiz
         session[:quiz_type] = "behind"
         redirect_to new_quiz_path
     end
     
+    + ##
+    + #If a teacher chooses to replay a certain round,
+    + #this method records which round they're replaying from
+    + #and flags it. It then redirects to the "new" method
+    + #to reset the quiz.
     def take_subset_quiz
         @settingRound = params[:id]
         flash[:notice] = @settingRound
@@ -72,8 +88,10 @@ class QuizzesController < ApplicationController
         redirect_to new_quiz_path
     end
     
-
-
+    + ##
+    + #Once a teacher answers a question on the quiz,
+    + #this method evaluates their answer, records it in the database,
+    + #and redirects them to the appropriate page.
     def check_answer
         @teacher = Teacher.find(params[:id])
         @check = params[:student].to_s.split('=>')
@@ -99,12 +117,20 @@ class QuizzesController < ApplicationController
         
     end
     
+    + ##
+    + #If the teacher gets a student's name wrong, they're sent to a review page
+    + #handled by this method. The review page shows them the correct answer
+    + #and prompts them to move on when ready.
     def review
         @student = Student.find(params[:id])
         @teacher = Teacher.find(session[:user_id])
         session[:current_student] = @student.id
     end
     
+    + ##
+    + #At the end of a round, the teacher is taken to this page,
+    + #which shows which of the students' names they got correct,
+    + #and prompts them to move on.
     def roundEnd
         @teacher = Teacher.find(session[:user_id])
         @course = session[:current_course]
@@ -117,6 +143,11 @@ class QuizzesController < ApplicationController
         end
     end
     
+    + ##
+    + #Once the teacher has gotten all students' names correct,
+    + #they are taken to this page, which shows them the outcomes
+    + #from all of the rounds and allows them to either retake the
+    + #quiz from a different round or finish the quiz.
     def endPage
         @teacher = Teacher.find(session[:user_id])
         @course = session[:current_course]
@@ -129,12 +160,21 @@ class QuizzesController < ApplicationController
         end
     end
     
+    + ##
+    + #This page has information about the quizzes and how they work.
     def about
     end
     
+    + ##
+    + #This page has information about QuizMe
+    + #for people who are new to the site.
     def aboutQuizme
     end
 
+    + ##
+    + #If a teacher presses the "Override: I was right" button on the review
+    + #page, this method will record that in the database and redirect them
+    + #to the next page in the quiz.
     def overrideIncorrect
         @student = Student.find(session[:current_student])
         @teacher = Teacher.find(session[:user_id])
