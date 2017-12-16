@@ -43,7 +43,7 @@ class Teacher < ActiveRecord::Base
             return @foundTeacher
         end
         
-        where(email_address: auth.info.email, id: @foundTeacher.id, username: @foundTeacher.username).first_or_initialize.tap do |user|
+        where(email_address: auth.info.email).first_or_initialize.tap do |user|
             user.id = Time.now.to_i.to_s
             user.first_name = auth.info.name
             user.email_address = auth.info.email
