@@ -29,12 +29,6 @@ bundle exec rake assets:precompile
 
 https://gorails.com/episodes/user-authentication-with-devise
 
-Google client id:
-21476288076-p1804q3mrjbuc85gvmm94ekk1jn0ius1.apps.googleusercontent.com
-
-Google client (secret):
-CqF_PMGT96i26J-MEZRRPkAk
-
 
 tutorial for google:
 https://richonrails.com/articles/google-authentication-in-ruby-on-rails/

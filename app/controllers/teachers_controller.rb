@@ -38,8 +38,12 @@ class TeachersController < ApplicationController
     def create_from_google
         @teacher = Teacher.from_omniauth(env["omniauth.auth"])
         session[:user_id] = @teacher.id
-        redirect_to teachers_path
+        session[:username] = @teacher.username
+        session[:user_type] = @teacher.class.to_s
+        flash[:notice] = "You are now logged in, " + @teacher.username
+        redirect_to teacher_path(@teacher)
     end
+
     
     def destroy
         @teacher = Teacher.find params[:id]

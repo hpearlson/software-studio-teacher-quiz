@@ -37,12 +37,14 @@ class Teacher < ActiveRecord::Base
     end
     
     def self.from_omniauth(auth)
-        where(id: auth.uid).first_or_initialize.tap do |user|
-            #user.provider = auth.provider
-            user.id = auth.uid
+        where(email_address: auth.info.email).first_or_initialize.tap do |user|
+            user.id = Time.now.to_i.to_s
             user.first_name = auth.info.name
-            #user.oauth_token = auth.credentials.token
-            #user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+            user.email_address = auth.info.email
+            user.first_name = auth.info.first_name
+            user.last_name = auth.info.last_name
+            user.password = "jffjd" + Time.now.to_i.to_s
+            user.username = auth.info.first_name + Time.now.to_i.to_s
             user.save!
         end
     end
