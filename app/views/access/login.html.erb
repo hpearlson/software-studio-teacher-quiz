@@ -16,11 +16,16 @@
                 <%= password_field_tag(:password) %>
                 
                 <%= submit_tag "Log In" %>
+
+                <button class="loginBtn loginBtn--google">
+                  <%= link_to "Teachers: log in with Google", "/auth/google_oauth2", id: "sign_in", style: "color:white" %>
+                </button>
                 
                 <a class="simple-link" href="#">Lost your password? (dead link)</a>
                 <br>
                 <a class="simple-link" href='/access/accountType'>Don't have an account?</a>
                 <% end %>
+            
                 
             </div>
         </div>

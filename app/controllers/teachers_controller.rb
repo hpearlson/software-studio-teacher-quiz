@@ -79,13 +79,7 @@ class TeachersController < ApplicationController
        #@teacher.image = File.new("#{Rails.root}/app/assets/images/default_profile.jpg")
     end
     
-    def onSignIn(googleUser)
-        profile = googleUser.getBasicProfile();
-        puts('ID: ' + profile.getId()); # Do not send to your backend! Use an ID token instead.
-        puts('Name: ' + profile.getName());
-        puts('Image URL: ' + profile.getImageUrl());
-        puts('Email: ' + profile.getEmail()); # This is null if the 'email' scope is not present.
-    end
+
     
     private
 

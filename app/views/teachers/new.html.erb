@@ -12,6 +12,7 @@
                 <h1> Create an account as a teacher </h1>
 
 
+
                 <%= form_for @teacher, :html => { :multipart => true } do |f| %>
                 
                 
@@ -36,10 +37,10 @@
                     
                     <br />
                     
-                    <p>Or, sign in using your Google account: (this functionality not available currently, sorry)</p>
-                    
-                     <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <button class="loginBtn loginBtn--google">
+                      <%= link_to "Or sign up with Google", "/auth/google_oauth2", id: "sign_in", style: "color:white" %>
+                    </button>
+
                     
                     
                 <% end %>
@@ -50,15 +51,5 @@
     </div>
     
 
-<script>
-  function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-      console.log('First Name: ' + profile.getGivenName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Family Name: ' + profile.getFamilyName());
-      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-}
-</script>
 
 </div>
