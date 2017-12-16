@@ -1,3 +1,7 @@
+##
+# This class represents courses, which belong to a single teacher and contain many students.
+#
+
 class CoursesController < ApplicationController
 
     before_action :confirm_logged_in
@@ -8,6 +12,9 @@ class CoursesController < ApplicationController
         @courses = Course.where(:teacher => @teacher).page(params[:page])
         Student.apply_spaced_repetition(session[:user_id])
     end
+    
+    ##
+    # The logic here mostly accounts for Student/Teacher differences.
     
 	def show
   	    @course = Course.find(params[:id]) 
@@ -46,6 +53,10 @@ class CoursesController < ApplicationController
         @teacher = Teacher.where(:username => session[:username]).take
         @couse = Course.new 
     end
+    
+    ##
+    # Notably, course IDs are generated in relation to the current time, thus
+    # ensuring their uniqueness without keeping tabs specifically on that.
     
     def create
         params[:course][:teacher_id] = session[:user_id] 

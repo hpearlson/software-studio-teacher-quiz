@@ -1,3 +1,8 @@
+##
+# This class manages login and authentication, with the notable exception of Google login.
+# Google login is instead controlled by the Teachers controllers.
+# 
+
 class AccessController < ApplicationController
 
   before_action :confirm_logged_in, :except => [:home, :login, :attempt_login, :logout, :accountType]
@@ -17,6 +22,11 @@ class AccessController < ApplicationController
   def accountType
     # display text & links
   end
+  
+  ##
+  # After forms have been filled in, this function is called to validate the input
+  # regardless of whether user is Student or Teacher. It also handles redirects
+  # based on user type.
   
   def attempt_login
     if params[:username].present? && params[:password].present?
