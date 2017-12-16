@@ -1,7 +1,7 @@
 class TeachersController < ApplicationController
     
-    before_action :confirm_logged_in, :except => [:new, :create]
-    before_action :is_teacher, :except => [:show, :new, :create]
+    before_action :confirm_logged_in, :except => [:new, :create, :create_from_google]
+    before_action :is_teacher, :except => [:show, :new, :create, :create_from_google]
     
     
     def show
@@ -35,6 +35,12 @@ class TeachersController < ApplicationController
         end
     end
     
+    def create_from_google
+        @teacher = Teacher.from_omniauth(env["omniauth.auth"])
+        session[:user_id] = @teacher.id
+        redirect_to teachers_path
+    end
+    
     def destroy
         @teacher = Teacher.find params[:id]
         if session[:username] == @teacher.username
@@ -61,6 +67,8 @@ class TeachersController < ApplicationController
        end
        redirect_to teacher_path(@teacher)
     end
+    
+    
     
     def new
        @teacher = Teacher.new

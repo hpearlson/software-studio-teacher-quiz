@@ -43,7 +43,8 @@ gem 'paperclip', '5.1.0'
 gem 'paperclip-cloudinary'
 
 #google login
-gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'omniauth'
+gem "omniauth-google-oauth2" #, "~> 0.2.1"
 
 gem 'sass'
 

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'access/logout'
   get 'access/accountType'
   
+  get 'auth/:provider/callback', to: 'teachers#create_from_google'
+  get 'auth/failure', to: redirect('/')
 
   post 'students/signup', :to => 'students#register'
   get 'students/signup', :to => 'students#signup'
